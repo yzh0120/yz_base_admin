@@ -9,38 +9,32 @@
 	  
 	  <!-- 表格 -->
 	  <base-table :data="table" :pager="pagerData">
-		  <!-- 图片 -->
-		  <template  #img="{scope}">
-		  	  <el-image style="width: 60px; height: 30px;" :src="scope.row.img || 'http://www.bocaibao.com.cn/images/1shouye_logo.png'" 
-              ></el-image>
-		  </template> 
-		  <!-- 流程 -->
-		  <template  #process="{scope}">
-		    <span>{{scope.row.process}}</span>
-		  </template>
-		  <!-- 开关 -->
-		  <template   #status="{scope}">
-		    
-		  </template>
-		  <!-- 按钮 -->
-		   <template   #operation="{scope}">
-		     <el-button  size="mini" type="text">分配角色</el-button>
-		     <el-button  size="mini" type="text">编辑</el-button>
-		     <el-button  size="mini" type="text">删除{{scope.row.Bank_of_deposit}}</el-button>
-		   </template>
-	  </base-table>
+	  <!-- 图片//重点 -->
+		<template  #img="{scope}">
+			<el-image style="width: 60px; height: 30px;" :src="scope.row.img || 'http://www.bocaibao.com.cn/images/1shouye_logo.png'" ></el-image>
+		</template> 
+
+		<!-- 流程 //重点-->
+		<template  #process="{scope}">
+			<span>{{scope.row.process}}</span>
+		</template>
+
+		<!-- 按钮 //重点-->
+		<template   #operation="{scope}">
+			<el-button  size="mini" type="text">分配角色</el-button>
+			<el-button  size="mini" type="text">编辑</el-button>
+			<el-button  size="mini" type="text">删除{{scope.row.Bank_of_deposit}}</el-button>
+		</template>
+	   </base-table>
 	  
 	  <!-- 分页 -->
-	  <base-pager
-	  :data="pagerData"
-	  @pageChange="getData()"
-	  @sizeChange="getData()"
-	  />
+	  <pager :data="pagerData"  @pageChange="getData()" @sizeChange="getData()" />
     
   </table-page>
 </template>
 
 <script>
+	// 配置table高度
 	import * as config from "@/tools/config.js"
 	export default{
 		data(){
@@ -74,19 +68,15 @@
 				      field: "remark",
 				      title: "备注",
 				    },
-					{
+					{//重点
 						slot:"img",
 						title:"图片"
 					},
-					{
+					{//重点
 						slot: "process",
 						title: "流程",
 					},
-					{
-						slot: "status",
-						title: "开关",
-					},
-					{
+					{//重点
 						slot: "operation",
 						title: "操作",
 						width: 260,
@@ -109,12 +99,12 @@
 			this.getData();
 		},
 		methods: {
-			getData(isClickSearch) {
+			getData(isSearch) {
+				isSearch && (this.pagerData.pageNo = 1)
+
 				let other = {
 					load: {
 						obj: this.table,
-						// loading : 'loading',   //默认的值就是 "loading",
-						// text:'自定义'
 					},
 				};
 				this.$api.table.pager({
@@ -123,26 +113,6 @@
 					this.table.data = res.data;
 					this.pagerData.total = res.total;
 				});
-		
-				console.log(this.pagerData.pageNo, "当前页面数");
-				console.log(this.pagerData.pageSize, "页面显示条数");
-		
-				// 1 isClickSearch 是true,表明用户点击了搜索,所以
-				// pageNo 重置1     isClickSearch && (this.pagerData.pageNo = 1);
-		
-				// 2 如果用户在有搜索条件下点击了下一页   主要看后台如何接收值
-				// 判断搜索条件是否有值,有就添加条件,没有就不添加,如果搜索条件有多个 则判断多次 postData.push()
-				// let postData = {
-				// 	filters :[]
-				// }
-				// if(this.filtersForm.xxx){
-				// 	postData.filters.push(
-				// 		{
-				// 			member: "itemName",
-				// 			value: this.filtersForm.xxx,
-				// 		}
-				// 	)
-				// }
 			},
 		},
 	}

@@ -14,7 +14,7 @@
 </div>
 </template>
 <!-- 
-	<base-pager :data="pagerData"  @pageChange="()=>{getData()}" @sizeChange="()=>{getData()}"/>
+	<pager :data="pagerData"  @pageChange="()=>{getData()}" @sizeChange="()=>{getData()}"/>
     入参 :
     pagerData: {
         pageNo: 1,//第一页

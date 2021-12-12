@@ -88,7 +88,7 @@ export default {
 		    name: 'baseTable-tip',//修改
 		    component: () => import(/* webpackChunkName: "baseTable-tip" */ "@/views/base-table/tip-table.vue"),//修改
 		    meta: {
-		        title: '内容溢出隐藏',//修改
+		        title: '内容溢出隐藏并悬浮显示',//修改
 		        icon: 'e637;',
 		    }
 		},

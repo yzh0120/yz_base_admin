@@ -3,7 +3,7 @@ export default{
   namespaced:true,//带命名空间
   state:{
 	drawer:false,
-	navStyle:"black-nav",//"theme-nav",//没有通过 muta
+	navStyle:"theme-nav",//"theme-nav",//没有通过 muta
 	//折叠栏
 	isCollapse : false,
 	// 窗口数据

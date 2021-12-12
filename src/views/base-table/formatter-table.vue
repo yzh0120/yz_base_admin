@@ -11,16 +11,13 @@
 	  <base-table :data="table" :pager="pagerData"></base-table>
 	  
 	  <!-- 分页 -->
-	  <base-pager
-	  :data="pagerData"
-	  @pageChange="getData()"
-	  @sizeChange="getData()"
-	  />
+	  <pager :data="pagerData"  @pageChange="getData()" @sizeChange="getData()" />
     
   </table-page>
 </template>
 
 <script>
+	// 配置table高度
 	import * as config from "@/tools/config.js"
 	export default{
 		data(){
@@ -44,16 +41,16 @@
 				    },
 				    {
 				      field: "account",
-				      title: "账号",
-					  format(row){
-					    return self.$fn.split(row.account);
+				      title: "格式化银行账号",
+					  format(x,y,cellValue){//重点
+					    return self.$fn.split(cellValue);
 					  },
 				    },
 				    {
 				      field: "Total_amount",
-				      title: "总金额",
-					  format(row){
-					    return self.$fn.moneyFormat(row.Total_amount);
+				      title: "格式化总金额",
+					  format(x,y,cellValue){//重点
+					    return self.$fn.moneyFormat(cellValue);
 					  },
 				    },
 				    {
@@ -78,12 +75,12 @@
 			this.getData();
 		},
 		methods: {
-			getData(isClickSearch) {
+			getData(isSearch) {
+				isSearch && (this.pagerData.pageNo = 1)
+
 				let other = {
 					load: {
 						obj: this.table,
-						// loading : 'loading',   //默认的值就是 "loading",
-						// text:'自定义'
 					},
 				};
 				this.$api.table.pager({
@@ -92,26 +89,6 @@
 					this.table.data = res.data;
 					this.pagerData.total = res.total;
 				});
-		
-				console.log(this.pagerData.pageNo, "当前页面数");
-				console.log(this.pagerData.pageSize, "页面显示条数");
-		
-				// 1 isClickSearch 是true,表明用户点击了搜索,所以
-				// pageNo 重置1     isClickSearch && (this.pagerData.pageNo = 1);
-		
-				// 2 如果用户在有搜索条件下点击了下一页   主要看后台如何接收值
-				// 判断搜索条件是否有值,有就添加条件,没有就不添加,如果搜索条件有多个 则判断多次 postData.push()
-				// let postData = {
-				// 	filters :[]
-				// }
-				// if(this.filtersForm.xxx){
-				// 	postData.filters.push(
-				// 		{
-				// 			member: "itemName",
-				// 			value: this.filtersForm.xxx,
-				// 		}
-				// 	)
-				// }
 			},
 		},
 	}

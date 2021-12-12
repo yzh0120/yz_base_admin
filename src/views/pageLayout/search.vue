@@ -15,7 +15,7 @@
 	<base-table :data="table" :pager="pagerData" ></base-table>
 
     <!-- 分页 -->
-    <base-pager
+    <pager
       :data="pagerData"
       @pageChange="getData()"
       @sizeChange="getData()"

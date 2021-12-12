@@ -58,7 +58,7 @@
 	<el-table ref="table" v-loading="loading" :data="tableData" border style="width: 100%" :size="size" stripe
 		:height="height" highlight-current-row @selection-change="select_fn" @current-change="selectRowChange"
 		:show-summary="sum" :summary-method="sumfn" :default-sort="defaultSort" :header-cell-style="headerCellStyle"
-		:row-key="rowKey" :tree-props="treeProps" :lazy="lazy" :load="treeLoad">
+		:row-key="rowKey" :tree-props="treeProps" :lazy="lazy" :load="treeLoad" @expand-change="expandEvent">
 		<!-- 多选框 -->
 		<el-table-column v-if="selection" type="selection" width="55" :align="align"></el-table-column>
 
@@ -143,6 +143,14 @@
 				};
 				this.$emit("event", obj);
 			},
+			//用于可展开表格
+			expandEvent(row){
+				let obj = {
+					event: "expand",
+					value:row,
+				};
+				this.$emit("event", obj);
+			}
 		},
 		computed: {
 			lazy(){

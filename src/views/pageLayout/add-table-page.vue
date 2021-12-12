@@ -16,7 +16,7 @@
 		</base-table>
 
 		<!-- 分页 -->
-		<base-pager :data="pagerData" @pageChange="getData()" @sizeChange="getData()" />
+		<pager :data="pagerData" @pageChange="getData()" @sizeChange="getData()" />
 
 		<confirm :data="confirmData" @event="event">
 			<base-form :data="alertForm" ref="alertForm"></base-form>

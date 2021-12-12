@@ -5,17 +5,17 @@ let layout = () => import(/* webpackChunkName: "layout" */"@/layout/index.vue")
 
 
 
-import confirm from "./modules/confirm.js"
+// import confirm from "./modules/confirm.js"
 import baseTable from "./modules/base-table.js"
-import baseForm from "./modules/base-form.js"
-import pageLayout from "./modules/pageLayout.js"
-import VCharts from "./modules/VCharts.js"
-import tabs from "./modules/tabs.js"
-import fn from "./modules/fn.js"
-import panel from "./modules/panel.js"
-import menu from "./modules/menu.js"
-import other from "./modules/other/other.js"
-import axios from "./modules/axios.js"
+// import baseForm from "./modules/base-form.js"
+// import pageLayout from "./modules/pageLayout.js"
+// import VCharts from "./modules/VCharts.js"
+// import tabs from "./modules/tabs.js"
+// import fn from "./modules/fn.js"
+// import panel from "./modules/panel.js"
+// import menu from "./modules/menu.js"
+// import other from "./modules/other/other.js"
+// import axios from "./modules/axios.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -61,16 +61,19 @@ const routes = [
 	...status,//状态和登录页
 	
 	
-	pageLayout,//页面布局
-	baseForm,//封装表单
+
+
 	baseTable,//封装表格
-	confirm,//弹窗
-	panel,
-	VCharts,//图表
-	axios,
-	other,
-	tabs,//标签页多开
-	menu,//多级菜单
+	// pageLayout,//页面布局
+	// baseForm,//封装表单
+	
+	// confirm,//弹窗
+	// panel,
+	// VCharts,//图表
+	// axios,
+	// other,
+	// tabs,//标签页多开
+	// menu,//多级菜单
 	
 
 ]

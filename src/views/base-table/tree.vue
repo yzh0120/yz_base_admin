@@ -1,98 +1,68 @@
 <template>
-	<table-page>
-		<!-- 表单 -->
-		<base-form :data="formInfo">
-			<template #button>
-				<el-button type="primary" @click="getData" native-type="submit">搜索</el-button>
-			</template>
-		</base-form>
-
-		<!-- 表格 -->
-		<base-table :data="table" :pager="pagerData"></base-table>
-
-		<!-- 分页 -->
-		<base-pager :data="pagerData" @pageChange="getData()" @sizeChange="getData()" />
-
-	</table-page>
+  <table-page>
+	  <!-- 表单 -->
+	  <base-form :data="formInfo">
+	  	<template #button>
+	  			<el-button  type="primary" @click="getData" native-type="submit">搜索</el-button>
+	  	</template>
+	  </base-form>
+	  
+	  <!-- 表格 -->
+	  <base-table :data="table" :pager="pagerData"></base-table>
+	  
+	  <!-- 分页 -->
+	  <pager :data="pagerData"  @pageChange="getData()" @sizeChange="getData()" />
+    
+  </table-page>
 </template>
 
 <script>
+	// 配置table高度
 	import * as config from "@/tools/config.js"
-	export default {
-		data() {
+	export default{
+		data(){
 			let self = this;
 			return {
 				formInfo: {
-					list: [{
-							title: "日期",
-							field: "__date",
-							type: "date"
-						},
-						{
-							title: "姓名",
-							field: "__input",
-							type: "input"
-						},
-						{
-							slot: "button"
-						},
+					list: [
+					{ title: "日期", field: "__date", type: "date" },
+					{ title: "姓名", field: "__input", type: "input" },
+					{ slot: "button" },
 					],
 					data: {},
 					titleWidth: "50px", //form的title宽度
 					inline: true,
 				},
 				table: {
-					rowKey: "id",
-					treeProps: {
+					rowKey: "id",//重点 节点的标识
+					treeProps: {//重点    不同的props
 						children: 'children1',
 						hasChildren: 'hasChildren'
 					},
-					// treeLoad(tree, treeNode, resolve) {  //懒加载
-					// 	setTimeout(() => {
-					// 		resolve([{
-					// 			id: new Date().getTime() + parseInt(Math.random() * (1000000 - 0 + 1) +
-					// 				0, 10),
-					// 			Bank_of_deposit: "华商银行深圳分行",
-					// 			Total_amount: 1000000,
-					// 			account: "5102100219000258489",
-					// 			remark: "待总经理审批",
-					// 			status: 1,
-					// 			hasChildren:true
-					// 		}, {
-					// 			id: new Date().getTime() + parseInt(Math.random() * (1000000 - 0 + 1) +
-					// 				0, 10),
-					// 			Bank_of_deposit: "华商银行深圳分行",
-					// 			Total_amount: 1000000,
-					// 			account: "5102100219000258489",
-					// 			remark: "待总经理审批",
-					// 			status: 1,
-					// 			hasChildren:true
-					// 		}])
-					// 	}, 1000)
-					// },
-					head: [{
-							field: "Bank_of_deposit",
-							title: "开户行",
-						},
-						{
-							field: "account",
-							title: "账号",
-						},
-						{
-							field: "Total_amount",
-							title: "总金额",
-						},
-						{
-							field: "remark",
-							title: "备注",
-						},
-					],
-					data: [],
-					height: config.tablePage,
-					loading: true,
-					// index:true,
+				  head: [
+				    {
+				      field: "Bank_of_deposit",
+				      title: "开户行",
+				    },
+				    {
+				      field: "account",
+				      title: "账号",
+				    },
+				    {
+				      field: "Total_amount",
+				      title: "总金额",
+				    },
+				    {
+				      field: "remark",
+				      title: "备注",
+				    },
+				  ],
+				  data: [],
+				  height:config.tablePage,
+				  loading:true,
+				  index:true,
 				},
-
+				
 				pagerData: {
 					pageNo: 1, //第一页
 					pageSize: 20, //每页显示20张
@@ -104,20 +74,19 @@
 			this.getData();
 		},
 		methods: {
-			getData(isClickSearch) {
+			getData(isSearch) {
+				isSearch && (this.pagerData.pageNo = 1)
+
 				let other = {
 					load: {
 						obj: this.table,
-						// loading : 'loading',   //默认的值就是 "loading",
-						// text:'自定义'
 					},
 				};
 				this.$api.table.pager({
 					pagerData: this.pagerData
 				}, other).then((res) => {
 					res.data.forEach((item) => {
-						item.id = new Date().getTime() + parseInt(Math.random() * (1000000 - 0 + 1) + 0,
-							10);
+						item.id = new Date().getTime() + parseInt(Math.random() * (1000000 - 0 + 1) + 0,10);
 						item.children1 = [{
 							id: new Date().getTime() + parseInt(Math.random() * (1000000 - 0 + 1) +
 								0, 10),
@@ -132,26 +101,6 @@
 					this.table.data = res.data;
 					this.pagerData.total = res.total;
 				});
-
-				console.log(this.pagerData.pageNo, "当前页面数");
-				console.log(this.pagerData.pageSize, "页面显示条数");
-
-				// 1 isClickSearch 是true,表明用户点击了搜索,所以
-				// pageNo 重置1     isClickSearch && (this.pagerData.pageNo = 1);
-
-				// 2 如果用户在有搜索条件下点击了下一页   主要看后台如何接收值
-				// 判断搜索条件是否有值,有就添加条件,没有就不添加,如果搜索条件有多个 则判断多次 postData.push()
-				// let postData = {
-				// 	filters :[]
-				// }
-				// if(this.filtersForm.xxx){
-				// 	postData.filters.push(
-				// 		{
-				// 			member: "itemName",
-				// 			value: this.filtersForm.xxx,
-				// 		}
-				// 	)
-				// }
 			},
 		},
 	}
