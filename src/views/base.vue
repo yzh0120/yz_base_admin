@@ -1,6 +1,5 @@
 <template>
     <page :show="true">
-		<el-button >查询</el-button>
 		<div class="top hidden-md-and-down">
 			<div class="item item1">
 				
