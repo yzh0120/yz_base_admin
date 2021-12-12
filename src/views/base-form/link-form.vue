@@ -34,6 +34,7 @@ export default{
       return {
         formData:{
           list:[
+            // {type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"},
             {type:"select",field:"__select",title:"基础",opt:[{text:"特定值",value:"1"},{text:"普通值",value:"2"}]},
             
             {type:"select",field:"__selecttiaojian",title:"A为特定值时，B为特定范围内的值",opt:[{text:"特定范围",value:"1"},{text:"普通值2",value:"2"}]},
@@ -98,9 +99,10 @@ export default{
 		          }
 		        ]
 		      })
+    this.formData.list.splice(1,0,{type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"})
 		this.formData.list.splice(1,0,{type:"input",field:"__input",title:"条件显示"},)//测试  show
 		
-		this.formData.list.splice(1,0,{type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"})
+		
 	},
     watch:{
       "formData.data": {

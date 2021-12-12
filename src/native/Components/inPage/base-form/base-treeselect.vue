@@ -98,11 +98,12 @@ export default{
 						this.data[this.item.field] = []
 					}
 				}else{
-					if( this.$fn.type(this.data[this.item.field]) === ""){
+					if( this.data[this.item.field] == ""){
+						
 						this.data[this.item.field] = null
+						
 					}
 				}
-				
 				return this.data[this.item.field]
 			},
 			set(val){

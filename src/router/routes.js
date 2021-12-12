@@ -7,7 +7,7 @@ let layout = () => import(/* webpackChunkName: "layout" */"@/layout/index.vue")
 
 // import confirm from "./modules/confirm.js"
 import baseTable from "./modules/base-table.js"
-// import baseForm from "./modules/base-form.js"
+import baseForm from "./modules/base-form.js"
 // import pageLayout from "./modules/pageLayout.js"
 // import VCharts from "./modules/VCharts.js"
 // import tabs from "./modules/tabs.js"
@@ -64,8 +64,9 @@ const routes = [
 
 
 	baseTable,//封装表格
+	baseForm,//封装表单
 	// pageLayout,//页面布局
-	// baseForm,//封装表单
+	
 	
 	// confirm,//弹窗
 	// panel,

@@ -7,7 +7,7 @@ export default {
     redirect: {name:"baseTable-base"},//修改
     component:  layout,
     meta: {
-        title: '封装table',//修改
+        title: '封装el-table',//修改
         icon: 'ebe8;',
     },
     children: [

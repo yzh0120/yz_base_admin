@@ -198,6 +198,7 @@
 				handler: function(newVal) {
 					this._addDis(this.data) //增加disabled  可以直接写在data:{}
 					//this._addShow(this.data) //增加show 因为只会写在watch(写在data:{}也有效果)  所以不watch 暂时不用
+					this._updatedata(this.data); 
 				},
 				// immediate: true,
 				// deep: true, // 深度监听

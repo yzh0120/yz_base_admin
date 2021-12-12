@@ -5,7 +5,7 @@ export default {
     redirect: {name:"baseForm-base"},//修改
     component:  layout,
     meta: {
-        title: '封装form',//修改
+        title: '封装el-form',//修改
         icon: 'e62a;',
     },
     children: [
@@ -18,15 +18,6 @@ export default {
                 icon: 'e627;',
             }
         },
-		{
-		    path: 'set',//修改
-		    name: 'baseForm-set',//修改
-		    component: () => import(/* webpackChunkName: "baseForm-base" */ "@/views/base-form/set.vue"),//修改
-		    meta: {
-		        title: '设置表单的值',//修改
-		        icon: 'e627;',
-		    }
-		},
         {
             path: 'row',//修改
             name: 'baseForm-row',//修改
@@ -70,6 +61,15 @@ export default {
 		    meta: {
 		        title: '行内表单',//修改
 		        icon: 'e66a;',
+		    }
+		},
+        {
+		    path: 'set',//修改
+		    name: 'baseForm-set',//修改
+		    component: () => import(/* webpackChunkName: "baseForm-base" */ "@/views/base-form/set.vue"),//修改
+		    meta: {
+		        title: '设置表单的值',//修改
+		        icon: 'e627;',
 		    }
 		},
     ]

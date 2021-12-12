@@ -1,7 +1,6 @@
 <template>
 	<page>
-		<el-button @click="check">提交</el-button><el-button @click="reset">重置</el-button><el-button @click="set">修改</el-button>
-		<base-form :data="formData" ref="form" @event="event"></base-form>
+		<base-form :data="formData" ref="form" ></base-form>
 	</page>
 </template>
 
@@ -11,7 +10,7 @@
 			let self = this
 			return {
 				formData:{
-					// titleWidth:"200px",
+					
 					list:[
 						{ type:"input",field:"__input",title:"输入框",rules:[
 							{ required: true, message: "请输入", trigger: "blur" },
@@ -28,34 +27,40 @@
 						  ]
 						},
 						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
+
 						{type:"password",field:"__password",title:"密码框"},
+
 						{type:"textarea",field:"__textarea",title:"文本域",row:4},
+
 						{type:"select",field:"__select",title:"下拉框",opt:[{text1:"选项一",value1:1},{text1:"选项二",value1:2}],text:"text1",value:"value1"},
+
 						{type:"select",field:"__selectFilter",title:"过滤下拉框",opt:[{text1:"选项一",value1:1},{text1:"选项二",value1:2}],text:"text1",value:"value1",filter:true},
+
 						{type:"select",field:"__selectFilter",title:"远程过滤下拉框",opt:[{text1:"选项一",value1:1},{text1:"选项二",value1:2}],text:"text1",value:"value1",remote:self.remote},
+
 						{type:"select",field:"__selectCrate",title:"多选下拉框",opt:[{text:"选项一",value:1},{text:"选项二",value:2}],create:true},
+
 						{type:"radio",field:"__radio",title:"单选框",opt:[{text1:"单选一",value1:1},{text1:"单选二",value1:2}],text:"text1",value:"value1"},
+
 						{type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"},
+
 						{type:"date",field:"__date",title:"日期选择器"},
+
 						{type:"daterange",field:"__daterange",title:"日期段选择器"},
+
 						{type:"switch",field:"__switch",title:"开关",av:1,iav:0,avText:"同意",iavText:"否决"},
+
 						{type:"auto",field:"__auto",title:"自动补全",filter: self.auto_filter,key:"value1"}
 					],
 					data:{__input:"初始值"},
-					// dom:null,
+					// titleWidth:"200px",
 				}
 			}
 		},
 		created() {
-			// this.formData.data.__input = '22222'
-			// this.formData.data = {__input:"created"}
-			
-			// setTimeout(()=>{
-			// 	this.formData.data = {__input:"created"}
-			// },2000)
 		},
 		mounted() {
-				let arr  =[ {
+			let arr  =[ {
 				id: 'a',
 				label: 'a',
 				subOptions: [ {
@@ -73,24 +78,8 @@
 				label: 'c',
 				} ]
 				this._set(this.formData, "__treeselect",{opt:arr});
-				
-				
-				
-				setTimeout(()=>{
-					this.formData.data = {__input:"setTime mounted"}
-				},1000)
-			
 		},
 		methods:{
-			set(){
-				this.formData.data = {
-					__input:"set",
-					id:"1111111111"
-				} 
-			},
-			event(e){
-				console.log(e)
-			},
 			remote(query){
 				let arr = [{text1:query+"选项一",value1:1},{text1:query+"选项二",value1:2}]
 				this._set(this.formData, "__selectFilter",{opt:arr});
@@ -107,24 +96,6 @@
 				];
 				cd(res);
 			},
-			check(){
-				// this.formData.data = {__input:"提交"}
-				if(this.$refs.form.check()){
-					console.log(this.formData.data)
-					this.$message.success("成功")
-				}else{
-					this.$message.error("失败")
-				}
-			},
-			reset(){
-
-				// this.formData.data = {
-				// 	__input:"reset",
-				// 	id:"1111111111"
-				// } 
-				this.$refs.form.reset()
-				console.log(this.formData.data,"xxx")
-			}
 		}
 	}
 </script>
