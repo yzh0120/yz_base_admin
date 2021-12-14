@@ -45,7 +45,7 @@
 				<el-col :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg" :xl="item.xl"
 					v-for="(item, index) in for_List" :key="index">
 					<!-- show(item.show) -->
-					<el-form-item v-show="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
+					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
 						<!-- 是否悬浮提示 -->
 						<el-tooltip class="item" effect="dark" placement="right"
 							v-if="item.tip && formData[item.field]">
@@ -81,7 +81,7 @@
 				<el-col :span="item.span" 
 					v-for="(item, index) in for_List" :key="index">
 					<!-- show(item.show) -->
-					<el-form-item v-show="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
+					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
 						<!-- 是否悬浮提示 -->
 						<el-tooltip class="item" effect="dark" placement="right"
 							v-if="item.tip && formData[item.field]">
@@ -113,7 +113,7 @@
 		<!-- 不是响应式 -->
 		<template v-else>
 			<!-- show(item.show) -->
-			<el-form-item v-for="(item, index) in for_List" v-show="show(item.show)" :key="index" :prop="item.field"
+			<el-form-item v-for="(item, index) in for_List" v-if="show(item.show)" :key="index" :prop="item.field"
 				:label="item.title"  :rules="item.rules" >
 
 				<el-tooltip class="item" effect="dark" placement="right" v-if="item.tip && formData[item.field]">
