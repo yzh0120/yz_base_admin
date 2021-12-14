@@ -35,3 +35,21 @@
 
 <style>
 </style>
+<!-- 
+let checkOK = true;
+      try {
+        this.uploadList.forEach((item) => {
+          if (item.require) {
+            if (item.detail.length == 0) {
+              this.$message.error(`请上传${item.name}`);
+              checkOK = false;
+              throw new Error("EndIterative");
+            }
+          }
+        });
+      } catch (e) {
+        if (e.message != "EndIterative") throw e;
+      }
+      if (!checkOK) return; 
+ 
+ -->
