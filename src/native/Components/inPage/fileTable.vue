@@ -1,10 +1,10 @@
 <template>
   <div>
-    <panel class="box-card">
-      <div slot="header" class="clearfix">
+    <panel >
+      <div slot="head" >
         <h4>资料文件信息</h4>
       </div>
-      <table class="table table-bordered table-striped">
+      <table class="table row">
         <tbody>
           <tr>
             <td width="30%">资料名称</td>
@@ -14,8 +14,7 @@
           <tr v-for="(item,index) in uploadList" :key="index">
             <td>{{item.name}}</td>
             <td>
-              <div v-for="(file,fileIndex) in item.detail" :key="fileIndex">
-
+              <!-- <div v-for="(file,fileIndex) in item.detail" :key="fileIndex">
                 <el-tooltip content="Top Left 提示文字" placement="left">
                   <div slot="content">上传者：{{file.createUserName}}
                     <br />上传时间：{{file.createTime}}<br />文件大小：{{file.fileSize}}
@@ -25,7 +24,8 @@
                     <i class="el-icon-error" style="color:red;cursor: pointer;" @click="deleteFile(file,fileIndex)"></i>
                   </div>
                 </el-tooltip>
-              </div>
+              </div> -->
+			  <file-List :arr="item.detail" :del="true"/>
             </td>
             <td class="text-center">
               <el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :before-upload="(file)=>{return beforeUpload(file,item)}" :on-change="handleChange" :headers="uploadHeaders">
@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import * as fileApi from "@/api/file";
-import { getCookie } from "@/utils/auth.js";
+import * as fileApi from "@/axios/api/file";
+import * as Cookie from "@/tools/cookjs.js";
 export default {
   props: {
     projectId: {
@@ -75,11 +75,12 @@ export default {
       //     detail: [],
       //   },
       // ],
-      uploaduUrl: process.env.VUE_APP_BASE_API + "/v1/base/file/upload", //上传地址
+      uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
       btnDisabled: false,
       uploadHeaders: {
         //上传头
-        Authorization: getCookie("token"),
+        // Authorization: Cookie.get("token")
+		"Authorization": process.env.VUE_APP_down_token_API
       },
       taskName: "",
     };
@@ -88,6 +89,7 @@ export default {
     this.getFiles(); //获取历史文件
   },
   methods: {
+	 
     getFiles() {
       this.uploadList.forEach((item) => {
         // if (item.taskName == this.taskName) {
@@ -109,30 +111,21 @@ export default {
     // 0 设置路由
     setUploaduUrl(taskName) {
       this.taskName = taskName;
-      // this.uploaduUrl =
-      //   this.uploaduUrl +
-      //   "?folderId=" +
-      //   this.projectId +
-      //   "&taskName=" +
-      //   taskName;
       this.uploaduUrl =
-        process.env.VUE_APP_BASE_API +
-        "/v1/base/file/upload" +
-        "?folderId=" +
-        this.projectId +
-        "&taskName=" +
-        taskName;
+        process.env.VUE_APP_down_API +
+        "/v1/base/file/upload" + "?folderId=" + this.projectId + "&taskName=" + taskName;
     },
     // 1 上传图片之前
     beforeUpload(file, item) {
       let activeFileType = file.name.split(".").pop();
       // return new Promise((resolve, reject) => {
-      // if (item.onlyOne && this.CaiWuserverUrlObj[0]) {
-      //   this.btnDisabled = !this.btnDisabled;
-      //   this.$message.error("只能上传一个");
-      //   reject();
-      // } else
-      if (item.type.length && !item.type.includes(activeFileType)) {
+      if (item.num && (item.detail.length >= item.num)) {
+        this.btnDisabled = !this.btnDisabled;
+        this.$message.error(`只能上传${item.num}个`);
+        // reject();
+		return false;
+      } else
+      if (item.type && item.type.length && !item.type.includes(activeFileType)) {
         this.$message.error(`请上传正确的文件类型`);
         this.btnDisabled = !this.btnDisabled;
         // reject();

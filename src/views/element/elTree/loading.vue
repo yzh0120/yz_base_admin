@@ -1,13 +1,13 @@
 <template>
 	<page>
-		<el-tree  @node-click="handleNodeClick_dongTai" :props="defaultProps" lazy :load="loadNode">
+		<el-tree @node-click="handleNodeClick_dongTai" :props="defaultProps" lazy :load="loadNode">
 		</el-tree>
 	</page>
 </template>
 
 <script>
-	export default{
-		data(){
+	export default {
+		data() {
 			return {
 				defaultProps: {
 					children: "children",
@@ -15,10 +15,10 @@
 				},
 			}
 		},
-		methods:{
+		methods: {
 			// 懒加载点击node上的文字会触发  左边的箭头不会触发此方法
 			handleNodeClick_dongTai(data, node) {
-				console.log(data,node);
+				console.log(data, node);
 			},
 			//一进页面也会执行此方法,所以不需要:data="treeData"
 			//点击tree 动态加载  ,
@@ -31,24 +31,14 @@
 				};
 				this.getTree(params, resolve);
 			},
-			
+
 			//获取tree
 			getTree(params, resolve) {
-				// api.getTree(params).then((res) => {
-				//   if (params.parentId) {
-				//     resolve(res.data);
-				//   } else {
-				//     this.treeData = res.data;
-				//   }
-				//   this.$forceUpdate();
-				// });
 				setTimeout(() => {
-					resolve([
-						{
-							text: "一级 ---11",
-							children: [],
-						}
-					])
+					resolve([{
+						text: "一级 ---11",
+						children: [],
+					}])
 				}, 2000)
 			},
 		}

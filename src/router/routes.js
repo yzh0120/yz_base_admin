@@ -8,14 +8,8 @@ let layout = () => import(/* webpackChunkName: "layout" */"@/layout/index.vue")
 // import confirm from "./modules/confirm.js"
 import baseTable from "./modules/base-table.js"
 import baseForm from "./modules/base-form.js"
-// import pageLayout from "./modules/pageLayout.js"
-// import VCharts from "./modules/VCharts.js"
-// import tabs from "./modules/tabs.js"
-// import fn from "./modules/fn.js"
-// import panel from "./modules/panel.js"
-// import menu from "./modules/menu.js"
-// import other from "./modules/other/other.js"
-// import axios from "./modules/axios.js"
+import element from "./modules/element.js"
+
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -65,6 +59,7 @@ const routes = [
 
 	baseTable,//封装表格
 	baseForm,//封装表单
+	element,//element
 	// pageLayout,//页面布局
 	
 	

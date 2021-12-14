@@ -4,7 +4,7 @@
       <span slot="content">
         上传用户：{{ file.createUserName }}<br />
         上传时间：{{ file.createTime }}<br />
-        文件大小：{{ file.fileSize | fileSize }}<br />
+        文件大小：{{ file.fileSize }}<br />
         下载次数：{{file.downloadCount }}
       </span>
 
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import * as fileApi from "@/api/file";
+import * as fileApi from "@/axios/api/file";
 export default {
   props: ["arr", "del"],
   methods: {
