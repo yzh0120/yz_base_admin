@@ -7,26 +7,28 @@
       <table class="table table-bordered table-striped">
         <tbody>
           <tr>
-            <td>资料名称</td>
-            <td>保函开函资料</td>
-            <td>操作</td>
+            <td width="30%">资料名称</td>
+            <td>详情</td>
+            <td width="13%">操作</td>
           </tr>
           <tr v-for="(item,index) in uploadList" :key="index">
-            <td width="50%">{{item.name}}</td>
-            <td width="30%">
+            <td>{{item.name}}</td>
+            <td>
               <div v-for="(file,fileIndex) in item.detail" :key="fileIndex">
-                <!-- <i v-on:click="deleteFile(item)" class="fa fa-minus-circle" style="color:red;" title="删除"></i> -->
-                <i class="el-icon-error" style="color:red;" @click="deleteFile(file,fileIndex)"></i>
+
                 <el-tooltip content="Top Left 提示文字" placement="left">
                   <div slot="content">上传者：{{file.createUserName}}
                     <br />上传时间：{{file.createTime}}<br />文件大小：{{file.fileSize}}
                   </div>
-                  <span class="downloadFile" v-on:click="downloadFile(file)">{{file.fileName}}</span>
+                  <div>
+                    <span class="downloadFile" v-on:click="downloadFile(file)">{{file.fileName}}</span>
+                    <i class="el-icon-error" style="color:red;cursor: pointer;" @click="deleteFile(file,fileIndex)"></i>
+                  </div>
                 </el-tooltip>
               </div>
             </td>
-            <td width="20%" class="text-center">
-              <el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :on-change="handleChange" :headers="uploadHeaders">
+            <td class="text-center">
+              <el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :before-upload="(file)=>{return beforeUpload(file,item)}" :on-change="handleChange" :headers="uploadHeaders">
                 <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl(item.taskName)">上传资料</el-button>
               </el-upload>
             </td>
@@ -39,11 +41,8 @@
 </template>
 
 <script>
-// import * as fileApi from "@/api/file";
-// import { getCookie } from "@/utils/auth.js";
-let fileApi = {}
-
-let  getCookie = function(){}
+import * as fileApi from "@/api/file";
+import { getCookie } from "@/utils/auth.js";
 export default {
   props: {
     projectId: {
@@ -100,8 +99,6 @@ export default {
           .then((result) => {
             if (result.code == 200) {
               item.detail = result.data;
-              this.$forceUpdate();
-              console.log(item);
             } else {
               this.$message.error(res.info);
             }
@@ -126,7 +123,26 @@ export default {
         "&taskName=" +
         taskName;
     },
-
+    // 1 上传图片之前
+    beforeUpload(file, item) {
+      let activeFileType = file.name.split(".").pop();
+      // return new Promise((resolve, reject) => {
+      // if (item.onlyOne && this.CaiWuserverUrlObj[0]) {
+      //   this.btnDisabled = !this.btnDisabled;
+      //   this.$message.error("只能上传一个");
+      //   reject();
+      // } else
+      if (item.type.length && !item.type.includes(activeFileType)) {
+        this.$message.error(`请上传正确的文件类型`);
+        this.btnDisabled = !this.btnDisabled;
+        // reject();
+        return false;
+      } else {
+        // resolve();
+        return true;
+      }
+      // });
+    },
     //2 点击上传文件时的改变事件
     handleChange() {
       this.btnDisabled = !this.btnDisabled;
@@ -145,8 +161,6 @@ export default {
               .then((result) => {
                 if (result.code == 200) {
                   item.detail = result.data;
-                  this.$forceUpdate();
-                  console.log(item);
                 } else {
                   this.$message.error(res.info);
                 }

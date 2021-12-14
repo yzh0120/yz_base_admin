@@ -1,33 +1,46 @@
 <template>
-	<div>
-		<el-tooltip class="fuJian" placement="right" v-for="(singleFile, singleFileIndex) in arr" :key="singleFileIndex + 'fujian'">
-			<!-- 悬浮 -->
-			<div slot="content">
-				上传用户：{{ singleFile.createUserName }}<br />上传时间：{{ singleFile.createTime }}<br />下载次数：{{singleFile.downloadCount }}
-			</div>
-			<!-- 永远展示 -->
-			<span>
-				<!-- <i class="el-icon-delete" style="color: red;cursor: pointer;"></i>&nbsp; -->
-				<el-button type="text" @click="downloadFile">{{ singleFile.fileName }}</el-button>
-				<i class="el-icon-error" style="color:red;" @click="fileRemove(file.id,index)" v-if="del"></i>
-			</span>
-		</el-tooltip>
-	</div>
+  <div>
+    <el-tooltip class="fuJian" placement="top" v-for="(file, index) in arr" :key="index">
+      <span slot="content">
+        上传用户：{{ file.createUserName }}<br />
+        上传时间：{{ file.createTime }}<br />
+        文件大小：{{ file.fileSize | fileSize }}<br />
+        下载次数：{{file.downloadCount }}
+      </span>
+
+      <span class="btn-flex">
+        <el-button type="text" @click="downloadFile(file)">{{ file.fileName }}</el-button>
+        <i class="el-icon-error" style="color:red;" @click="fileRemove(file.id,index)" v-if="del"></i>
+      </span>
+    </el-tooltip>
+  </div>
 </template>
 
 <script>
-	
-	export default{
-		props:["arr","del"],
-		methods:{
-			downloadFile(){
-				
-			},
-			fileRemove(){
-				
-			}
-		}
-	}
+import * as fileApi from "@/api/file";
+export default {
+  props: ["arr", "del"],
+  methods: {
+    // 当前审批时删除文件
+    fileRemove(id, eleindex) {
+      this.$confirm(`确定移除 ？`)
+        .then(() => {
+          fileApi.del([id]).then((res) => {
+            if (res.code == 200) {
+              this.$message.success("删除成功");
+              this.arr.splice(eleindex, 1);
+            } else {
+              this.$message.error(res.info);
+            }
+          });
+        })
+        .catch(() => {});
+    },
+    downloadFile(item) {
+      fileApi.download({ fileUrl: item.fileUrl + item.filePath });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
