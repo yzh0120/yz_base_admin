@@ -1,6 +1,9 @@
 <template>
 	<page>
+		
 		<base-form :data="formData" ref="form" ></base-form>
+		
+		<el-button type="text" @click="go">数据</el-button>
 	</page>
 </template>
 
@@ -96,6 +99,9 @@
 				];
 				cd(res);
 			},
+			go(){
+				console.log(this.formData.data)
+			}
 		}
 	}
 </script>

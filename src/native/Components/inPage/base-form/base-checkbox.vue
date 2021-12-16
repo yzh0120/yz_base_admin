@@ -8,10 +8,10 @@
  opt : [text:'描述',value:'值']            控件下拉选项
  text:"aaa",                                opt对应的text
  value:'bbb'                                opt对应的value
- -->
+-->
 <template>
 	<el-checkbox-group v-model="xxx" @change="change">
-		<el-checkbox :label="childItem[value]" v-for="(childItem,childIndex) in item.opt" :key="childIndex">{{childItem[text]}}</el-checkbox>
+		<el-checkbox  :label="childItem[value]" v-for="(childItem,childIndex) in item.opt" :key="childIndex">{{childItem[text]}}</el-checkbox>
 	</el-checkbox-group>
 </template>
 
