@@ -11,6 +11,7 @@ import baseForm from "./modules/base-form.js"
 import element from "./modules/element.js"
 import alert from "./modules/alert.js"
 import svgIcon from "./modules/svgIcon.js"
+import panel from "./modules/panel.js"
 
 
 import {status} from "./modules/status.js"
@@ -63,6 +64,7 @@ const routes = [
 	baseForm,//封装表单
 	alert,//alert
 	svgIcon,//svgIcon
+	panel,//panel
 	element,//element
 	// pageLayout,//页面布局
 	

@@ -3,7 +3,6 @@
     <div class="panel" :class="addType">
       <div class="panel-heading" @click="bodyHandle">
         <slot name="head"></slot>
-		<!-- <slot name="right"></slot> -->
       </div>
       <div class="panel-body" :style="{display:showBody==true?'block':'none'}">
         <slot></slot>
@@ -26,6 +25,9 @@ export default {
     type: {
       type: String,
       default: "primary"
+    },
+    close:{
+      default: false
     }
   },
   computed:{
@@ -37,6 +39,11 @@ export default {
     return {
       showBody: true
     };
+  },
+  mounted(){
+    if(this.close){
+      this.showBody = false
+    }
   },
   methods: {
     bodyHandle() {
