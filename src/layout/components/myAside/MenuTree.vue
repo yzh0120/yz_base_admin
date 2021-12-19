@@ -6,7 +6,7 @@
 				<!-- 有多个子菜单 v-if="item.children && item.meta"   item.meta 是为了防止 1父 1子-->
 				<el-submenu v-if="open(item)" :index="bindingName(item)">
 					<template slot="title">
-						<i class="iconfont titile-left-icon" v-if="item.meta.icon">{{showIcon(item)}}</i>
+						<svgIcon :icon="showIcon(item)" className="titile-left-icon" v-if="item.meta.icon"></svgIcon>
 						<span class="menu-text">{{ item.meta.title }}</span>
 					</template>
 					<menutree :data="item.children" class="nest-menu" />
@@ -14,7 +14,7 @@
 
 				<!-- 没有多个子菜单 -->
 				<el-menu-item v-else :index="bindingName(item)">
-					<i class="iconfont titile-left-icon">{{showIcon(item)}}</i>
+					<svgIcon :icon="showIcon(item)" className="titile-left-icon"></svgIcon>
 					<span slot="title">
 						<span class="menu-text">{{ showTitle(item) }}</span>
 					</span>
@@ -58,9 +58,9 @@
 			showIcon(item) { //展示meta的信息
 				// if( item.children && !this.twoChilren(item.children) ){//只有一个可以显示的子菜单
 				if(this.onlyOneChilren(item.children)){//只有一个可以显示的子菜单
-					return String.fromCharCode(parseInt(this.getFirstNoHidden(item.children).meta.icon, 16))
+					return this.getFirstNoHidden(item.children).meta.icon
 				}else{
-					return String.fromCharCode(parseInt(item.meta.icon, 16))
+					return item.meta.icon
 				}
 			},
 			bindingName(item) { //bind name
