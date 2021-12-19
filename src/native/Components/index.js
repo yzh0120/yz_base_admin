@@ -3,7 +3,7 @@ import tablePageComponent from './base/table-page.vue'
 import navTablePageComponent from './base/nav-table-page.vue'
 
 import basePagerComponent from './inPage/base-pager.vue' //分页
-import baseConfirmComponent from './inPage/base-confirm.vue' //弹出框
+import baseAlertComponent from './inPage/base-alert.vue' //弹出框
 import baseFormComponent from './inPage/base-form/index.vue' //基础表单
 import baseTableComponent from './inPage/base-table/base-table.vue' //基础表格
 import basePanelComponent from './inPage/panel.vue' //折叠面板
@@ -52,9 +52,9 @@ export const basePager = {
 
 
 
-export const confirm = {
+export const alert = {
     install: function (Vue) {
-        Vue.component('confirm', baseConfirmComponent)
+        Vue.component('alert', baseAlertComponent)
     }
 }
 

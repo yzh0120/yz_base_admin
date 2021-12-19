@@ -4,20 +4,17 @@ data：{
 	width:'100px' 
 	height:'100px' 
 	title:'标题'                              标题
-	mes：false                                是否只是信息弹窗
-	
-	taf: true,                                是否是taf
-	flag: "",                                 表明是新增还是编辑
+	msg：false                                是否只是信息弹窗
 }
  -->
 <!-- :show-close="false" -->
 <template>
-	<vxe-modal v-model="field" :width="w" :height="h" showFooter @close="close" :title="title" @click="cancel" :show-zoom="true">
+	<vxe-modal v-model="field" :width="w" :height="h" showFooter  :title="title" @close="cancel" :show-zoom="true">
 
 		<slot></slot>
 
 		<template #footer>
-			<el-button  @click="cancel" v-if="!mes" plain>取消</el-button>
+			<el-button  @click="cancel" v-if="!msg" plain>取消</el-button>
 			<el-button type="primary" @click="confirm">确认</el-button>
 		</template>
 	</vxe-modal>
@@ -28,22 +25,16 @@ data：{
 		props: ['data'],
 		methods: {
 			cancel() {
-				// this.data.field = false
 				this.$emit("event", {
 					event: 'cancel'
 				})
 			},
 			confirm() {
-
-				// if (!this.data.taf) { //防止表单校验失败，但弹窗依然能有隐藏
-				// 	this.data.field = false
-				// }
 				this.$emit("event", {
-					event: 'confirm'
+					event: 'alert'
 				})
 			},
 			close() {
-				// this.data.field = false
 				this.$emit("event", {
 					event: 'close'
 				})
@@ -67,8 +58,8 @@ data：{
 			title() {
 				return this.data.title ? this.data.title : "标题"
 			},
-			mes() {
-				return this.data.mes
+			msg() {
+				return this.data.msg
 			},
 		}
 	}
@@ -104,7 +95,7 @@ fieldData:{
 
 <confirm :data="fieldData" @close="tafCancel(fieldData)" @cancel="tafCancel(fieldData)" @confirm="tafConfirm(fieldData,$refs.form3)">
 	<el-form ref="form3" :model="fieldData.formData" label-width="80px">
-	  <el-form-item label="活动名称" :rules="[ { required: true, message: '必填', trigger: 'blur' }]" prop="name">
+	  <el-form-item label="活动名称" :rules="[ { required: true, msgsage: '必填', trigger: 'blur' }]" prop="name">
 		<el-input v-model="fieldData.formData.name"></el-input>
 	  </el-form-item>
 	</el-form>

@@ -9,6 +9,8 @@ let layout = () => import(/* webpackChunkName: "layout" */"@/layout/index.vue")
 import baseTable from "./modules/base-table.js"
 import baseForm from "./modules/base-form.js"
 import element from "./modules/element.js"
+import alert from "./modules/alert.js"
+import svgIcon from "./modules/svgIcon.js"
 
 
 import {status} from "./modules/status.js"
@@ -38,7 +40,7 @@ const routes = [
 		component: layout,
 		meta:{
 			title: '首页',
-			icon: 'e623;',
+			icon: 'shouye',
 		},
 		children: [{
 			path: 'base',
@@ -47,7 +49,7 @@ const routes = [
 			meta: {
 				title: '首页',
 				// hidden:true,
-				icon: 'e623;',
+				icon: 'shouye',
 				fixed: true//"/base"//fullPath
 			}
 		}]
@@ -59,6 +61,8 @@ const routes = [
 
 	baseTable,//封装表格
 	baseForm,//封装表单
+	alert,//alert
+	svgIcon,//svgIcon
 	element,//element
 	// pageLayout,//页面布局
 	

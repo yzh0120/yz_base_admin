@@ -52,8 +52,6 @@
 
 	.sidebar-container {
 	    background-color: $menuBg !important;//侧边栏背景色
-		
-		
 	}
 	
 	.sidebar-logo-container{//logo div
@@ -63,22 +61,18 @@
 		}
 	}
 	
-	// .sidebar-container:after{
-	// 	background-color: #d8dce5;// 
-
-	// }
 	
 	.el-menu-item{//权重最低的 没有有子目录的一级目录
 		font-weight: 500;//防止折叠的时候 字体是700
 		background-color: $menuBg !important;//背景色
 		color:$color;        //默认字体颜色
 		// font-weight: 500 !important;
-		i{
+		svg{
 			color: $color;
 		};
 		&:hover {
 		  color: $primaryColor !important;    //字体颜色
-		  i{
+		  svg{
 			 color: $primaryColor !important;    //字体颜色 
 		  }
 		}
@@ -87,12 +81,12 @@
 		background-color: $menuBg !important;  //背景色
 		color:$color ;        // 默认字体颜色
 		// font-weight: 500 !important;
-		i{
+		svg{
 			color: $color;
 		};
 		&:hover {
 		  color: $primaryColor !important;    //字体颜色
-		  i{
+		  svg{
 			 color: $primaryColor !important;    //字体颜色 
 		  }
 		}
@@ -103,7 +97,7 @@
 	    // font-weight: 500 !important;
 	    &:hover {
 	      color: $primaryColor !important;    //字体颜色
-	      i{
+	      svg{
 	    	 color: $primaryColor !important;    //字体颜色 
 	      }
 	    }
@@ -113,12 +107,12 @@
 		color:white !important;    //字体激活颜色
 		background:  linear-gradient(to right,rgb(117,105,240), rgb(151,143,242)) !important;
 		& {
-			i{
+			svg{
 				  		color: white !important;    //字体颜色 
 			}
 		}
 		&:hover {
-			i{
+			svg{
 				  		color: white !important;    //字体颜色 
 			}
 		}
