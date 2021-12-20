@@ -28,7 +28,10 @@ export default {
 						// else {
 						// 	this.$set(formInfo.data, item.field, "")
 						// }
-						this.$set(formInfo.data, item.field, "")
+						
+						// this.$set(formInfo.data, item.field, "")
+						
+						this.$set(formInfo.data, item.field, null)
 					}
 				}
 				// else{//slot

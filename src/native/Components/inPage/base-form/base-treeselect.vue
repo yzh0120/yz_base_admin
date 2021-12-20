@@ -98,7 +98,7 @@ export default{
 						this.data[this.item.field] = []
 					}
 				}else{
-					if( this.data[this.item.field] == ""){
+					if( this.data[this.item.field] == ""){//只是为了防止 值是""时  treeselect识别为null
 						
 						this.data[this.item.field] = null
 						
