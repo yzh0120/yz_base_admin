@@ -6,6 +6,11 @@
 			    <template slot="prepend">Http://</template>
 			  </el-input>
 			</template>
+			<template #ssss>
+			  <el-input placeholder="请输入内容" v-model="formData.data.xxx">
+			    <template slot="prepend">Http://</template>
+			  </el-input>
+			</template>
 		</base-form>
 	</page>
 </template>
@@ -18,12 +23,14 @@
 				formData:{
 					
 					list:[
-						{ slot: "sss",field:"xxx", title: "插槽" },//重点
+						
 						{ type:"input",field:"__input",title:"输入框",rules:[
 							{ required: true, message: "请输入", trigger: "blur" },
 							{ validator: self.$check.demo, trigger: "blur" },
 					      ]
 						},
+						{ slot: "sss",field:"xxx", title: "插槽" },//重点
+						{ slot: "ssss",field:"xxx", title: "插槽" },//重点
 						{ type:"treeselect",field:"__treeselect",title:"树选择",opt:[], 
 						// props :(node) =>{return { id: node.key,label: node.name,children: node.subOptions,}},
 						// id:'id',label:"label",
@@ -61,6 +68,7 @@
 					],
 					data:{__input:"初始值"},
 					// titleWidth:"200px",
+					// inline:true,
 				}
 			}
 		},
