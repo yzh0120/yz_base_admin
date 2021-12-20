@@ -78,7 +78,7 @@
 		<template v-else-if="span">
 			<!-- <el-row v-if="isRow"> -->
 			<el-row>
-				<el-col :span="item.span" 
+				<el-col :span="item.span ? item.span : 8" 
 					v-for="(item, index) in for_List" :key="index">
 					<!-- show(item.show) -->
 					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
