@@ -225,6 +225,9 @@
 				return this.data.data;
 			},
 			labelWidth() {
+				 if (this.data.inline && !this.data.titleWidth) {
+				        return "";
+				      }
 				return this.data.titleWidth ? this.data.titleWidth : "100px";
 			},
 			span(){
