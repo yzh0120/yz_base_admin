@@ -31,6 +31,8 @@
 						},
 						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
 
+						{ type:"input",field:"__input11",title:"输入框",append:"元"},
+
 						{type:"password",field:"__password",title:"密码框"},
 
 						{type:"textarea",field:"__textarea",title:"文本域",row:4},
@@ -50,6 +52,8 @@
 						{type:"date",field:"__date",title:"日期选择器"},
 
 						{type:"daterange",field:"__daterange",title:"日期段选择器"},
+						
+						{type:"time",field:"__time",title:"时间选择器"},
 
 						{type:"switch",field:"__switch",title:"开关",av:1,iav:0,avText:"同意",iavText:"否决"},
 
