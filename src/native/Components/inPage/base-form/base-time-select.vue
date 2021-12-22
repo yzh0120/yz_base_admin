@@ -11,7 +11,8 @@
  -->
 
 <template>
-  <el-time-select style="width: 100%;" v-model="data[item.field]" :picker-options="opt" :value-format="item.valueFormat" clearable :placeholder="_getPlaceholder(item)" :disabled="item.disabled">
+  <el-time-select style="width: 100%;" v-model="data[item.field]" :picker-options="opt" :value-format="valueFormat" clearable 
+					:placeholder="_getPlaceholder(item)" :disabled="item.disabled" @change="change">
   </el-time-select>
 </template>
 
@@ -40,6 +41,13 @@ export default {
           };
         }
       },
+	  valueFormat() {
+	        if (this.item.valueFormat) {
+	          return this.item.valueFormat;
+	        } else {
+	          return "HH:mm";
+	        }
+	      },
     },
 };
 </script>
