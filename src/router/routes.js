@@ -12,7 +12,7 @@ import element from "./modules/element.js"
 import alert from "./modules/alert.js"
 import svgIcon from "./modules/svgIcon.js"
 import panel from "./modules/panel.js"
-
+import VCharts from "./modules/VCharts.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -65,6 +65,9 @@ const routes = [
 	alert,//alert
 	svgIcon,//svgIcon
 	panel,//panel
+	VCharts,//VCharts
+	
+	
 	element,//element
 	// pageLayout,//页面布局
 	

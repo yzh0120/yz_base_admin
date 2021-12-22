@@ -6,10 +6,12 @@
  rules:[],                                  控件校验规则
  
  opt                                    时间选项 看文档
+ 
+ valueFormat:
  -->
 
 <template>
-  <el-time-select style="width: 100%;" v-model="data[item.field]" :picker-opt="item.opt" clearable :placeholder="_getPlaceholder(item)" :disabled="item.disabled">
+  <el-time-select style="width: 100%;" v-model="data[item.field]" :picker-options="opt" :value-format="item.valueFormat" clearable :placeholder="_getPlaceholder(item)" :disabled="item.disabled">
   </el-time-select>
 </template>
 
@@ -29,7 +31,16 @@ export default {
     },
   },
   computed: {
-  },
+      opt() {
+        if (this.item.opt) {
+          return this.item.opt;
+        } else {
+          return {
+            selectableRange: "00:00:00 - 23:59:59",
+          };
+        }
+      },
+    },
 };
 </script>
 
