@@ -52,15 +52,15 @@ export default {
 					},
 					component: () => import(/* webpackChunkName: "VCharts-histogram-axisSite" */"@/views/VCharts/histogram/axisSite.vue"),
 				},
-				{
-					path: 'xdeg',
-					name: "VCharts-histogram-xdeg",
-					meta: {
-						title: '设置x轴刻度的倾斜',
-						icon: 'e67a',
-					},
-					component: () => import(/* webpackChunkName: "VCharts-histogram-xdeg" */"@/views/VCharts/histogram/xdeg.vue"),
-				},
+				// {
+				// 	path: 'xdeg',
+				// 	name: "VCharts-histogram-xdeg",
+				// 	meta: {
+				// 		title: '设置x轴刻度的倾斜',
+				// 		icon: 'e67a',
+				// 	},
+				// 	component: () => import(/* webpackChunkName: "VCharts-histogram-xdeg" */"@/views/VCharts/histogram/xdeg.vue"),
+				// },
 				{
 					path: 'stack',
 					name: "VCharts-histogram-stack",
@@ -132,6 +132,65 @@ export default {
 						icon: 'e67a',
 					},
 					component: () => import(/* webpackChunkName: "VCharts-histogram-self" */"@/views/VCharts/histogram/self.vue"),
+				},
+				{
+					path: 'other',
+					name: "VCharts-histogram-other",
+					component: blank,//() => import(/* webpackChunkName: "VCharts-Pie" */"@/views/VCharts/pie.vue"),
+					redirect: {
+						name: "VCharts-histogram-other-one"
+					},
+					meta: {
+						title: '其他的',
+						icon: 'e63a',
+					},
+					children: [
+						{
+							path: 'one',
+							name: "VCharts-histogram-other-one",
+							meta: {
+								title: '同指标不同颜色',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-one" */"@/views/VCharts/histogram/other/one.vue"),
+						},
+						{
+							path: 'two',
+							name: "VCharts-histogram-other-two",
+							meta: {
+								title: '不同指标不同颜色',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-two" */"@/views/VCharts/histogram/other/two.vue"),
+						},
+						{
+							path: 'three',
+							name: "VCharts-histogram-other-three",
+							meta: {
+								title: '图例背景色',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-three" */"@/views/VCharts/histogram/other/three.vue"),
+						},
+						{
+							path: 'four',
+							name: "VCharts-histogram-other-four",
+							meta: {
+								title: '整个图盘的背景色',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-four" */"@/views/VCharts/histogram/other/four.vue"),
+						},
+						{
+							path: 'five',
+							name: "VCharts-histogram-other-five",
+							meta: {
+								title: 'x轴数值倾斜',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-five" */"@/views/VCharts/histogram/other/five.vue"),
+						},
+					]
 				}
 			],
 		},
@@ -151,7 +210,7 @@ export default {
 					path: 'base',
 					name: "VCharts-line-base",
 					meta: {
-						title: '基础',
+						title: '折线-基础',
 						icon: 'e67a',
 					},
 					component: () => import(/* webpackChunkName: "VCharts-line-base" */"@/views/VCharts/line/base.vue"),
@@ -168,7 +227,6 @@ export default {
 			meta: {
 				title: '饼图',
 				icon: 'e63a',
-				
 			},
 			children: [
 				{
@@ -190,6 +248,7 @@ export default {
 					component: () => import(/* webpackChunkName: "VCharts-pie-auto-animation" */"@/views/VCharts/pie/auto-animation.vue"),
 				}
 			]
-		}
+		},
+		
 	]
 }
