@@ -79,13 +79,16 @@
 		},
 		methods: {
 			event(e){
-				console.log(e)
                 if(e.event == "expand"){
-                   let rowIndex =  this.table.data.findIndex((item)=>{
+					if(e.flag.indexOf(e.value) !== -1){//展开
+						let rowIndex =  this.table.data.findIndex((item)=>{
                         return item.id == e.value.id
-                    })
-                    console.log(this.table.data[rowIndex],rowIndex)
-                    this.table.data[rowIndex].comTableData.data = [{id:e.value.id}]
+						})
+						console.log(this.table.data[rowIndex],rowIndex)
+						this.table.data[rowIndex].comTableData.data = [{id:e.value.id}]
+					}else{//关闭
+
+					}
                 }
 			},
 			getData(isSearch) {

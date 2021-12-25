@@ -52,10 +52,7 @@ export default {
   },
   methods: {
     event(e, index) {
-        
-                  console.log(index)
       this.activeIndex = index;
-      // console.log(e,index,"事件")
       if ((e.event = "checkbox")) {
           this.forData.forEach((item,i)=>{
               
