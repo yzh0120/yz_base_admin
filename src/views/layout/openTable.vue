@@ -1,11 +1,11 @@
 <template>
   <table-page>
 	  <!-- 表单 -->
-	  <base-form :data="formInfo">
+	  <!-- <base-form :data="formInfo">
 	  	<template #button>
 	  			<el-button  type="primary" @click="getData" native-type="submit">搜索</el-button>
 	  	</template>
-	  </base-form>
+	  </base-form> -->
 	  
 	  <!-- 表格 -->
 	  <base-table :data="table" :pager="pagerData" @event="event">
