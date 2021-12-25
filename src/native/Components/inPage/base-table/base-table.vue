@@ -56,7 +56,7 @@
 
 <template>
 	<el-table ref="table" v-loading="loading" :data="tableData" border style="width: 100%" :size="size" stripe
-		:height="height" highlight-current-row @selection-change="select_fn" @current-change="selectRowChange"
+		:height="height" highlight-current-row @select="select_fn" @select-all="select_fn" @current-change="selectRowChange"
 		:show-summary="sum" :summary-method="sumfn" :default-sort="defaultSort" :header-cell-style="headerCellStyle"
 		:row-key="rowKey" :tree-props="treeProps" :lazy="lazy" :load="treeLoad" @expand-change="expandEvent">
 		<!-- 多选框 -->
@@ -144,10 +144,11 @@
 				this.$emit("event", obj);
 			},
 			//用于可展开表格
-			expandEvent(row){
+			expandEvent(row,expanded){
 				let obj = {
 					event: "expand",
 					value:row,
+					flag:expanded
 				};
 				this.$emit("event", obj);
 			}
