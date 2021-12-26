@@ -10,6 +10,24 @@ export default {
     },
     children: [
         {
+            path: 'tablePage',//修改
+            name: 'layout-tablePage',//修改
+            component: () => import(/* webpackChunkName: "layout-tablePage" */ "@/views/layout/tablePage.vue"),//修改
+            meta: {
+                title: '表格页面',//修改
+                icon: 'e627;',
+            }
+        },
+        {
+            path: 'tablePageAlert',//修改
+            name: 'layout-tablePageAlert',//修改
+            component: () => import(/* webpackChunkName: "layout-tablePageAlert" */ "@/views/layout/tablePageAlert.vue"),//修改
+            meta: {
+                title: '表格页面带弹窗',//修改
+                icon: 'e627;',
+            }
+        },
+        {
             path: 'openTable',//修改
             name: 'layout-openTable',//修改
             component: () => import(/* webpackChunkName: "layout-openTable" */ "@/views/layout/openTable.vue"),//修改

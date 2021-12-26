@@ -28,11 +28,11 @@ export default{
             if (e.event == "alert") {
 					this.alertData.field = false
 					console.log("点击了确认按钮");
-				}
-				if (e.event == "cancel") {
-					this.alertData.field = false
-					console.log("点击了取消按钮");
-				}
+            }
+            if (e.event == "cancel") {
+                this.alertData.field = false
+                console.log("点击了取消按钮");
+            }
         }
     }
 }
