@@ -1,5 +1,5 @@
 <template>
-  <table-page>
+  <table-page :padding="true">
 	  <!-- 表单 -->
 	  <!-- <base-form :data="formInfo">
 	  	<template #button>

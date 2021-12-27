@@ -1,6 +1,6 @@
 <template>
 
-		  <div :class="['table-page']" id="table-page">
+		  <div :class="['table-page',padding?`padding`:``]" id="table-page">
 		    <slot></slot>
 		  </div>
  
@@ -8,10 +8,13 @@
 
 <script>
 	export default{
-		props:[""],
+		props:["padding"],
 	}
 </script>
 
 <style lang="scss" scoped>
+	.padding{
+		padding-top: 20px !important;
+	}
 
 </style>
