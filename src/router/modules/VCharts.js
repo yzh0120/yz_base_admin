@@ -190,6 +190,15 @@ export default {
 							},
 							component: () => import(/* webpackChunkName: "VCharts-histogram-other-five" */"@/views/VCharts/histogram/other/five.vue"),
 						},
+						{
+							path: 'six',
+							name: "VCharts-histogram-other-six",
+							meta: {
+								title: '不显示y轴第二个指标的网格线',
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-six" */"@/views/VCharts/histogram/other/six.vue"),
+						},
 					]
 				}
 			],
