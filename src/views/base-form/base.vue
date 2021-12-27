@@ -29,6 +29,13 @@
 							{ required: true, message: "请输入", trigger: "blur" },
 						  ]
 						},
+						{ type:"treeselect",field:"__treeselectCreate",title:"多选树选择",opt:[],
+						create:true,
+						children:"subOptions",
+						rules:[
+							{ required: true, message: "请输入", trigger: "blur" },
+						  ]
+						},
 						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
 
 						{ type:"input",field:"__input11",title:"输入框",append:"元"},
@@ -85,6 +92,8 @@
 				label: 'c',
 				} ]
 				this._set(this.formData, "__treeselect",{opt:arr});
+				
+				this._set(this.formData, "__treeselectCreate",{opt:arr});
 		},
 		methods:{
 			remote(query){
