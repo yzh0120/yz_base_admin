@@ -89,7 +89,7 @@ export default {
     this.getFiles(); //获取历史文件
   },
   methods: {
-	 
+	 //获取文件
     getFiles() {
       this.uploadList.forEach((item) => {
         // if (item.taskName == this.taskName) {
@@ -191,7 +191,23 @@ export default {
 }
 </style>
 
-
-
+<!-- 
+ 必填校验
+ 	 let checkOK = true
+ 	         try {
+ 	             vm.$refs.form.uploadList.forEach((item) => {
+ 	                 if (item.required) {
+ 	                     if (!item.detail[0]) {
+ 	                         vm.$message.error(`请上传${item.name}`);
+ 	                         checkOK = false
+ 	                         throw new Error("EndIterative");
+ 	                     }
+ 	                 }
+ 	             })
+ 	         } catch (e) {
+ 	             if (e.message != "EndIterative") throw e;
+ 	         }
+ 	         if (!checkOK) return;
+ -->
 
 

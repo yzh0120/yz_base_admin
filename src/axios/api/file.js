@@ -9,7 +9,7 @@ import * as Cookie from "@/tools/cookjs.js";
  * @returns {Promise}
  */
 
-export function download(type,params = {}, ) {
+export function download(params = {},path ) {
   let baseURL = process.env.VUE_APP_down_API;
   let headers = {
     // 'Authorization': "Bearer " + Cookie.get("token")
@@ -17,10 +17,10 @@ export function download(type,params = {}, ) {
   }
 
   let url = ""
-  if (!type) {
+  if (!path) {
     return window.open(params.fileUrl)//后端抛出的下载链接
   }else{
-	  url = type//二进制
+	  url = path//二进制
   }
 
   return new Promise((resolve, reject) => {
