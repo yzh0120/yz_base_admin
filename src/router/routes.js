@@ -15,6 +15,7 @@ import panel from "./modules/panel.js"
 import VCharts from "./modules/VCharts.js"
 import pageLayout from "./modules/pageLayout.js"
 import file from "./modules/file.js"
+import base from "./modules/base.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -64,25 +65,17 @@ const routes = [
 
 	baseTable,//封装表格
 	baseForm,//封装表单
-	alert,//alert
+	alert,//弹窗
 	svgIcon,//svgIcon
-	panel,//panel
-	VCharts,//VCharts
-	file,
+	panel,//折叠框
+	VCharts,//图表
+	file, //文件
 	
-	pageLayout,
+	pageLayout,//页面布局
 	
 	element,//element
-	// pageLayout,//页面布局
 	
-	
-	// confirm,//弹窗
-	// panel,
-	// VCharts,//图表
-	// axios,
-	// other,
-	// tabs,//标签页多开
-	// menu,//多级菜单
+	base,//基础
 	
 
 ]
