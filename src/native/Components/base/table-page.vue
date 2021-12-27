@@ -1,8 +1,9 @@
 <template>
-
+		<!-- <el-scrollbar wrap-class="" style="height: 100%" >	 -->
 		  <div :class="['table-page',padding?`padding`:``]" id="table-page">
 		    <slot></slot>
 		  </div>
+		<!-- </el-scrollbar> -->
  
 </template>
 

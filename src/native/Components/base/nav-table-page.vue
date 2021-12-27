@@ -1,7 +1,7 @@
 <template>
 
 	<div class="linkFixedPage">
-		<div class="left" :style="{width:width}">
+		<div class="left" :style="{width:widthComputed}">
 			<div class="left-top titleText" v-if="leftTitle">{{leftTitle}}</div>
 
 			<div :class="['left-main',leftTitle?'hasTit':'']">
@@ -26,10 +26,10 @@
 
 <script>
 	export default {
-		props: ["leftTitle", "rightTitle","w"],
+		props: ["leftTitle", "rightTitle","width"],
 		computed:{
-			width(){
-				return  this.w ? this.w : "200px"
+			widthComputed(){
+				return  this.width ? this.width : "200px"
 			}
 		}
 	};
