@@ -30,15 +30,15 @@
 	>.el-scrollbar{
 		>.el-scrollbar__wrap{
 			>.el-scrollbar__view{
-				height: 98%;
+				padding: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
 			}
 		}
 	}
 	
 	// 普通页面
 	.page {//page
-	  min-height: calc(100% - #{$normal_spacing} - #{$normal_spacing});
-	  margin: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
+	  min-height: calc(100% - calc(#{$normal_spacing} * 2));
+	  // margin: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
 	  background-color: white;
 	  padding:calc(#{$normal_spacing} / 1.5) $normal_spacing;
 	  overflow: auto; //内容溢出滚动
@@ -63,8 +63,4 @@
 		// box-shadow: #ccc 0px 0px 10px;
 		border-radius: 6px;
 	  }
-
-	  // .linkFixedPage{
-
-	  // }
 }

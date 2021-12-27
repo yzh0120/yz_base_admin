@@ -117,7 +117,7 @@ export default {
     //右键菜单 显示
     openMenu(tag, e) {
       this.left = e.screenX; //鼠标X坐标
-      this.top = e.screenY - 50; //鼠标y坐标
+      this.top = e.screenY - 90;//- 50; //鼠标y坐标
       this.visible = true; //菜单dom显示
       this._selectedTagPath = tag.path; //右键所指向的菜单路由
     },
