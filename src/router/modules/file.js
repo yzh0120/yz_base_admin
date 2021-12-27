@@ -18,14 +18,14 @@ export default {
                 icon: 'e627;',
             }
         },
-        // {
-        //     path: 'msg',//修改
-        //     name: 'alert-msg',//修改
-        //     component: () => import(/* webpackChunkName: "alert-msg" */ "@/views/alert/msg.vue"),//修改
-        //     meta: {
-        //         title: '信息弹窗',//修改
-        //         icon: 'e627;',
-        //     }
-        // }
+        {
+            path: 'up',//修改
+            name: 'file-up',//修改
+            component: () => import(/* webpackChunkName: "file-up" */ "@/views/file/up.vue"),//修改
+            meta: {
+                title: '单个文件上传',//修改
+                icon: 'e627;',
+            }
+        },
     ]
 }

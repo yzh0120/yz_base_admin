@@ -12,6 +12,14 @@ import detailComponent from './inPage/detail/detail.vue' //detail
 import detailLinkComponent from './inPage/detail/detail-link.vue' //detail
 import fileListComponent from './inPage/fileList.vue' //detail
 import fileTableComponent from './inPage/fileTable.vue'//upload
+import upComponent from './inPage/up.vue'//upload
+
+
+export const up = {
+    install: function (Vue) {
+        Vue.component('up', upComponent)
+    }
+}
 
 export const fileTable = {
     install: function (Vue) {
