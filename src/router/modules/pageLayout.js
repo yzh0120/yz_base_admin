@@ -55,6 +55,15 @@ export default {
 		        icon: 'e631;',
 		    }
 		},
+		{
+		    path: 'search',//修改
+		    name: 'layout-search',//修改
+		    component: () => import(/* webpackChunkName: "layout-search" */ "@/views/layout/search.vue"),//修改
+		    meta: {
+		        title: 'search页面',//修改
+		        icon: 'e631;',
+		    }
+		},
 		
         {
             path: 'openTable',//修改
