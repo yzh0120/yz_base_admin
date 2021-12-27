@@ -9,6 +9,15 @@ export default {
         icon: 'e62a;',
     },
     children: [
+		{
+		    path: 'page',//修改
+		    name: 'layout-page',//修改
+		    component: () => import(/* webpackChunkName: "layout-page" */ "@/views/layout/page.vue"),//修改
+		    meta: {
+		        title: '普通页面',//修改
+		        icon: 'e627;',
+		    }
+		},
         {
             path: 'tablePage',//修改
             name: 'layout-tablePage',//修改
@@ -27,6 +36,26 @@ export default {
                 icon: 'e627;',
             }
         },
+		
+		{
+		    path: 'navTablePage',//修改
+		    name: 'layout-navTablePage',//修改
+		    component: () => import(/* webpackChunkName: "layout-navTablePage" */ "@/views/layout/nav-table-page1.vue"),//修改
+		    meta: {
+		        title: '目录表格页面1',//修改
+		        icon: 'e631;',
+		    }
+		},
+		{
+		    path: 'navTablePage2',//修改
+		    name: 'layout-navTablePage2',//修改
+		    component: () => import(/* webpackChunkName: "layout-navTablePage2" */ "@/views/layout/nav-table-page2.vue"),//修改
+		    meta: {
+		        title: '目录表格页面2',//修改
+		        icon: 'e631;',
+		    }
+		},
+		
         {
             path: 'openTable',//修改
             name: 'layout-openTable',//修改
