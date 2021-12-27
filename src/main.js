@@ -18,6 +18,10 @@ Vue.use(new VueSocketIO({
 }))
 
 
+import common from  "@/scss/common/variable.scss"
+import layout from  "@/scss/layout/variable.scss"
+// console.log(common,layout,"------------------",tablePage)
+Vue.prototype.h = `calc(100vh - 114px - ${common.normal_spacingt}  - ${layout.tags_view_item} - 23px - ${layout.head_top_height} - 20px - 40px)`
 
 // import dayjs from 'dayjs'
 // Vue.prototype.$day = dayjs

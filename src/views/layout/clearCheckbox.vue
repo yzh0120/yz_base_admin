@@ -21,8 +21,6 @@
 </template>
 
 <script>
-// 配置table高度
-import * as config from "@/tools/config.js";
 export default {
   data() {
     let self = this;

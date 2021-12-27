@@ -1,5 +1,5 @@
 <template>
-  <table-Page>
+  <page>
     <!-- 表单 -->
     <base-form :data="formInfo">
 	    <template #button>
@@ -16,11 +16,11 @@
       @pageChange="getData()"
       @sizeChange="getData()"
     />
-  </table-Page>
+  </page>
 </template>
 
 <script>
-	import * as config from "@/tools/config.js"
+	// import * as config from "@/tools/config.js"
 export default {
   data() {
     let self = this;
@@ -57,7 +57,7 @@ export default {
 				    },
 				  ],
 				  data: [],
-				  height:config.tablePage,
+				  height:self.h,
 				  loading:true,
 				  index:true,
 				},

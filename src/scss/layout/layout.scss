@@ -28,12 +28,18 @@
     overflow: hidden;//transition
     //让 
 	>.el-scrollbar{
-		>.el-scrollbar__wrap{
+		>.el-scrollbar__wrap.scrollbarPage{
 			>.el-scrollbar__view{
 				padding: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
 			}
 		}
-	}
+		// >.el-scrollbar__wrap.scrollbarTablePage{
+		// 	>.el-scrollbar__view{
+		// 		height: 100%;
+		// 		// background-color: forestgreen;
+		// 	}
+		// }
+	}	
 	
 	// 普通页面
 	.page {//page

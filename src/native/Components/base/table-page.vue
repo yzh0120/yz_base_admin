@@ -1,5 +1,5 @@
 <template>
-		<!-- <el-scrollbar wrap-class="" style="height: 100%" >	 -->
+		<!-- <el-scrollbar wrap-class="scrollbarTablePage" style="height: 100%" >	 -->
 		  <div :class="['table-page',padding?`padding`:``]" id="table-page">
 		    <slot></slot>
 		  </div>

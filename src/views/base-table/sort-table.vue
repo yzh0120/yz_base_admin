@@ -17,8 +17,6 @@
 </template>
 
 <script>
-	// 配置table高度
-	import * as config from "@/tools/config.js"
 	export default{
 		data(){
 			let self = this;
@@ -54,7 +52,7 @@
 				    },
 				  ],
 				  data: [],
-				  height:config.tablePage,
+				  height:self.h,
 				  loading:true,
 				  index:true,
 				  defaultSort:{prop: 'Total_amount', order: 'descending'}//重点

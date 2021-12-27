@@ -21,8 +21,6 @@
 </template>
 
 <script>
-	// 配置table高度
-	import * as config from "@/tools/config.js"
     import  openTableCom from "@/views/layout/com/openTableCom"
 	export default{
         components:{
@@ -61,7 +59,7 @@
 				    },
 				  ],
 				  data: [],
-				  height:config.tablePage,
+				  height:self.h,
 				  loading:true,
 				  index:true,
 				  expand:true,//重点

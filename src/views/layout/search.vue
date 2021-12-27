@@ -129,7 +129,7 @@ export default {
 				    },
 				  ],
 				  data: [],
-				  height:"500px",
+				  height:self.h,
 				  loading:true,
 				  index:true,
 				},

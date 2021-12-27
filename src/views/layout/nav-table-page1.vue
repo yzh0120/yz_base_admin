@@ -32,7 +32,6 @@
 </template>
 
 <script>
-	import * as config from "@/tools/config.js"
 	export default {
 		data() {
 			let self = this;
@@ -73,7 +72,7 @@
 				    },
 				  ],
 				  data: [],
-				  height:config.navTablePage,
+				  height:self.h,
 				  loading:true,
 				  index:true,
 				},
