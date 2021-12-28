@@ -11,26 +11,21 @@
 			return {
 				formData:{
 					list:[
-						// { type:"input",field:"__input1",title:"输入框",btn:"搜索"},
+						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
 						{ type:"input",field:"__input11",title:"输入框",append:"元"},
-						{ type:"input",field:"__input112",title:"输入框"},
-						// { type:"input",field:"__input",title:"输入框"
-						// ,rules:[
-						// 	{ required: true, message: "请输入", trigger: "blur" },
-						// 	{ validator: self.$check.demo, trigger: "blur" },
-					 //      ]
-						// },
+						{ type:"input",field:"__input",title:"输入框"
+						,rules:[
+							{ required: true, message: "请输入", trigger: "blur" },
+							{ validator: self.$check.demo, trigger: "blur" },
+					      ]
+						},
 						
 						
 
 						{type:"password",field:"__password",title:"密码框"},
-						{type:"password",field:"__password1",title:"密码框"},
-						{type:"password",field:"__password12",title:"密码框"},
-						// {type:"password",field:"__password123",title:"密码框"},
-						// {type:"password",field:"__password123",title:"密码框"},
 						
 						// {type:"textarea",field:"__textarea",title:"文本域",row:4},
-						
+						//影响row
 						{ type:"treeselect",field:"__treeselect",title:"树选择",opt:[],children:"subOptions"},
 
 						{type:"select",field:"__select",title:"下拉框",opt:[{text1:"选项一",value1:1},{text1:"选项二",value1:2}],text:"text1",value:"value1"},
