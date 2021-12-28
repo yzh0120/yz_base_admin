@@ -54,7 +54,7 @@
 							<template v-if="item.slot">
 								<slot :name="item.slot" />
 							</template>
-							<component :is="currentComponent(item.type)" :item="item"
+							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
 								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
 
 						</el-tooltip>
@@ -63,7 +63,7 @@
 							<template v-if="item.slot">
 								<slot :name="item.slot" />
 							</template>
-							<component :is="currentComponent(item.type)" :item="item"
+							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
 								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
 						</div>
 					</el-form-item>
@@ -90,7 +90,7 @@
 							<template v-if="item.slot">
 								<slot :name="item.slot" />
 							</template>
-							<component :is="currentComponent(item.type)" :item="item"
+							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
 								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
 		
 						</el-tooltip>
@@ -99,7 +99,7 @@
 							<template v-if="item.slot">
 								<slot :name="item.slot" />
 							</template>
-							<component :is="currentComponent(item.type)" :item="item"
+							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
 								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
 						</div>
 					</el-form-item>
@@ -123,7 +123,7 @@
 						<slot :name="item.slot" />
 					</template>
 					<component :is="currentComponent(item.type)" :item="item" @baseFormEvent="(e)=>{event(e,item)}"
-						:data="formData" v-else :dis="disabled"/>
+						:data="formData" v-else :dis="disabled" :bossData="data"/>
 
 				</el-tooltip>
 
@@ -132,7 +132,7 @@
 						<slot :name="item.slot" />
 					</template>
 					<component :is="currentComponent(item.type)" :item="item" @baseFormEvent="(e)=>{event(e,item)}"
-						:data="formData" v-else :dis="disabled"/>
+						:data="formData" v-else :dis="disabled" :bossData="data"/>
 				</div>
 			</el-form-item>
 			<!-- 比如 搜索页面居中的按钮 -->
@@ -244,6 +244,7 @@
 					}
 					this.data.list.forEach((item) => {
 						item = Object.assign(item,obj,this.$fn.deepClone(item))
+						console.log(item,"item")
 					})
 				}
 				return this.data.isRow;

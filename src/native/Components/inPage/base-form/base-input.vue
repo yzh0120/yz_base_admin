@@ -12,12 +12,12 @@
 <template>
 
   <el-input v-model="data[item.field]" :type="item.type" :disabled="item.disabled" :placeholder="_getPlaceholder(item)"  @clear="setValueNull"
-  :show-password="item.type === 'password'" @blur="blur(data[item.field])" @focus="focus(data[item.field])" clearable :rows="item.row"  :class="[item.btn?'self_btn':'']"
+   @blur="blur(data[item.field])" @focus="focus(data[item.field])" clearable  :class="[item.btn?'self_btn':'']"
   :maxlength="item.max">
     <template slot="prepend" v-if="item.prepend">{{item.prepend}}</template>
     <template slot="append" v-if="item.append">{{item.append}}</template>
 <!-- style="background:#409EFF;color:#fff;" -->
-	<el-button @click="search"  slot="append" v-if="item.btn">查询</el-button>
+	<el-button @click="search"  slot="append" v-if="item.btn">{{item.btn}}</el-button>
   </el-input>
 <!--  -->
 </template>

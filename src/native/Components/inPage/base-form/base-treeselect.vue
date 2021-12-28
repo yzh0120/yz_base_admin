@@ -32,7 +32,9 @@
  -->
 
 <template>
-    <treeselect v-model="xxx"  :multiple="item.create" :options="options"  @select="change" @input="input"
+    <treeselect style="height:30px"
+	:class="[bossData.inline?'inline':'']"
+	 v-model="xxx"  :multiple="item.create" :options="options"  @select="change" @input="input"
     append-to-body  zIndex="9999999" :placeholder="_getPlaceholder(item)" noResultsText="无数据" :disabled="dis || item.disabled"
 	 :defaultExpandLevel="Infinity" />
 </template>
@@ -42,7 +44,10 @@ import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 export default{
     components: { Treeselect },
-    props: ["data", "item","dis"],
+    props: ["data", "item","dis","bossData"],
+	mounted() {
+		console.log(this.data,"123123")
+	},
 	methods:{
 		input(nowValue) {
 			if(this.item.create){//[]
@@ -119,5 +124,7 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-    
+    .inline{
+		width: 200px;
+	}
 </style>
