@@ -43,7 +43,7 @@
 			<!-- <el-row v-if="isRow"> -->
 			<el-row>
 				<el-col :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg" :xl="item.xl"
-					v-for="(item, index) in for_List" :key="index">
+					v-for="(item, index) in for_List" :key="index+`row`">
 					<!-- show(item.show) -->
 					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
 						<!-- 是否悬浮提示 -->
@@ -79,7 +79,7 @@
 			<!-- <el-row v-if="isRow"> -->
 			<el-row>
 				<el-col :span="item.span ? item.span : 8" 
-					v-for="(item, index) in for_List" :key="index">
+					v-for="(item, index) in for_List" :key="index+`span`">
 					<!-- show(item.show) -->
 					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
 						<!-- 是否悬浮提示 -->
@@ -113,7 +113,7 @@
 		<!-- 不是响应式 -->
 		<template v-else>
 			<!-- show(item.show) -->
-			<el-form-item v-for="(item, index) in for_List" v-if="show(item.show)" :key="index" :prop="item.field"
+			<el-form-item v-for="(item, index) in for_List" v-if="show(item.show)" :key="index+'normal'" :prop="item.field"
 				:label="item.title"  :rules="item.rules" >
 
 				<el-tooltip class="item" effect="dark" placement="right" v-if="item.tip && formData[item.field]">

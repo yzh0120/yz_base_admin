@@ -27,6 +27,15 @@ export default {
                 icon: 'e74a;',
             }
         },
+		{
+		    path: 'span',//修改
+		    name: 'baseForm-span',//修改
+		    component: () => import(/* webpackChunkName: "baseForm-span" */ "@/views/base-form/span.vue"),//修改
+		    meta: {
+		        title: 'span表单',//修改
+		        icon: 'e74a;',
+		    }
+		},
         {
             path: 'slot',//修改
             name: 'baseForm-slot',//修改
