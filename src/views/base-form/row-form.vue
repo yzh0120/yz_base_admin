@@ -13,6 +13,7 @@
 					list:[
 						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
 						{ type:"input",field:"__input11",title:"输入框",append:"元"},
+						{ type:"input",field:"__input11",title:"输入框",append:"元"},
 						{ type:"input",field:"__input",title:"输入框"
 						,rules:[
 							{ required: true, message: "请输入", trigger: "blur" },
@@ -27,7 +28,7 @@
 						
 						// {type:"textarea",field:"__textarea",title:"文本域",row:4},
 						//放在第一排影响 row
-						// { type:"treeselect",field:"__treeselect",title:"树选择",opt:[],children:"subOptions"},
+						{ type:"treeselect",field:"__treeselect",title:"树选择",opt:[],children:"subOptions"},
 						
 						{type:"select",field:"__select",title:"下拉框",opt:[{text1:"选项一",value1:1},{text1:"选项二",value1:2}],text:"text1",value:"value1"},
 
@@ -51,7 +52,7 @@
 						// {type:"switch",field:"__switch",title:"开关",av:1,iav:0,avText:"同意",iavText:"否决"},
 						
 						
-						{type:"auto",field:"__auto",title:"自动补全",filter: self.auto_filter,key:"value1"},
+						// {type:"auto",field:"__auto",title:"自动补全",filter: self.auto_filter,key:"value1"},
 						// 
 						
 					],

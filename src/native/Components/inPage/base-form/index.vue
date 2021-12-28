@@ -244,7 +244,6 @@
 					}
 					this.data.list.forEach((item) => {
 						item = Object.assign(item,obj,this.$fn.deepClone(item))
-						console.log(item,"item")
 					})
 				}
 				return this.data.isRow;

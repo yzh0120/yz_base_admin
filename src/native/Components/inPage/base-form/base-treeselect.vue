@@ -32,7 +32,7 @@
  -->
 
 <template>
-    <treeselect 
+    <treeselect style="height: 30px;"
 	:class="[bossData.inline?'inline':'',`xxx`]"
 	 v-model="xxx"  :multiple="item.create" :options="options"  @select="change" @input="input"
     append-to-body  zIndex="9999999" :placeholder="_getPlaceholder(item)" noResultsText="无数据" :disabled="dis || item.disabled"
