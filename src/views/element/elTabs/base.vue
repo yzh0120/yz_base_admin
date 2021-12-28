@@ -68,7 +68,27 @@
 						});
 					});
 				});
-			}
+			},
+			//锚点  每一个tabs-pane  都有一个函数
+			goOne(label, str, active) {
+			      this.active = "1";
+			      if (document.getElementById(`${this.type}${label}`)) {
+			        document.getElementById(`${this.type}${label}`).scrollIntoView({
+			          behavior: "smooth",
+			          block: "start",
+			        });
+			
+			        if (str) {//tabs
+			          if (active) {
+			            this.$refs["gsjbxx"][active] = str;
+			          } else {
+			            this.$refs["gsjbxx"].active = str;
+			          }
+			        }else{
+						//没有tabs
+					}
+			      }
+			    },
 		}
 	}
 </script>
