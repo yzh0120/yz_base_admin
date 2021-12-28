@@ -11,6 +11,15 @@ export default {
 		icon: 'e64f;',
 	},
     children: [
+		{
+			path: 'eltabs',//修改
+			name: 'element-eltabs',//修改
+			component: () => import(/* webpackChunkName: "element-eltabs" */ "@/views/element/elTabs/base.vue"),//修改
+			meta: {
+			    title: 'eltabs',//修改
+			    icon: 'e64f;',
+			},
+		},
         {
             path: 'file',//修改
             name: 'element/file',//修改
@@ -30,15 +39,7 @@ export default {
 					    icon: 'e64f;',
 					},
 				},
-				// {
-				// 	path: 'loading',//修改
-				// 	name: 'element-tree-loading',//修改
-				// 	component: () => import(/* webpackChunkName: "element-tree-loading" */ "@/views/element/tree/loading.vue"),//修改
-				// 	meta: {
-				// 	    title: '动态加载tree',//修改
-				// 	    icon: 'e64f;',
-				// 	},
-				// },
+				
 			]
         },
 		{
