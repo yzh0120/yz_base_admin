@@ -1,5 +1,5 @@
 <template>
-  <table-page>
+  <page>
 	  <!-- 表单 -->
 	  <base-form :data="formInfo">
 	  	<template #button>
@@ -13,7 +13,7 @@
 	  <!-- 分页 -->
 	  <pager :data="pagerData"  @pageChange="getData()" @sizeChange="getData()" />
     
-  </table-page>
+  </page>
 </template>
 
 <script>
