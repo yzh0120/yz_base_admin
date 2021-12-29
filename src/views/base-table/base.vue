@@ -69,6 +69,9 @@
 			this.getData();
 		},
 		methods: {
+			test(){
+				alert("在上个页面执行了本页面的test方法")
+			},
 			getData(isSearch) {
 				isSearch && (this.pagerData.pageNo = 1)
 

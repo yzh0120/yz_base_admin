@@ -17,6 +17,7 @@ import pageLayout from "./modules/pageLayout.js"
 import file from "./modules/file.js"
 import base from "./modules/base.js"
 import axios from "./modules/axios.js"
+import tabsView from "./modules/tabsView.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -75,6 +76,7 @@ const routes = [
 	
 	pageLayout,//页面布局
 	
+	tabsView,//tabsView
 	element,//element
 	
 	base,//基础
