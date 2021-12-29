@@ -16,6 +16,7 @@ import VCharts from "./modules/VCharts.js"
 import pageLayout from "./modules/pageLayout.js"
 import file from "./modules/file.js"
 import base from "./modules/base.js"
+import axios from "./modules/axios.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -70,6 +71,7 @@ const routes = [
 	panel,//折叠框
 	VCharts,//图表
 	file, //文件
+	axios,//axios
 	
 	pageLayout,//页面布局
 	

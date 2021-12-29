@@ -152,9 +152,9 @@ export default{
 
             //多选一
             if (this.formData.data.__input4 || this.formData.data.__input5) {
-              this._set(this.formData, "__input3",[{disabled:true}])
+              this._set(this.formData, "__input3",{disabled:true})
             } else {
-              this._set(this.formData, "__input3",[{disabled:false}])
+              this._set(this.formData, "__input3",{disabled:false})
             }
 
             if (this.formData.data.__input3 || this.formData.data.__input5) {
@@ -164,9 +164,9 @@ export default{
             }
    
             if (this.formData.data.__input3 || this.formData.data.__input4) {
-              this._set(this.formData, "__input5", "disabled", true);
+              this._set(this.formData, "__input5", {disabled: true});
             } else {
-              this._set(this.formData, "__input5", "disabled", false);
+              this._set(this.formData, "__input5", {disabled: false});
             }
           },
           immediate: true,

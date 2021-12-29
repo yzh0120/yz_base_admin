@@ -45,7 +45,7 @@ export default {
 		    name: 'base-event',//修改
 		    component: blank,
 		    meta: {
-		        title: '位置',//修改
+		        title: '事件',//修改
 		        icon: 'e627;',
 		    },
 			children: [
