@@ -18,6 +18,7 @@ import file from "./modules/file.js"
 import base from "./modules/base.js"
 import axios from "./modules/axios.js"
 import tabsView from "./modules/tabsView.js"
+import scoped from "./modules/scoped.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -64,7 +65,7 @@ const routes = [
 	
 	
 
-
+	scoped,//用户权限
 	baseTable,//封装表格
 	baseForm,//封装表单
 	alert,//弹窗
