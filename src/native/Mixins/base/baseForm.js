@@ -44,7 +44,7 @@ export default {
 			let temp = this.$fn.deepClone(formInfo.list)
 			temp.forEach((item)=>{
 				// item.disabled = false
-				if(this.$fn.type( item.disabled ) === "und"){
+				if(this.$fn.type( item.disabled ) === "und" || this.$fn.type( item.disabled ) === "null"){
 					item.disabled = false
 				}else{//定义了  则不动
 
@@ -57,7 +57,7 @@ export default {
 			let temp = this.$fn.deepClone(formInfo.list)
 			temp.forEach((item)=>{
 				// item.disabled = false
-				if(this.$fn.type( item.show ) === "und"){
+				if(this.$fn.type( item.show ) === "und" || this.$fn.type( item.show ) === "null"){
 					item.show = true
 				}else{//定义了  则不动
 			
