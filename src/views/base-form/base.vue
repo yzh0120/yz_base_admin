@@ -20,6 +20,9 @@
 							{ validator: self.$check.demo, trigger: "blur" },
 					      ]
 						},
+						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
+
+						{ type:"input",field:"__input11",title:"输入框",append:"元"},
 						{ type:"treeselect",field:"__treeselect",title:"树选择",opt:[], 
 						// props :(node) =>{return { id: node.key,label: node.name,children: node.subOptions,}},
 						// id:'id',label:"label",
@@ -36,9 +39,7 @@
 							{ required: true, message: "请输入", trigger: "blur" },
 						  ]
 						},
-						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
-
-						{ type:"input",field:"__input11",title:"输入框",append:"元"},
+						
 
 						{type:"password",field:"__password",title:"密码框"},
 

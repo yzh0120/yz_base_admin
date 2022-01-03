@@ -39,15 +39,15 @@
 						{type:"select",field:"__selectCrate",title:"多选下拉框",opt:[{text:"选项一",value:1},{text:"选项二",value:2}],create:true},
 						
 						//放在最后一排影响 row
-						 {type:"radio",field:"__radio",title:"单选框",opt:[{text1:"单选一",value1:1},{text1:"单选二",value1:2}],text:"text1",value:"value1"},
+						//{type:"radio",field:"__radio",title:"单选框",opt:[{text1:"单选一",value1:1},{text1:"单选二",value1:2}],text:"text1",value:"value1"},
 						//放在最后一排影响 row
-						 {type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"},
+						//{type:"checkbox",field:"__checkbox",title:"多选框",opt:[{text1:"多选一",value1:1},{text1:"多选二",value1:2}],text:"text1",value:"value1"},
 
 						{type:"date",field:"__date",title:"日期选择器"},
 
 						{type:"daterange",field:"__daterange",title:"日期段选择器"},
 						//放在最后一排影响 row
-						{type:"switch",field:"__switch",title:"开关",av:1,iav:0,avText:"同意",iavText:"否决"},
+						//{type:"switch",field:"__switch",title:"开关",av:1,iav:0,avText:"同意",iavText:"否决"},
 						
 						
 						{type:"auto",field:"__auto",title:"自动补全",filter: self.auto_filter,key:"value1"},
