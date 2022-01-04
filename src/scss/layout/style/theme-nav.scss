@@ -4,6 +4,7 @@
 	$menuBg : rgb(240,240,240);//背景色
 	$color:rgb(141,141,141);
 	$primaryColor:rgb(117,102,245);
+	//侧边栏
 	.el-aside{
 		font-size: 14px;
 		font-weight: 500 ;
@@ -14,6 +15,7 @@
 			}
 		}
 	}
+	//main主体
 	.el-main{
 		$bgc : white;//rgb(248,248,248);
 		font-size: 14px;
@@ -49,11 +51,11 @@
 	/* ********************************************************************************************************************
 	导航栏 
 	*/
-
+	//侧边栏
 	.sidebar-container {
 	    background-color: $menuBg !important;//侧边栏背景色
 	}
-	
+	//侧边栏 logo
 	.sidebar-logo-container{//logo div
 		background-color: white !important;
 		.sidebar-title{//标题
@@ -61,8 +63,8 @@
 		}
 	}
 	
-	
-	.el-menu-item{//权重最低的 没有有子目录的一级目录
+	//权重最低的 没有有子目录的一级目录
+	.el-menu-item{
 		font-weight: 500;//防止折叠的时候 字体是700
 		background-color: $menuBg !important;//背景色
 		color:$color;        //默认字体颜色
@@ -77,7 +79,8 @@
 		  }
 		}
 	}
-	.el-submenu__title{//权重最低的 有子目录的一级目录
+	//权重最低的 有子目录的一级目录
+	.el-submenu__title{
 		background-color: $menuBg !important;  //背景色
 		color:$color ;        // 默认字体颜色
 		// font-weight: 500 !important;
@@ -92,7 +95,8 @@
 		}
 	}
 	
-	.el-submenu .el-menu-item {//非一级的某行菜单栏
+	//非一级的某行菜单栏
+	.el-submenu .el-menu-item {
 	    background-color: $menuBg !important; //背景色
 	    // font-weight: 500 !important;
 	    &:hover {
@@ -103,7 +107,8 @@
 	    }
 	}
 	
-	.el-menu li.is-active.el-menu-item{// 某行激活的菜单栏
+	// 某行激活的菜单栏
+	.el-menu li.is-active.el-menu-item{
 		color:white !important;    //字体激活颜色
 		background:  linear-gradient(to right,rgb(117,105,240), rgb(151,143,242)) !important;
 		& {
@@ -118,7 +123,8 @@
 		}
 	}
 	
-	.is-active > .el-submenu__title {//当点击了子菜单时的父菜单
+	//当点击了子菜单时的父菜单
+	.is-active > .el-submenu__title {
 	  //color: $color !important; //的文本颜色 
 	}
 	//手机状态下
@@ -128,29 +134,44 @@
 		// z-index: 999;
 	}
 	
-	/* ********************************************************************************************************
-	form
-	 */
-	.self_btn .el-input-group__append {
-		background-color: $primaryColor !important;
-		border: 1px solid $primaryColor !important;
-		border-left: 0 !important;
-		color: white !important;
-		 &:hover{
-			 color: white !important;
-		 }
-		 .el-button--default:not(.el-button--primary):active,
-		 .el-button--default:not(.el-button--primary):focus, 
-		 .el-button--default:not(.el-button--primary):hover{
-			 &{
-							 color: white !important;// 抵消换肤带来的副作用
-			 }
-		 }
-	}
 	
+	/* ********************************************************************************************************
+	head-top 
+	*/
+	.head-top{
+		.el-breadcrumb{/* 面包屑 */
+			color: $primaryColor !important;
+			*{
+				color: inherit !important;
+			}
+			.el-breadcrumb__item:hover>.el-breadcrumb__inner>a{
+				color: $primaryColor !important;
+			}
+			/* 最后一个面包屑 */
+			.el-breadcrumb__item:last-child>.el-breadcrumb__inner>a{
+				color: $primaryColor  !important;
+			}
+			.el-breadcrumb__item:last-child:hover>.el-breadcrumb__inner>a{
+				color: $primaryColor  !important;
+			}
+		}
+		.el-dropdown{
+			color: $primaryColor !important;
+			*{
+				color: inherit !important;
+			}
+		}
+		// 设置按钮
+		.setup{
+			color: $primaryColor !important;
+			&:hover{
+				color: $primaryColor !important;
+				background-color: #f6f6f6;
+			}
+		}
+	}
 	/* ***************************************************************************************************************
 	tagView 
-	
 	// 1 tags-view-container
 	// 2 scroll-container(在ScrollPane)
 	// 3 .tags-view-wrapper.el-scrollbar       4 .el-scrollbar__warp     5 .el-scrollbar__view      6.tags-view-item
@@ -165,6 +186,7 @@
 			  }
 			}
 		}
+		//某个item
 		.tags-view-item{
 			display: inline-block;
 			position: relative;
@@ -257,14 +279,8 @@
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
 	/* ********************************************************************************************************
-	panel
+	panel组件
 	 */
 	
 	.panel.panel-primary {
@@ -278,39 +294,23 @@
 	}
 	
 	/* ********************************************************************************************************
-	head-top 
-	*/
-	.head-top{
-		.el-breadcrumb{/* 面包屑 */
-			color: $primaryColor !important;
-			*{
-				color: inherit !important;
-			}
-			.el-breadcrumb__item:hover>.el-breadcrumb__inner>a{
-				color: $primaryColor !important;
-			}
-			/* 最后一个面包屑 */
-			.el-breadcrumb__item:last-child>.el-breadcrumb__inner>a{
-				color: $primaryColor  !important;
-			}
-			.el-breadcrumb__item:last-child:hover>.el-breadcrumb__inner>a{
-				color: $primaryColor  !important;
-			}
-		}
-		.el-dropdown{
-			color: $primaryColor !important;
-			*{
-				color: inherit !important;
-			}
-		}
-		// 设置按钮
-		.setup{
-			color: $primaryColor !important;
-			&:hover{
-				color: $primaryColor !important;
-				background-color: #f6f6f6;
-			}
-		}
+	form组件
+	 */
+	.self_btn .el-input-group__append {
+		background-color: $primaryColor !important;
+		border: 1px solid $primaryColor !important;
+		border-left: 0 !important;
+		color: white !important;
+		 &:hover{
+			 color: white !important;
+		 }
+		 .el-button--default:not(.el-button--primary):active,
+		 .el-button--default:not(.el-button--primary):focus, 
+		 .el-button--default:not(.el-button--primary):hover{
+			 &{
+							 color: white !important;// 抵消换肤带来的副作用
+			 }
+		 }
 	}
 	/* ********************************************************************************************************* 
 	element ui*/
