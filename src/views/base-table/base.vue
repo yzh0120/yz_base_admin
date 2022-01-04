@@ -54,7 +54,7 @@
 				  ],
 				  data: [],
 				  height:self.h,
-				  loading:true,
+				  // loading:true,
 				  index:true,
 				},
 				
@@ -77,7 +77,7 @@
 
 				let other = {
 					load: {
-						obj: this.table,
+						// obj: this.table,
 					},
 				};
 				this.$api.table.pager({
