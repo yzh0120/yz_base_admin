@@ -1,10 +1,60 @@
 <template>
     <page :show="true">
-		<div class="top hidden-md-and-down">
+		<div class="top">
+			<el-row :gutter="80">
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+							  <div class="item item1">
+							  	
+							  		<el-image :src="img404" class="img"></el-image>
+							  		<div class="text">
+							  			<div class="name">欢迎</div>
+							  			<div class="scope">xxx</div>
+							  		</div>
+							  </div>
+				</el-col>
+				
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+						<div class="item item2">
+							<i class="iconfont positionIcon">&#xe620;</i>
+							<div class="card">
+								<div>今日访问人数</div>
+								<div>962811 </div>
+								<div>在场人数</div>
+								<div>536</div>
+							</div>
+						</div>	  
+				</el-col>
+				
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+						<div class="item item3">
+							<i class="iconfont positionIcon">&#xe70a;</i>
+							<div class="card">
+								<div>实验室总数</div>
+								<div>7,962</div>
+								<div>使用中</div>
+								<div>882</div>
+							</div>
+						</div>	  
+				</el-col>
+				
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
+						<div class="item item4">
+							<i class="iconfont positionIcon">&#xe620;</i>
+							<div class="card">
+								<div>实验室总数</div>
+								<div>{{demo | split(5)}}</div>
+								<div>通过人数</div>
+								<div>884</div>
+							</div>
+						</div>	  
+				</el-col>
+			</el-row>
+		</div>
+
+		<!-- <div class="top hidden-md-and-down">
 			<div class="item item1">
 				
 					<el-image :src="img404" class="img"></el-image>
-					<!-- <img :src="img404" alt=""> -->
 					<div class="text">
 						<div class="name">欢迎</div>
 						<div class="scope">xxx</div>
@@ -37,7 +87,7 @@
 					<div>884</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		
 		<!-- <div class="eye"> -->
 	    <el-card class="eye">
@@ -121,14 +171,11 @@ export default{
 
 <style lang="scss" scoped>
     .top{
-		height: 110px;
-		// border: 1px solid red;
-		display: flex;
-		justify-content: space-between;
-		
+		width: 100%;
+		overflow: hidden;
 		.item{
-			width: 23%;
-			height: 100%;
+			width: 100%;
+			height: 120px;
 			border: 1px solid #ebeef5;
 			transition: all .3s;
 			border-radius: 6px;
@@ -137,6 +184,8 @@ export default{
 				right: 16px;
 				bottom: 16px;
 			}
+			display: flex;
+			align-items: center;
 			.card{
 				color: white;
 				padding-left: 20px;
@@ -163,9 +212,7 @@ export default{
 		}
 		.item1{
 			background-color: white;
-			display: flex;
-			// justify-content: center;
-			align-items: center;
+			
 			&:hover{
 				box-shadow: #ccc 0px 0px 10px;
 			}
@@ -191,8 +238,6 @@ export default{
 		}
 		.item2{
 			background-color: rgb(249, 89, 89);
-			display: flex;
-			align-items: center;
 			.positionIcon{
 				color: rgb(248, 108, 107);
 			}
@@ -200,16 +245,12 @@ export default{
 		}
 		.item3{
 			background-color: rgb(133, 149, 244);
-			display: flex;
-			align-items: center;
 			.positionIcon{
 				color: rgb(146, 161, 244);
 			}
 		}
 		.item4{
 			background-color: rgb(254, 187, 80);
-			display: flex;
-			align-items: center;
 			.positionIcon{
 				color: rgb(253, 197, 102);
 			}

@@ -2,7 +2,7 @@
 	<div :style="{width:$store.state.setup.window_innerWidth + `px`,height:$store.state.setup.window_innerHeight+ `px`}"
 		class="login" v-loading="loading" element-loading-text="登录中">
 
-		<el-card style="width: 400px" class="card">
+		<el-card  class="card">
 			<div slot="header" >
 				<span>登录</span>
 			</div>
@@ -165,7 +165,7 @@
 		.card{
 			position: relative;
 			z-index: 3;
-			
+			width: 400px;
 			.register {
 				margin-top: 10px;
 			  color: #409eff;
