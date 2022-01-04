@@ -90,7 +90,7 @@
 		</div> -->
 		
 		<!-- <div class="eye"> -->
-	    <el-card class="eye">
+	    <el-card class="eye hidden-sm-only" >
 			<div slot="header" >
 			    <span>数据可视化</span>
 			  </div>
@@ -103,6 +103,11 @@
 				</el-tab-pane>
 			</el-tabs>
 	    </el-card>
+		
+		<div class="eye hidden-md-and-up">
+			<ve-line :data="chartData" :settings="chartSettings_stack" ref="chart1"></ve-line>
+			<ve-histogram :data="chartData" :settings="chartSettings" ref="chart2"></ve-histogram>
+		</div>
 		<!-- </div> -->
 		
 				
