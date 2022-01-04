@@ -7,7 +7,11 @@
 
 <script>
 export default{
-
+	data(){
+		return {
+			btnPower:true
+		}
+	}
 }
 </script>
 

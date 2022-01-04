@@ -21,6 +21,7 @@
 		data(){
 			let self = this;
 			return {
+				btnPower:true,
 				formInfo: {
 					list: [
 					{ title: "日期", field: "__date", type: "date" },

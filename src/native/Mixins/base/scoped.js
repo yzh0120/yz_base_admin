@@ -12,10 +12,12 @@ export default {
     }
   },
   mounted() {
-    this.col()
+	if (this.btnPower) {
+	      this.getAuthorizeButtonColumnList()
+	}
   },
   methods: {
-    // col() {
+    // getAuthorizeButtonColumnList() {
     //   let params = {
     //     enCode: this.$route.name
     //   }
@@ -45,7 +47,7 @@ export default {
     //     }
     //   })
     // },
-    col() {
+    getAuthorizeButtonColumnList() {
       if (this.$route && this.$route.name == "scoped-col" || this.$route && this.$route.name == "scoped-btn") {
 
         setTimeout(() => {
