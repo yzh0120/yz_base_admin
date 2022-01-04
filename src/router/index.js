@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
 					let loadingInstance = Loading.service({
 					  lock: true,
 					  text: "多接口加载中",
-					  spinner: "el-icon-loading",
+					  // spinner: "el-icon-loading",
 					  background: "rgba(255, 255, 255, 0.7)",
 					});
 					let arr = await Promise.all([
