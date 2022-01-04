@@ -1,7 +1,7 @@
 <template>
 	<page>
 		<div style="height: 1000px;">
-			<el-tabs ref="navTabs" class="projectCardItem" @tab-click="handleClick">
+			<el-tabs ref="navTabs" class="projectCardItem" @tab-click="handleClick" type="border-card">
 				<div class="linkNav" ref="link" @click="linkNavFn">
 					<div class="link" style="background-color: #008000;"></div>
 					<div class="link" style="background-color: yellowgreen"></div>
