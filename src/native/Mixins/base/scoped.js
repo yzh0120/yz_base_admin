@@ -72,22 +72,30 @@ export default {
   directives: {
     // 注册一个局部的自定义指令 v-focus
     btn: {
-      // 统一全部隐藏
-      bind: function (el) {
-        el.style.display = "none"
-      },
-      update: function (el, binding, vnode) {//binding.value  是后端的值[],arg是自己写的
-        console.log(binding.value,binding.arg)
-        // if (typeof binding.value == 'object') {
-          if (Object.prototype.toString.call(binding.value).slice(8,-1) == "Array") {
-          for (let i = 0; i < binding.value.length; i++) {
-            if (binding.value[i].enCode == binding.arg) {
-              el.style.display = "inline-block"
+          // 统一全部隐藏
+          bind: function (el) {
+            if (el.tagName == "BUTTON") {
+              el.setAttribute("disabled", "disabled")
+              el.classList.add("is-disabled")
+            } else {
+              el.style.display = "none"
             }
+          },
+          update: function (el, binding, vnode) {
+            if (typeof binding.value == 'object') {
+              for (let i = 0; i < binding.value.length; i++) {
+                if (binding.value[i].enCode == binding.arg) {
+                  if (el.tagName == "BUTTON") {
+                    el.setAttribute("disabled", false)
+                    el.classList.remove("is-disabled")
+                  } else {
+                    el.style.display = "inline-block"
+                  }
+                }
+              }
+            }
+    
           }
         }
-
-      }
-    }
   }
 }
