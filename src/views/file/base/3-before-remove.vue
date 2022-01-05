@@ -1,9 +1,9 @@
 <!-- 删除之前 -->
 <template>
 	<div>
-		<el-upload :action="api" :before-remove="beforeRemove" :on-remove="(file, fileList)=>{handleRemove(fileList,item)}">
+		<el-upload :action="api" :before-remove="beforeRemove" :on-remove="(file, fileList)=>{handleRemove(fileList,item)}" :headers="headers">
 			<!-- @click="import1"    click  比action 先执行 -->
-		            <el-button size="small" type="primary" :headers="headers" >导入</el-button>
+		            <el-button size="small" type="primary"  >导入</el-button>
 		          </el-upload>
 	</div>
 </template>
