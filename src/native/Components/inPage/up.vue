@@ -11,7 +11,7 @@
  		
  		<el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :on-error="error"
  		:before-upload="(file)=>{return beforeUpload(file,uploadObj)}" :on-change="handleChange" :headers="uploadHeaders" :on-progress="progress">
- 		  <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl(uploadObj.taskName)">上传资料</el-button>
+ 		  <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl">上传资料</el-button>
  		</el-upload>
  		
  		<!-- <file-List :arr="uploadObj.detail" :del="true"/> -->
@@ -21,7 +21,6 @@
  </template>
  
  <script>
-	 let msg;
  import * as fileApi from "@/axios/api/file";
  import * as Cookie from "@/tools/cookjs.js";
  export default {
@@ -72,7 +71,6 @@
      },
      // 0 设置路由
      setUploaduUrl(taskName) {
-       this.taskName = taskName;
        this.uploaduUrl =
          process.env.VUE_APP_down_API +
          "/v1/base/file/upload" + "?folderId=" + this.projectId + "&taskName=" + this.uploadObj.taskName;
