@@ -12,7 +12,7 @@
             <td width="13%">操作</td>
           </tr>
           <tr v-for="(item,index) in uploadList" :key="index">
-            <td>{{item.name}}</td>
+            <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
             <td>
               <!-- <div v-for="(file,fileIndex) in item.detail" :key="fileIndex">
                 <el-tooltip content="Top Left 提示文字" placement="left">
