@@ -72,7 +72,7 @@ const routes = [
 	svgIcon,//svgIcon
 	panel,//折叠框
 	VCharts,//图表
-	file, //文件
+	// file, //文件
 	axios,//axios
 	
 	pageLayout,//页面布局
