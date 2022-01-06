@@ -148,8 +148,8 @@ export default {
     upLoadSuccess(res,taskName) {
       if (res.code == 200) {
         this.$message.success(res.data.fileName + "上传成功！");
-        
-          
+        this.uploadList.forEach((item) => {
+          if (item.taskName == taskName) {
             fileApi
               .getFileListByFolderId({
                 folderId: this.projectId,
@@ -162,8 +162,8 @@ export default {
                   this.$message.error(res.info);
                 }
               });
-          
-        
+          }
+        });
       } else {
         this.$message.error(res.info);
       }
