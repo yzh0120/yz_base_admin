@@ -14,7 +14,7 @@
  		  <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl">上传资料</el-button>
  		</el-upload>
  		
- 		<!-- <file-List :arr="uploadObj.detail" :del="true"/> -->
+ 		<file-List :arr="uploadObj.detail" :del="true"/>
 
  	
    </div>
@@ -26,7 +26,7 @@
  export default {
    props: {
      projectId: {
-       type: String,
+       type: [String,Number],
        default: "",
      },
      uploadObj: {
@@ -38,6 +38,7 @@
    },
    data() {
      return {
+		 percentage: 0,
        uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
        btnDisabled: false,
        uploadHeaders: {
@@ -45,7 +46,6 @@
          // Authorization: Cookie.get("token")
  		"Authorization": process.env.VUE_APP_down_token_API
        },
-       taskName: "",
      };
    },
    created() {
@@ -112,7 +112,7 @@
 	       });
 	 },
      //3 文件上传成功
-     upLoadSuccess(res) {
+     upLoadSuccess(res, file, fileList) {
        if (res.code == 200) {
          this.$message.success(res.data.fileName + "上传成功！");
 
@@ -124,6 +124,12 @@
                .then((result) => {
                  if (result.code == 200) {
                    this.uploadObj.detail = result.data;
+				   this.$emit("success", {
+				                   taskName: this.uploadObj.taskName,
+				                   res,
+				                   file,
+				                   fileList,
+				    });
                  } else {
                    this.$message.error(res.info);
                  }

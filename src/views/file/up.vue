@@ -1,18 +1,18 @@
 <template>
-	<up :uploadList="uploadList"></up>
+	<up :uploadObj="uploadList" projectId="123123123"></up>
 </template>
 
 <script>
 	export default{
 		data(){
 			return {
-				uploadList: [
+				uploadList: 
 				  {
 				    name: "xxx",
 				    taskName: "xxx",
 				    detail: [],
 				  }
-				],
+				
 			}
 		}
 	}
