@@ -84,7 +84,7 @@ export default {
 			  <file-List :arr="item.detail" :del="true"/>
             </td>
             <td class="text-center">
-				<up :projectId="projectId" :uploadObj="item" @success="(e)=>upLoadSuccess(e.res)" @seturl="setUploaduUrl"></up>
+				<up :projectId="projectId" :uploadObj="item" @success="(e)=>upLoadSuccess(e.res,e.taskName)" ></up>
             </td>
           </tr>
 
@@ -143,20 +143,17 @@ export default {
         // }
       });
     },
-	// 0 设置路由
-	setUploaduUrl(taskName) {
-	  this.taskName = taskName;
-	},
+
     //3 文件上传成功
-    upLoadSuccess(res) {
+    upLoadSuccess(res,taskName) {
       if (res.code == 200) {
         this.$message.success(res.data.fileName + "上传成功！");
-        this.uploadList.forEach((item) => {
-          if (item.taskName == this.taskName) {
+        
+          
             fileApi
               .getFileListByFolderId({
                 folderId: this.projectId,
-                taskName: this.taskName,
+                taskName: taskName,
               })
               .then((result) => {
                 if (result.code == 200) {
@@ -165,8 +162,8 @@ export default {
                   this.$message.error(res.info);
                 }
               });
-          }
-        });
+          
+        
       } else {
         this.$message.error(res.info);
       }

@@ -72,7 +72,7 @@
      },
      // 0 设置路由
      setUploaduUrl() {
-		 this.$emit("seturl", this.uploadObj.taskName);//给父组件保存 taskname
+		 // this.$emit("seturl", this.uploadObj.taskName);//给父组件保存 taskname
        this.uploaduUrl = process.env.VUE_APP_down_API +
          "/v1/base/file/upload" + "?folderId=" + this.projectId + "&taskName=" + this.uploadObj.taskName;
      },
