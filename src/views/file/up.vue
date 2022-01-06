@@ -1,12 +1,15 @@
 <template>
-	<up :uploadObj="uploadList" projectId="123123123"></up>
+	<div>
+		<up :uploadObj="uploadObj" projectId="123123123"  @success="(e)=>upLoadSuccess(e.res)"></up>
+		<file-List :arr="uploadObj.detail" :del="true"/>
+	</div>
 </template>
 
 <script>
 	export default{
 		data(){
 			return {
-				uploadList: 
+				uploadObj: 
 				  {
 				    name: "xxx",
 				    taskName: "xxx",
@@ -14,6 +17,11 @@
 				  }
 				
 			}
+		},
+		methods:{
+			upLoadSuccess(){
+				
+			},
 		}
 	}
 </script>

@@ -15,7 +15,7 @@
  		  <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl">上传资料</el-button>
  		</el-upload>
  		
- 		<file-List :arr="uploadObj.detail" :del="true"/>
+ 		<!-- <file-List :arr="uploadObj.detail" :del="true"/> -->
 
  	
    </div>
@@ -56,18 +56,18 @@
  	 //获取文件
      getFiles() {
 
-         // fileApi
-         //   .getFileListByFolderId({
-         //     folderId: this.projectId,
-         //     taskName: this.uploadObj.taskName,
-         //   })
-         //   .then((result) => {
-         //     if (result.code == 200) {
-         //       this.uploadObj.detail = result.data;
-         //     } else {
-         //       this.$message.error(res.info);
-         //     }
-         //   });
+         fileApi
+           .getFileListByFolderId({
+             folderId: this.projectId,
+             taskName: this.uploadObj.taskName,
+           })
+           .then((result) => {
+             if (result.code == 200) {
+               this.uploadObj.detail = result.data;
+             } else {
+               this.$message.error(res.info);
+             }
+           });
   
      },
      // 0 设置路由

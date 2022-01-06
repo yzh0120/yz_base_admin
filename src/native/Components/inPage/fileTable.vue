@@ -14,17 +14,122 @@
           <tr v-for="(item,index) in uploadList" :key="index">
             <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
             <td>
-              <!-- <div v-for="(file,fileIndex) in item.detail" :key="fileIndex">
-                <el-tooltip content="Top Left 提示文字" placement="left">
-                  <div slot="content">上传者：{{file.createUserName}}
-                    <br />上传时间：{{file.createTime}}<br />文件大小：{{file.fileSize}}
-                  </div>
-                  <div>
-                    <span class="downloadFile" v-on:click="downloadFile(file)">{{file.fileName}}</span>
-                    <i class="el-icon-error" style="color:red;cursor: pointer;" @click="deleteFile(file,fileIndex)"></i>
-                  </div>
-                </el-tooltip>
-              </div> -->
+			  <file-List :arr="item.detail" :del="true"/>
+            </td>
+            <td class="text-center">
+				<up projectId="132123123" :uploadObj="item" @success="(e)=>upLoadSuccess(e.res)"></up>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </panel>
+  </div>
+</template>
+
+<script>
+import * as fileApi from "@/axios/api/file";
+import * as Cookie from "@/tools/cookjs.js";
+export default {
+  props: {
+    projectId: {
+      type: String,
+      default: "",
+    },
+    uploadList: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+  data() {
+    return {
+      uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+      uploadHeaders: {
+        //上传头
+        // Authorization: Cookie.get("token")
+		"Authorization": process.env.VUE_APP_down_token_API
+      },
+      taskName: "",
+    };
+  },
+  created() {
+    // this.getFiles(); //获取历史文件
+  },
+  methods: {
+	 //获取文件
+    getFiles() {
+      this.uploadList.forEach((item) => {
+        fileApi
+          .getFileListByFolderId({
+            folderId: this.projectId,
+            taskName: item.taskName,
+          })
+          .then((result) => {
+            if (result.code == 200) {
+              item.detail = result.data;
+            } else {
+              this.$message.error(res.info);
+            }
+          });
+        // }
+      });
+    },
+    //3 文件上传成功
+    upLoadSuccess(res) {
+      // if (res.code == 200) {
+      //   this.$message.success(res.data.fileName + "上传成功！");
+      //   this.uploadList.forEach((item) => {
+      //     if (item.taskName == this.taskName) {
+      //       fileApi
+      //         .getFileListByFolderId({
+      //           folderId: this.projectId,
+      //           taskName: this.taskName,
+      //         })
+      //         .then((result) => {
+      //           if (result.code == 200) {
+      //             item.detail = result.data;
+      //           } else {
+      //             this.$message.error(res.info);
+      //           }
+      //         });
+      //     }
+      //   });
+      // } else {
+      //   this.$message.error(res.info);
+      // }
+    },
+
+  },
+};
+</script>
+
+<style style="scss" scoped>
+.downloadFile {
+  cursor: pointer;
+}
+</style>
+
+
+<!-- 
+ 
+<template>
+  <div>
+    <panel >
+      <div slot="head" >
+        <h4>资料文件信息</h4>
+      </div>
+      <table class="table row">
+        <tbody>
+          <tr>
+            <td width="30%">资料名称</td>
+            <td>详情</td>
+            <td width="13%">操作</td>
+          </tr>
+          <tr v-for="(item,index) in uploadList" :key="index">
+            <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
+            <td>
 			  <file-List :arr="item.detail" :del="true"/>
             </td>
             <td class="text-center">
@@ -208,7 +313,9 @@ export default {
 .downloadFile {
   cursor: pointer;
 }
-</style>
+</style> 
+ 
+ -->
 
 <!-- 
  必填校验
