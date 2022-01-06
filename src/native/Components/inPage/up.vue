@@ -50,11 +50,11 @@
      };
    },
    created() {
-     this.getFiles(); //获取历史文件
+     this.getFiles(); //获取历史文件///////////////////切换
    },
    methods: {
  	 //获取文件
-     getFiles() {
+     getFiles() {///////////////////切换
 
          fileApi
            .getFileListByFolderId({
@@ -136,7 +136,7 @@
                  }
                });
 	   
-      //      this.$emit("success", {
+      //      this.$emit("success", {///////////////////切换
 			   // taskName: this.uploadObj.taskName,
 			   // res,
 			   // file,

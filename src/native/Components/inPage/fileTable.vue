@@ -54,13 +54,6 @@ export default {
       taskName: "",
     };
   },
-  created() {
-
-  },
-  methods: {
-
-
-  },
 };
 </script>
 

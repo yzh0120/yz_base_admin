@@ -20,10 +20,6 @@
 				
 			}
 		},
-		created() {
-		},
-		methods:{
-		}
 	}
 </script>
 
