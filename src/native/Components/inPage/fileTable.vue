@@ -28,7 +28,12 @@
 			  <file-List :arr="item.detail" :del="true"/>
             </td>
             <td class="text-center">
-              <el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :before-upload="(file)=>{return beforeUpload(file,item)}" :on-change="handleChange" :headers="uploadHeaders">
+				<div v-if="item.taskName == taskName">
+					<el-progress :percentage="percentage" :text-inside="true" :stroke-width="15" v-if="percentage"></el-progress>
+				  </div>
+              <el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple 
+			  :on-success="upLoadSuccess" :on-error="error" :before-upload="(file)=>{return beforeUpload(file,item)}" 
+			  :on-change="handleChange" :headers="uploadHeaders" :on-progress="progress">
                 <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl(item.taskName)">上传资料</el-button>
               </el-upload>
             </td>
@@ -58,6 +63,7 @@ export default {
   },
   data() {
     return {
+		percentage: 0,
       // uploadList: [
       //   {
       //     name: "1.开立保函委托合同或开立保函确认书（额度项下）",
@@ -140,6 +146,16 @@ export default {
     handleChange() {
       this.btnDisabled = !this.btnDisabled;
     },
+	progress(event, file, fileList) {
+	      this.percentage = 0;
+	      // this.uploadPercentVisited = true;
+	      this.$nextTick(() => {
+	        this.percentage = Number(file.percentage.toFixed(0));
+	        if (this.percentage >= 100) {
+	          this.percentage = 0;
+	        }
+	      });
+	    },
     //3 文件上传成功
     upLoadSuccess(res) {
       if (res.code == 200) {
@@ -164,23 +180,26 @@ export default {
         this.$message.error(res.info);
       }
     },
-    //4 删除文件
-    deleteFile(item) {
-      // console.log(item, "item");
-      fileApi.del([item.id]).then((res) => {
-        if (res.code == 200) {
-          this.$message.success("删除成功");
-          this.getFiles(); //获取历史文件
-        } else {
-          this.$message.error(res.info);
-        }
-      });
-    },
-    //5 如何下载
-    downloadFile(item) {
-      //window.open("http://openlaw.cn/search/judgement/default?keyword=" + companyname, '_blank');
-      fileApi.download({ fileUrl: item.fileUrl + item.filePath });
-    },
+	error() {
+		this.btnDisabled = !this.btnDisabled;
+	},
+    // //4 删除文件
+    // deleteFile(item) {
+    //   // console.log(item, "item");
+    //   fileApi.del([item.id]).then((res) => {
+    //     if (res.code == 200) {
+    //       this.$message.success("删除成功");
+    //       this.getFiles(); //获取历史文件
+    //     } else {
+    //       this.$message.error(res.info);
+    //     }
+    //   });
+    // },
+    // //5 如何下载
+    // downloadFile(item) {
+    //   //window.open("http://openlaw.cn/search/judgement/default?keyword=" + companyname, '_blank');
+    //   fileApi.download({ fileUrl: item.fileUrl + item.filePath });
+    // },
   },
 };
 </script>

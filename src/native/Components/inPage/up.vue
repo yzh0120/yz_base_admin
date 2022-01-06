@@ -10,7 +10,8 @@
  		<el-progress :percentage="percentage" :text-inside="true" :stroke-width="15" v-if="percentage"></el-progress>
  		
  		<el-upload :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" :show-file-list="false" multiple :on-success="upLoadSuccess" :on-error="error"
- 		:before-upload="(file)=>{return beforeUpload(file,uploadObj)}" :on-change="handleChange" :headers="uploadHeaders" :on-progress="progress">
+ 		:before-upload="(file)=>{return beforeUpload(file,uploadObj)}" :on-error="error"
+		:on-change="handleChange" :headers="uploadHeaders" :on-progress="progress">
  		  <el-button :disabled="btnDisabled" size="mini" type="primary" v-on:click="setUploaduUrl">上传资料</el-button>
  		</el-upload>
  		
@@ -140,6 +141,7 @@
        }
      },
 	 error() {
+	 	this.btnDisabled = !this.btnDisabled;
 	 },
    },
  };
