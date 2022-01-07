@@ -123,7 +123,16 @@ export default {
 		 	        title: 'filter',//修改
 		 	        icon: 'e64f;',
 		 	    }
-		 	}
+		 	},
+			{
+			    path: 'drag',//修改
+			    name: 'base-css-drag',//修改
+			    component: () => import(/* webpackChunkName: "css-base" */ "@/views/base/css/drag.vue"),//修改
+			    meta: {
+			        title: 'drag',//修改
+			        icon: 'e64f;',
+			    }
+			}
 		 ]
 	   }
     ]
