@@ -132,6 +132,15 @@ export default {
 			        title: 'drag',//修改
 			        icon: 'e64f;',
 			    }
+			},
+			{
+			    path: 'scrollIntoView',//修改
+			    name: 'base-css-scrollIntoView',//修改
+			    component: () => import(/* webpackChunkName: "css-base" */ "@/views/base/css/scrollIntoView.vue"),//修改
+			    meta: {
+			        title: '跳转',//修改
+			        icon: 'e64f;',
+			    }
 			}
 		 ]
 	   }
