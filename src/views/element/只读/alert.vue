@@ -17,19 +17,17 @@ this.$message({
  
  
 <!-- 	
-let con = await this.$confirm(`确定移除 ？`);
+let con = await this.$confirm(`确定移除 ？`).catch((e) => {});
 let con = await this.$confirm("确认该项目申请当期上会吗？", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
-      })
+      }).catch((e) => {});
 
 if (con == "confirm") {
 	//保存修改
-} else if(con=="cancel"){
-   //放弃
-}else{
-	//右上角取消
+} else{
+	//右上角取消 或者 取消按钮
 }
 
 

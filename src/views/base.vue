@@ -1,7 +1,7 @@
 <template>
     <page :show="true">
 		<el-button :disabled="true" size="mini" type="primary" >禁用按钮</el-button>
-		  <el-button>默认按钮</el-button>
+		  <el-button @click="demoFn">默认按钮</el-button>
 		  <el-button type="primary">主要按钮</el-button>
 		  <el-button type="success">成功按钮</el-button>
 		  <el-button type="info">信息按钮</el-button>
@@ -161,7 +161,22 @@ export default{
     methods:{
         handleChange(val) {
                 console.log(val);
-              }
+              },
+		async demoFn(){
+			let con = await this.$confirm(`确定移除 ？`).catch((e) => {});
+			      if (con == "confirm") {
+			        //保存修改
+			        detailApi.del({ id: row.itemDetailId }).then((res) => {
+			          if (res.code == 200) {
+			            this.getList();
+			          } else {
+			            this.$message.error(res.info);
+			          }
+			        });
+			      } else {
+			        //右上角取消
+			      }
+		},
     },
 	mounted() {
 		console.log(this.$fn.date.diff(new Date(),'2018-01-01'),'1111111111----')
