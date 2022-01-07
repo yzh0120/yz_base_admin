@@ -13,11 +13,11 @@
  
  remote                                    远程搜索
  
- create : true                              多标签选择模式
+ mult : true                              多标签选择模式
  -->
 <template>
   <el-select style="width: 100%;" v-model="data[item.field]" :disabled="item.disabled" clearable  
-  :placeholder="_getPlaceholder(item)" @change="change"  @clear="setValueNull" :multiple="create"
+  :placeholder="_getPlaceholder(item)" @change="change"  @clear="setValueNull" :multiple="mult"
   :filterable="filter  || remote" :remote="remote" :remote-method="item.remote" :filter-method="item.filterFn">
     <el-option v-for="(childItem, childIndex) in item.opt" :key="childIndex" :label="childItem[text]"  
 	:value="childItem[value]" />
@@ -45,8 +45,8 @@ export default {
     },
   },
   computed: {
-    create(){
-		  if(this.item.create){
+    mult(){
+		  if(this.item.mult){
 			  return true
 		  }else{
 			  return false

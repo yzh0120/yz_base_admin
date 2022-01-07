@@ -5,7 +5,7 @@
  rules:[],                                  控件校验规则
  
  opt : [id:'唯一id',label:'描述',children:[子节点]]         控件下拉选项
- create :     true              多选
+ mult :     true              多选
  props :(node) =>{
       return {
         id: node.key,
@@ -34,7 +34,7 @@
 <template>
     <treeselect style="height: 30px;"
 	:class="[bossData.inline?'inline':'',`xxx`]"
-	 v-model="xxx"  :multiple="item.create" :options="options"  @select="change" @input="input"
+	 v-model="xxx"  :multiple="item.mult" :options="options"  @select="change" @input="input"
     append-to-body  zIndex="9999999" :placeholder="_getPlaceholder(item)" noResultsText="无数据" :disabled="dis || item.disabled"
 	 :defaultExpandLevel="Infinity" />
 </template>
@@ -50,7 +50,7 @@ export default{
 	},
 	methods:{
 		input(nowValue) {
-			if(this.item.create){//[]
+			if(this.item.mult){//[]
 				if(nowValue.length == 0){
 					this.$emit("baseFormEvent", {
 					  event: "clear",
@@ -98,7 +98,7 @@ export default{
 			get(){
 				
 				
-				if(this.item.create){
+				if(this.item.mult){
 					if( this.$fn.type(this.data[this.item.field]) != "arr"){
 						this.data[this.item.field] = []
 					}
