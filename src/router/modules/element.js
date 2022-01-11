@@ -19,6 +19,16 @@ export default {
 			    title: 'eltabs',//修改
 			    icon: 'e64f;',
 			},
+			
+		},
+		{
+			path: 'elCheckBox',//修改
+			name: 'element-elCheckBox',//修改
+			component: () => import(/* webpackChunkName: "element-elCheckBox" */ "@/views/element/elCheckBox/base.vue"),//修改
+			meta: {
+			    title: '多选框',//修改
+			    icon: 'e64f;',
+			},
 		},
         {
             path: 'file',//修改

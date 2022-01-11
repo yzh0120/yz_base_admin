@@ -19,6 +19,7 @@ import base from "./modules/base.js"
 import axios from "./modules/axios.js"
 import tabsView from "./modules/tabsView.js"
 import scoped from "./modules/scoped.js"
+import icon from "./modules/icon.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -79,6 +80,7 @@ const routes = [
 	
 	tabsView,//tabsView
 	element,//element
+	icon,
 	
 	base,//基础
 	
