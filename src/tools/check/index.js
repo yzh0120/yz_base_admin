@@ -1,5 +1,10 @@
 // import * as reg from "../reg/index.js"
 
+
+//正则测试
+//https://www.runoob.com/try/try.php?filename=tryjsref_regexp1
+
+
 /*身份证正则（大陆，香港，新加坡） */
 export function idCard(rule, value, callback) {
 	if (value) {
