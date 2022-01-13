@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-	"dev": "vue-cli-service serve --mode dev",
+    "dev": "vue-cli-service serve --mode dev",
     "serve": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build --mode build"
   },
@@ -14,6 +14,7 @@
     "core-js": "^2.6.5",
     "dayjs": "^1.10.7",
     "echarts": "^4.1.0",
+    "element-resize-detector": "^1.2.4",
     "element-ui": "^2.15.6",
     "js-cookie": "^3.0.0",
     "screenfull": "^5.1.0",

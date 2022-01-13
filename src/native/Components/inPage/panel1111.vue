@@ -2,12 +2,10 @@
   <div>
     <div class="panel" :class="addType">
       <div class="panel-heading" @click="bodyHandle">
-			  <slot name="head"></slot>
+        <slot name="head"></slot>
       </div>
-      <div class="panel-body" :style="{height:height}">
-		<div  ref="innerBodyBody" style="padding: 15px;">
-			<slot></slot>
-		</div>
+      <div class="panel-body" :style="{display:showBody==true?'block':'none'}">
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -21,7 +19,6 @@
 	danger
 	 -->
 <script>
-	import elementResizeDetectorMaker from 'element-resize-detector'
 export default {
   props: {
     head: String,
@@ -40,46 +37,18 @@ export default {
   },
   data() {
     return {
-      showBody: true,
-	  height:"0px",
-	  count:0,
+      showBody: true
     };
   },
   mounted(){
     if(this.close){
       this.showBody = false
     }
-	
-	const _this = this;
-	const erd = elementResizeDetectorMaker()
-	erd.listenTo(_this.$refs.innerBodyBody,(element)=>{
-		_this.$nextTick(()=>{
-			if(this.count === 0){
-				
-			}else{
-				if(this.showBody){
-					_this.height = element.offsetHeight+'px'
-				}else{
-					
-				}
-				
-			}
-			this.count++ 
-		})
-	})
   },
   methods: {
     bodyHandle() {
-      // 
-	  if(this.showBody){
-		  this.height = "0px"
-	  }else{
-		  this.height = this.$refs.innerBodyBody.offsetHeight+'px'
-	  }
-	  this.showBody = !this.showBody;
-	  console.log(this.showBody)
-    },
-	
+      this.showBody = !this.showBody;
+    }
   }
 };
 </script>
@@ -166,8 +135,7 @@ export default {
 	// justify-content: space-between;
   }
   .panel-body {
-	overflow: hidden;
-	transition: all .2s;
+    padding: 15px;
   }
 }
 </style>
