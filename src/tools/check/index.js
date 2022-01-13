@@ -66,9 +66,9 @@ export function zh(rule, value, callback) {
 }
 
 /**
- * 只允许中文、括号、数字
+ * 只允许中文、括号、正整数
  */
-export function zhNum(rule, value, callback) {
+export function zhOrZhengNum(rule, value, callback) {
   if (value) {
     var reg = /^[\u4e00-\u9fa5\（\）\(\)\d]+$/;
     if (reg.test(value) == false) {
@@ -83,9 +83,9 @@ export function zhNum(rule, value, callback) {
 
 
 /**
- * 正数、负数和小数
+ * 正整数、负整数和小数
  */
-export function numFloat(rule, value, callback) {
+export function zhengNumOrFuNumOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^(\-|\+)?\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -99,9 +99,9 @@ export function numFloat(rule, value, callback) {
 }
 
 /**
- * 正数和小数
+ * 正整数和小数
  */
-export function positiveNumFloat(rule, value, callback) {
+export function zhengNumOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -115,9 +115,9 @@ export function positiveNumFloat(rule, value, callback) {
 }
 
 /**
- * 负数和小数
+ * 负整数和小数
  */
-export function negativeNumFloat(rule, value, callback) {
+export function fuNumOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^(\-)\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -131,9 +131,9 @@ export function negativeNumFloat(rule, value, callback) {
 }
 
 /**
- * 正数
+ * 正整数
  */
-export function positiveNum(rule, value, callback) {
+export function zhengNum(rule, value, callback) {
   if (value) {
     var reg = /^\d+$/;
     if (reg.test(value) == false) {
@@ -147,7 +147,7 @@ export function positiveNum(rule, value, callback) {
 }
 
 /* 最大允许12位正整数内以及6位小数 */
-export function num11_6(rule, value, callback) {
+export function zhengNum11_6(rule, value, callback) {
 	if (value) {
 		let reg = /^[1-9]\d{0,11}(\.\d{1,6})?$|^0(\.\d{1,6})?$/;
 		if (reg.test(value) == false) {
