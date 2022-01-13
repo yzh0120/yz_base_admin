@@ -5,48 +5,45 @@ import XEUtils from 'xe-utils'
 
 //分组
 function groupBy(data, key){
-	 if (data && key) {
-	    return XEUtils.groupBy(data, key)
-	  } else {
-	    return "参数错误"
-	  }
+	return XEUtils.groupBy(data, key)
 }
 
 //数组去重
 function uniq (array){
-	 if (array) {
-	    return XEUtils.uniq(array)
-	  } else {
-	    return "参数错误"
-	  }
+	return XEUtils.uniq(array)
 }
 
 //将数组进行排序
 function orderBy(array,props){
-	 if (array) {
-		 if(props){
-			  return XEUtils.uniq(array,props)
-		 }else{
-			  return XEUtils.uniq(array)
-		 }
-	   
-	  } else {
-	    return "参数错误"
-	  }
+	return XEUtils.uniq(array,props)
 }
 
 //获取一个指定范围内随机数
 function random (min, max){
-	 if (min, max) {
-		return XEUtils.random(min, max)
-	  } else {
-	    return "参数错误"
-	  }
+	 return XEUtils.random(min, max)
+}
+
+//获取数组最小值
+function min (arr,props){
+	  return XEUtils.min(arr,props)
+}
+
+//获取数组最大值
+function max (arr,props){
+	return XEUtils.max(arr,props)
+}
+
+// 将数值四舍五入
+function round  (num, digits){
+	return XEUtils.round(num, digits)
 }
 
 export default{
 	groupBy,
 	uniq,
 	orderBy,
-	random
+	random,
+	min,
+	max,
+	round
 }
