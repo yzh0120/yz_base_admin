@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="panel" :class="addType">
-      <div class="panel-heading" @click="bodyHandle">
-			  <slot name="head"></slot>
+      <div :class="[`panel-heading`]" @click="bodyHandle" :style="{fontSize:sizeComputed}">
+			<div  v-if="head">{{head}}</div>
+			<slot name="head"></slot>
       </div>
       <div class="panel-body" :style="{height:height}">
 		<div  ref="innerBodyBody" style="padding: 15px;">
@@ -22,66 +23,76 @@
 	 -->
 <script>
 	import elementResizeDetectorMaker from 'element-resize-detector'
-export default {
-  props: {
-    head: String,
-    type: {
-      type: String,
-      default: "primary"
-    },
-    close:{
-      default: false
-    }
-  },
-  computed:{
-	  addType(){
-		  return "panel-" + this.type
+	export default {
+	  props: {
+		head: String,
+		type: {
+			type: String,
+			default: "primary"
+		},
+		close:{
+			default: false
+		},
+		size:{
+			type:String,
+			default: ""
+		}
 	  },
-  },
-  data() {
-    return {
-      showBody: true,
-	  height:"0px",
-	  count:0,
-    };
-  },
-  mounted(){
-    if(this.close){
-      this.showBody = false
-    }
-	
-	const _this = this;
-	const erd = elementResizeDetectorMaker()
-	erd.listenTo(_this.$refs.innerBodyBody,(element)=>{
-		_this.$nextTick(()=>{
-			if(this.count === 0){
-				
-			}else{
-				if(this.showBody){
-					_this.height = element.offsetHeight+'px'
+	  computed:{
+		  addType(){
+			  return "panel-" + this.type
+		  },
+		  sizeComputed(){
+			  let size = this.size
+			  if(size == "big"){
+				  return  "30px"
+			  }
+		  },
+	  },
+	  data() {
+		return {
+		  showBody: true,
+		  height:"0px",
+		  count:0,
+		};
+	  },
+	  mounted(){
+		if(this.close){
+		  this.showBody = false
+		}
+		
+		const _this = this;
+		const erd = elementResizeDetectorMaker()
+		erd.listenTo(_this.$refs.innerBodyBody,(element)=>{
+			_this.$nextTick(()=>{
+				if(this.count === 0){
+					
 				}else{
+					if(this.showBody){
+						_this.height = element.offsetHeight+'px'
+					}else{
+						
+					}
 					
 				}
-				
-			}
-			this.count++ 
+				this.count++ 
+			})
 		})
-	})
-  },
-  methods: {
-    bodyHandle() {
-      // 
-	  if(this.showBody){
-		  this.height = "0px"
-	  }else{
-		  this.height = this.$refs.innerBodyBody.offsetHeight+'px'
+	  },
+	  methods: {
+		bodyHandle() {
+		  // 
+		  if(this.showBody){
+			  this.height = "0px"
+		  }else{
+			  this.height = this.$refs.innerBodyBody.offsetHeight+'px'
+		  }
+		  this.showBody = !this.showBody;
+		  console.log(this.showBody)
+		},
+		
 	  }
-	  this.showBody = !this.showBody;
-	  console.log(this.showBody)
-    },
-	
-  }
-};
+	};
 </script>
     
 <style scoped lang="scss">
