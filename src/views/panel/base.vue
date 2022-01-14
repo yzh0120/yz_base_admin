@@ -1,6 +1,6 @@
 <template>
     <page>
-        <panel :close="true" size="big">
+        <panel :close="true" size="h1">
             <div slot="head" >
                 主题色
             </div>

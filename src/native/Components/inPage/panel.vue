@@ -44,8 +44,12 @@
 		  },
 		  sizeComputed(){
 			  let size = this.size
-			  if(size == "big"){
-				  return  "30px"
+			  if(size == "h1"){
+				  return  "32px"
+			  }else if(size == "h2"){
+				  return  "24px"
+			  }else if(size == "h3"){
+				  return  "18.72px"
 			  }
 		  },
 	  },
