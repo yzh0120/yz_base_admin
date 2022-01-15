@@ -7,8 +7,9 @@
 			<div style="padding-left: 20px;">
 				<el-divider>选择主题</el-divider>
 				<el-radio-group v-model="$store.state.setup.navStyle">
-					<el-radio label="theme-nav">theme</el-radio>
+					<el-radio label="element-nav">element</el-radio>
 					<el-radio label="black-nav">black</el-radio>
+					<el-radio label="purple-nav">purple</el-radio>
 				</el-radio-group>
 			</div>
 		</el-drawer>

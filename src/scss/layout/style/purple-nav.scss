@@ -1,6 +1,10 @@
 
-.theme-nav{
-	
+.purple-nav{
+	/*
+	 CSS :root 声明全局变量,var()函数 (主题切换)
+		https://blog.csdn.net/qq_41560520/article/details/117918349?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
+	 */
+	// 导航栏
 	$menuBg : rgb(240,240,240);//背景色
 	$color:rgb(141,141,141);
 	$primaryColor:rgb(117,102,245);

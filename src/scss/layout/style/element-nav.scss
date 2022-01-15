@@ -1,14 +1,14 @@
 
 
-.black-nav{
-	/*
-	 CSS :root 声明全局变量,var()函数 (主题切换)
-		https://blog.csdn.net/qq_41560520/article/details/117918349?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
-	 */
-	// 导航栏
+.element-nav{
+	/*  
+    CSS :root 声明全局变量,var()函数 (主题切换)
+	https://blog.csdn.net/qq_41560520/article/details/117918349?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
+    */
+   // 导航栏
 	$menuBg : black;//背景色
 	$color:#bfcbd9;//默认字体颜色
-	$primaryColor:#009688;
+	$primaryColor:#409eff;
 	//侧边栏
 	.el-aside{
 		font-size: 14px;
@@ -49,7 +49,10 @@
 		
 	}
     
-	
+	/* ********************************************************************************************************************
+	导航栏 
+	*/
+	//侧边栏
 	.sidebar-container {
 	    background-color: $menuBg  !important;//侧边栏背景色
 	}
@@ -107,7 +110,10 @@
 	  color: $color !important; //的文本颜色
 	}
 	
-	/* tagView */
+
+	/* ********************************************************************************************************************
+	tagView
+	*/
 	.tags-view-container{
 		//右键菜单
 		.contextmenu {
@@ -200,7 +206,9 @@
 			}
 		}
 	}
-	/* head-top */
+	/* ********************************************************************************************************************
+	.head-top
+	*/
 	.head-top{
 		// .el-breadcrumb{/* 面包屑 */
 		// 	color: $primaryColor !important;
