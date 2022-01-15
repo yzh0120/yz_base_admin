@@ -102,18 +102,18 @@
 			    <span>数据可视化</span>
 			  </div>
 			<el-tabs v-model="activeName" >
-			    <el-tab-pane label="流量趋势" name="1">
-					<ve-line :data="chartData" :settings="chartSettings_stack" ref="chart1"></ve-line>
+			    <el-tab-pane label="流量趋势" name="1" lazy>
+					<ve-line :data="chartData" :settings="chartSettings_stack" ></ve-line>
 				</el-tab-pane>
-			    <el-tab-pane label="访问量" name="2">
-					<ve-histogram :data="chartData" :settings="chartSettings" ref="chart2"></ve-histogram>
+			    <el-tab-pane label="访问量" name="2" lazy>
+					<ve-histogram :data="chartData" :settings="chartSettings" ></ve-histogram>
 				</el-tab-pane>
 			</el-tabs>
 	    </el-card>
 		
 		<div class="eye hidden-md-and-up">
-			<ve-line :data="chartData" :settings="chartSettings_stack" ref="chart1"></ve-line>
-			<ve-histogram :data="chartData" :settings="chartSettings" ref="chart2"></ve-histogram>
+			<ve-line :data="chartData" :settings="chartSettings_stack" ></ve-line>
+			<ve-histogram :data="chartData" :settings="chartSettings" ></ve-histogram>
 		</div>
 		<!-- </div> -->
 		
@@ -182,15 +182,7 @@ export default{
 		console.log(this.$fn.date.diff(new Date(),'2018-01-01'),'1111111111----')
 	},
 	watch: {
-		/* 
-		 在一个初始宽度未知的容器内绘制图表时，因为无法获取宽度，所以图表会绘制失败，
-		 解决的办法是在容器宽度已知后， 调用echarts的resize方法。
-		 */
-		activeName (v) {
-			this.$nextTick(_ => {
-			  this.$refs[`chart${v}`].echarts.resize()
-			})
-		}
+
 	}
 }
 

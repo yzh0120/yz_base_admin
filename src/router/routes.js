@@ -57,7 +57,7 @@ const routes = [
 			meta: {
 				title: '首页',
 				// hidden:true,
-				icon: 'shouye',
+				icon: 'dashboard',
 				fixed: true//"/base"//fullPath
 			}
 		}]
