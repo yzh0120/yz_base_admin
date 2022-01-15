@@ -4,7 +4,7 @@
 		
 		<el-checkbox-group v-model="memberList" class="box">
 		        <div v-for="(item, index) in tableData" :key="index" class="div">
-		          <el-card c shadow="hover">
+		          <el-card  shadow="hover">
 		            <el-checkbox :label="item">
 		              <svgIcon :icon="item" className="aaa" ></svgIcon>
 		            </el-checkbox>
@@ -19,7 +19,7 @@
 		data(){
 			return {
 				memberList:[],
-				tableData:["shouye","3column","column-4","add","add-circle","adjust","arrow-up-circle","arrow-right-circle"
+				tableData:["zhankai","3column","column-4","add","add-circle","adjust","arrow-up-circle","arrow-right-circle"
 				,"arrow-down","ashbin","arrow-right","browse","back","bad","arrow-double-left","arrow-left-circle"]
 			}
 		}
