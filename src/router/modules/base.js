@@ -141,6 +141,46 @@ export default {
 			        title: '跳转',//修改
 			        icon: 'e64f;',
 			    }
+			},
+			
+			// {
+			//     path: 'transition',//修改
+			//     name: 'base-css-vue-transition-transition',//修改
+			//     component: () => import(/* webpackChunkName: "css-base" */ "@/views/base/css/vue/transition.vue"),//修改
+			//     meta: {
+			//         title: '单个元素transition',//修改
+			//         icon: 'e64f;',
+			//     }
+			// },
+			
+			{
+			    path: 'vue-transition',//修改
+			    name: 'base-css-vue-transition',//修改
+			    component: blank,
+			    meta: {
+			        title: 'vue过渡',//修改
+			        icon: 'e64f;',
+			    },
+				children:[
+					{
+					    path: 'transition',//修改
+					    name: 'base-css-vue-transition-transition',//修改
+					    component: () => import(/* webpackChunkName: "base-css-vue-transition-transition" */ "@/views/base/css/vue/transition.vue"),//修改
+					    meta: {
+					        title: '单个元素transition',//修改
+					        icon: 'e64f;',
+					    }
+					},
+					{
+					    path: 'transitionGroup',//修改
+					    name: 'base-css-vue-transition-transitionGroup',//修改
+					    component: () => import(/* webpackChunkName: "base-css-vue-transition-transitionGroup" */ "@/views/base/css/vue/transitionGroup.vue"),//修改
+					    meta: {
+					        title: 'transitionGroup',//修改
+					        icon: 'e64f;',
+					    }
+					},
+				]
 			}
 		 ]
 	   }
