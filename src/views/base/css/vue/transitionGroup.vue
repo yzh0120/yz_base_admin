@@ -1,5 +1,9 @@
 <template>
 		<page>
+			<!-- Vue：关于transition-group过渡动画，别再踩这个坑了！ -->
+			<!-- 千万要在需要过渡动画的父组件上加上相对定位，指的是 transition-group
+			    子组件上加上绝对定位!  指的是 transition-group 组件里的元素-->
+				
 			<!-- transition-group 的动画样式和 transition  通用 -->
 			<el-card class="box-card">
 			  <div slot="header" class="clearfix">
