@@ -85,7 +85,8 @@
          // reject();
  		return false;
        } else
-       if (item.type && item.type.length && !item.type.some(p => p == activeFileType)) {
+       // if (item.type && item.type.length && !item.type.some(p => p == activeFileType)) {//!item.type.includes(activeFileType)
+	   if (item.type && item.type.length && !item.type.includes(activeFileType)) {
          this.$message.error(`请上传正确的文件类型`);
          this.btnDisabled = !this.btnDisabled;
          // reject();
