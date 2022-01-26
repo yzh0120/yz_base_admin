@@ -11,9 +11,10 @@
  <!--  -->
 <template>
 
-  <el-input v-model="data[item.field]" :type="item.type" :disabled="item.disabled" :placeholder="_getPlaceholder(item)"  @clear="setValueNull"
-   @blur="blur(data[item.field])" @focus="focus(data[item.field])" clearable  :class="[item.btn?'self_btn':'']"
-  :maxlength="item.max">
+  <el-input v-model="data[item.field]" :type="item.type" :disabled="item.disabled" :placeholder="_getPlaceholder(item)" 
+   @clear="setValueNull"  @blur="blur(data[item.field])" @focus="focus(data[item.field])" @input="input(data[item.field])" 
+   clearable  :class="[item.btn?'self_btn':'']"
+	:maxlength="item.max">
     <template slot="prepend" v-if="item.prepend">{{item.prepend}}</template>
     <template slot="append" v-if="item.append">{{item.append}}</template>
 <!-- style="background:#409EFF;color:#fff;" -->
@@ -48,6 +49,12 @@ export default {
         value: null
       });
     },
+	input(value) {
+	      this.$emit("baseFormEvent", {
+	        event: "input",
+	        value: value,
+	      });
+	},
 	setValueNull(nowValue) {
 	  this.$emit("baseFormEvent", {
 	    event: "clear",
