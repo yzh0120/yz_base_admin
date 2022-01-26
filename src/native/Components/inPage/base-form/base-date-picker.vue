@@ -10,11 +10,11 @@
  
  年     月(包括年) 日期    多个日期   星期几   日期时间   日期时间范围    日期范围      月份范围(包括年)
  year  /month     /date   /dates   / week  /  datetime  /datetimerange/ daterange  /  monthrange
- -->
+ :picker-opt="item.opt" -->
 <template>
 	<el-date-picker style="width: 100%;" v-model="data[item.field]" :type="item.type" :value-format="valueFormat" 
-  :picker-opt="item.opt" clearable :disabled="item.disabled" :placeholder="_getPlaceholder(item)" @change="change" 
-   start-placeholder="开始日期" range-separator="至" end-placeholder="结束日期"/>
+   clearable :disabled="item.disabled" :placeholder="_getPlaceholder(item)" @change="change" 
+   start-placeholder="开始日期" range-separator="至" end-placeholder="结束日期" :picker-options="item.pickerOpt"/>
 	<!-- <div>
 		<template v-if="item.type!='daterange'">
 			<el-date-picker style="width: 100%;" v-model="data[item.field]" :type="item.type" :value-format="valueFormat"

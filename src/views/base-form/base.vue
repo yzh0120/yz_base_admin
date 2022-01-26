@@ -71,7 +71,25 @@
 						/*******************************************************日期*/ 
 						
 						{type:"date",field:"__date",title:"日期选择器"},
-
+						{type:"date",field:"__date_scoped",title:"日期时间限制选择器", pickerOpt:{
+								onPick: (obj) => {
+									// this.pickerMinDate = new Date(obj.minDate).getTime();
+									// console.log(obj)
+								},
+								disabledDate:(time)=> {
+									// console.log(time,"----",this.pickerMinDate)
+									// if (this.pickerMinDate) {
+									// 	const day1 =  366 * 24 * 3600 * 1000
+									// 	let maxTime = this.pickerMinDate + day1
+									// 	let minTime = this.pickerMinDate - day1
+									// 	return time.getTime() > maxTime || time.getTime()<minTime || time.getTime() > Date.now()-1 * 24 * 3600 * 1000
+									// }else{
+									// 	return time.getTime() > Date.now()-1 * 24 * 3600 * 1000
+									// }
+									return time.getTime() < Date.now()- 730 * 24 * 3600 * 1000
+								}
+							},
+						},
 						{type:"daterange",field:"__daterange",title:"日期段选择器"},
 						
 						/*******************************************************时间*/ 
