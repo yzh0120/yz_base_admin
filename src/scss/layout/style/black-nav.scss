@@ -233,7 +233,25 @@
 		// 	}
 		// }
 	}
-	
+	/* ********************************************************************************************************
+	form组件
+	 */
+	.self_btn .el-input-group__append {
+		background-color: $primaryColor !important;
+		border: 1px solid $primaryColor !important;
+		border-left: 0 !important;
+		color: white !important;
+		 &:hover{
+			 color: white !important;
+		 }
+		 .el-button--default:not(.el-button--primary):active,
+		 .el-button--default:not(.el-button--primary):focus, 
+		 .el-button--default:not(.el-button--primary):hover{
+			 &{
+							 color: white !important;// 抵消换肤带来的副作用
+			 }
+		 }
+	}
 	/* ********************************************************************************************************* 
 	element ui*/
 	@import "@/scss/layout/style/global/element.scss";

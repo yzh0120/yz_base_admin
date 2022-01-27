@@ -144,6 +144,7 @@
 
 <script>
 	import baseInput from "./base-input.vue";
+	import baseInputrange from "./base-inputrange.vue";
 	import baseTreeselect from "./base-treeselect.vue";
 	import basePassword from "./base-password.vue";
 	import baseTextarea from "./base-textarea.vue";
@@ -168,6 +169,7 @@
 			baseCheckbox,
 			baseAuto,
 			baseTreeselect,
+			baseInputrange,
 		},
 		props: {
 			data: {
@@ -341,7 +343,9 @@
 					return "baseTimeSelect";
 				} else if (componentType == "date" || componentType == "datetime" || componentType == "daterange") {
 					return "baseDatePicker";
-				}
+				}else if (componentType == "inputrange" ) {
+					return "baseInputrange";
+				} 
 			},
 			event(e, item) {
 				Object.assign(e, {

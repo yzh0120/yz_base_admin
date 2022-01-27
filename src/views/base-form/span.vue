@@ -21,7 +21,7 @@
 						},
 						
 						
-
+						{ type:"inputrange",field:"__inputrange",title:"输入框"},
 						{type:"password",field:"__password",title:"密码框"},
 						
 						// {type:"textarea",field:"__textarea",title:"文本域",row:4},

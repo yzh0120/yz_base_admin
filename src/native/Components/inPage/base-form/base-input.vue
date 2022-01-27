@@ -55,10 +55,10 @@ export default {
 	        value: value,
 	      });
 	},
-	setValueNull(nowValue) {
+	setValueNull() {
 	  this.$emit("baseFormEvent", {
 	    event: "clear",
-	    value: nowValue
+	    value: undefined
 	  });
 	},
   },

@@ -1,7 +1,7 @@
 <template>
 	<page>
 		
-		<base-form :data="formData" ref="form" ></base-form>
+		<base-form :data="formData" ref="form" @event="event"></base-form>
 		
 		<el-button type="text" @click="go">数据</el-button>
 	</page>
@@ -24,6 +24,8 @@
 						{ type:"input",field:"__input1",title:"输入框",btn:"搜索"},
 
 						{ type:"input",field:"__input11",title:"输入框",append:"元"},
+						
+						{ type:"inputrange",field:"__inputrange",title:"输入框"},
 						/*******************************************************treeselect*/ 
 						{ type:"treeselect",field:"__treeselect",title:"树选择",opt:[], 
 						// props :(node) =>{return { id: node.key,label: node.name,children: node.subOptions,}},
@@ -134,6 +136,9 @@
 				this._set(this.formData, "__treeselectCreate",{opt:arr});
 		},
 		methods:{
+			event(e){
+				console.log(e)
+			},
 			remote(query){
 				let arr = [{text1:query+"选项一",value1:1},{text1:query+"选项二",value1:2}]
 				this._set(this.formData, "__selectFilter",{opt:arr});
