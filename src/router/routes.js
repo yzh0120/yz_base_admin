@@ -70,7 +70,7 @@ const routes = [
 	baseTable,//封装表格
 	baseForm,//封装表单
 	alert,//弹窗
-	svgIcon,//svgIcon
+	// svgIcon,//svgIcon
 	panel,//折叠框
 	VCharts,//图表
 	// file, //文件

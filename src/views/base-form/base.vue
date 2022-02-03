@@ -12,6 +12,28 @@ export default {
       formData: {
         list: [
           {
+            type: "treeselect",
+            field: "__treeselect",
+            title: "树选择",
+            opt: [],
+            id: "id1",
+            text: "label1",
+            children: "subOptions",
+            rules: [{ required: true, message: "请输入", trigger: "blur" }],
+          },
+          {
+            type: "treeselect",
+            field: "__treeselectCreate",
+            title: "多选树选择",
+            opt: [],
+            mult: true,
+            id: "id1",
+            text: "label1",
+            children: "subOptions",
+            rules: [{ required: true, message: "请输入", trigger: "blur" }],
+          },
+          ////////////////////////////////////////////////////////////////////////
+          {
             type: "input",
             field: "_input",
             title: "普通输入框",
@@ -178,6 +200,35 @@ export default {
         titleWidth: "160px",
       },
     };
+  },
+  mounted() {
+    let arr = [
+      {
+        id1: "a",
+        label1: "a",
+        subOptions: [
+          {
+            id1: "aa",
+            label1: "aa",
+          },
+          {
+            id1: "ab",
+            label1: "ab",
+          },
+        ],
+      },
+      {
+        id1: "b",
+        label1: "b",
+      },
+      {
+        id1: "c",
+        label1: "c",
+      },
+    ];
+    this._set(this.formData, "__treeselect", { opt: arr });
+
+    this._set(this.formData, "__treeselectCreate", { opt: arr });
   },
   methods: {
     //下拉框的本地过滤函数  有一点问题  目前建议用 select_remote 代替
