@@ -35,330 +35,445 @@
  -->
 
 <template>
-	<el-form ref="form" class="page-form"  :model="formData" :label-width="labelWidth" style="margin-top: 20px;"
-		:inline="inline" :size="size" @submit.native.prevent :disabled="disabled" >
-		<div v-if="againShow">
-		<!-- 是否响应式 -->
-		<template v-if="isRow">
-			<!-- <el-row v-if="isRow"> -->
-			<el-row>
-				<el-col :xs="item.xs" :sm="item.sm" :md="item.md" :lg="item.lg" :xl="item.xl"
-					v-for="(item, index) in for_List" :key="index+`row`">
-					<!-- show(item.show) -->
-					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
-						<!-- 是否悬浮提示 -->
-						<el-tooltip class="item" effect="dark" placement="right"
-							v-if="item.tip && formData[item.field]">
-							<div slot="content">{{formData[item.field]}}</div>
-							<!-- 是否插槽 -->
-							<template v-if="item.slot">
-								<slot :name="item.slot" />
-							</template>
-							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
-								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
+  <el-form
+    ref="form"
+    class="page-form"
+    :model="formData"
+    :label-width="labelWidth"
+    style="margin-top: 20px"
+    :inline="inline"
+    :size="size"
+    @submit.native.prevent
+    :disabled="disabled"
+  >
+    <div v-if="againShow">
+      <!-- 是否响应式 -->
+      <template v-if="isRow">
+        <!-- <el-row v-if="isRow"> -->
+        <el-row>
+          <el-col
+            :xs="item.xs"
+            :sm="item.sm"
+            :md="item.md"
+            :lg="item.lg"
+            :xl="item.xl"
+            v-for="(item, index) in for_List"
+            :key="index + `row`"
+          >
+            <!-- show(item.show) -->
+            <el-form-item
+              v-if="show(item.show)"
+              :prop="item.field"
+              :label="item.title"
+              :rules="item.rules"
+            >
+              <!-- 是否悬浮提示 -->
+              <el-tooltip
+                class="item"
+                effect="dark"
+                placement="right"
+                v-if="item.tip && formData[item.field]"
+              >
+                <div slot="content">{{ formData[item.field] }}</div>
+                <!-- 是否插槽 -->
+                <template v-if="item.slot">
+                  <slot :name="item.slot" />
+                </template>
+                <component
+                  :is="currentComponent(item.type)"
+                  :item="item"
+                  :bossData="data"
+                  @baseFormEvent="
+                    (e) => {
+                      event(e, item);
+                    }
+                  "
+                  :data="formData"
+                  v-else
+                  :dis="disabled"
+                />
+              </el-tooltip>
 
-						</el-tooltip>
+              <div v-else>
+                <template v-if="item.slot">
+                  <slot :name="item.slot" />
+                </template>
+                <component
+                  :is="currentComponent(item.type)"
+                  :item="item"
+                  :bossData="data"
+                  @baseFormEvent="
+                    (e) => {
+                      event(e, item);
+                    }
+                  "
+                  :data="formData"
+                  v-else
+                  :dis="disabled"
+                />
+              </div>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <!-- 比如 搜索页面居中的按钮 -->
+        <slot />
+      </template>
 
-						<div v-else>
-							<template v-if="item.slot">
-								<slot :name="item.slot" />
-							</template>
-							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
-								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
-						</div>
-					</el-form-item>
-				</el-col>
+      <!-- 是否span -->
+      <template v-else-if="span">
+        <!-- <el-row v-if="isRow"> -->
+        <el-row>
+          <el-col
+            :span="item.span ? item.span : 8"
+            v-for="(item, index) in for_List"
+            :key="index + `span`"
+          >
+            <!-- show(item.show) -->
+            <el-form-item
+              v-if="show(item.show)"
+              :prop="item.field"
+              :label="item.title"
+              :rules="item.rules"
+            >
+              <!-- 是否悬浮提示 -->
+              <el-tooltip
+                class="item"
+                effect="dark"
+                placement="right"
+                v-if="item.tip && formData[item.field]"
+              >
+                <div slot="content">{{ formData[item.field] }}</div>
+                <!-- 是否插槽 -->
+                <template v-if="item.slot">
+                  <slot :name="item.slot" />
+                </template>
+                <component
+                  :is="currentComponent(item.type)"
+                  :item="item"
+                  :bossData="data"
+                  @baseFormEvent="
+                    (e) => {
+                      event(e, item);
+                    }
+                  "
+                  :data="formData"
+                  v-else
+                  :dis="disabled"
+                />
+              </el-tooltip>
 
-			</el-row>
-			<!-- 比如 搜索页面居中的按钮 -->
-			<slot />
-		</template>
-		
-		<!-- 是否span -->
-		<template v-else-if="span">
-			<!-- <el-row v-if="isRow"> -->
-			<el-row>
-				<el-col :span="item.span ? item.span : 8" 
-					v-for="(item, index) in for_List" :key="index+`span`">
-					<!-- show(item.show) -->
-					<el-form-item v-if="show(item.show)" :prop="item.field" :label="item.title" :rules="item.rules">
-						<!-- 是否悬浮提示 -->
-						<el-tooltip class="item" effect="dark" placement="right"
-							v-if="item.tip && formData[item.field]">
-							<div slot="content">{{formData[item.field]}}</div>
-							<!-- 是否插槽 -->
-							<template v-if="item.slot">
-								<slot :name="item.slot" />
-							</template>
-							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
-								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
-		
-						</el-tooltip>
-		
-						<div v-else>
-							<template v-if="item.slot">
-								<slot :name="item.slot" />
-							</template>
-							<component :is="currentComponent(item.type)" :item="item" :bossData="data"
-								@baseFormEvent="(e)=>{event(e,item)}" :data="formData" v-else :dis="disabled"/>
-						</div>
-					</el-form-item>
-				</el-col>
-		
-			</el-row>
-			<!-- 比如 搜索页面居中的按钮 -->
-			<slot />
-		</template>
-		
-		<!-- 不是响应式 -->
-		<template v-else>
-			<!-- show(item.show) -->
-			<el-form-item v-for="(item, index) in for_List" v-if="show(item.show)" :key="index+'normal'" :prop="item.field"
-				:label="item.title"  :rules="item.rules" >
+              <div v-else>
+                <template v-if="item.slot">
+                  <slot :name="item.slot" />
+                </template>
+                <component
+                  :is="currentComponent(item.type)"
+                  :item="item"
+                  :bossData="data"
+                  @baseFormEvent="
+                    (e) => {
+                      event(e, item);
+                    }
+                  "
+                  :data="formData"
+                  v-else
+                  :dis="disabled"
+                />
+              </div>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <!-- 比如 搜索页面居中的按钮 -->
+        <slot />
+      </template>
 
-				<el-tooltip class="item" effect="dark" placement="right" v-if="item.tip && formData[item.field]">
-					<div slot="content">{{formData[item.field]}}</div>
+      <!-- 不是响应式 -->
+      <template v-else>
+        <!-- show(item.show) -->
+        <el-form-item
+          v-for="(item, index) in for_List"
+          v-if="show(item.show)"
+          :key="index + 'normal'"
+          :prop="item.field"
+          :label="item.title"
+          :rules="item.rules"
+        >
+          <el-tooltip
+            class="item"
+            effect="dark"
+            placement="right"
+            v-if="item.tip && formData[item.field]"
+          >
+            <div slot="content">{{ formData[item.field] }}</div>
 
-					<template v-if="item.slot">
-						<slot :name="item.slot" />
-					</template>
-					<component :is="currentComponent(item.type)" :item="item" @baseFormEvent="(e)=>{event(e,item)}"
-						:data="formData" v-else :dis="disabled" :bossData="data"/>
+            <template v-if="item.slot">
+              <slot :name="item.slot" />
+            </template>
+            <component
+              :is="currentComponent(item.type)"
+              :item="item"
+              @baseFormEvent="
+                (e) => {
+                  event(e, item);
+                }
+              "
+              :data="formData"
+              v-else
+              :dis="disabled"
+              :bossData="data"
+            />
+          </el-tooltip>
 
-				</el-tooltip>
-
-				<div v-else>
-					<template v-if="item.slot">
-						<slot :name="item.slot" />
-					</template>
-					<component :is="currentComponent(item.type)" :item="item" @baseFormEvent="(e)=>{event(e,item)}"
-						:data="formData" v-else :dis="disabled" :bossData="data"/>
-				</div>
-			</el-form-item>
-			<!-- 比如 搜索页面居中的按钮 -->
-			<slot />
-		</template>
-		</div>
-	</el-form>
+          <div v-else>
+            <template v-if="item.slot">
+              <slot :name="item.slot" />
+            </template>
+            <component
+              :is="currentComponent(item.type)"
+              :item="item"
+              @baseFormEvent="
+                (e) => {
+                  event(e, item);
+                }
+              "
+              :data="formData"
+              v-else
+              :dis="disabled"
+              :bossData="data"
+            />
+          </div>
+        </el-form-item>
+        <!-- 比如 搜索页面居中的按钮 -->
+        <slot />
+      </template>
+    </div>
+  </el-form>
 </template>
 
 <script>
-	import baseInput from "./base-input.vue";
-	import baseInputrange from "./base-inputrange.vue";
-	import baseTreeselect from "./base-treeselect.vue";
-	import basePassword from "./base-password.vue";
-	import baseTextarea from "./base-textarea.vue";
-	import baseSelect from "./base-select.vue";
-	import baseTimeSelect from "./base-time-select.vue"; //时间选择器
-	import baseDatePicker from "./base-date-picker.vue"; //日期选择器
-	import baseSwitch from "./base-switch.vue"; //开关
-	import baseRadio from "./base-radio.vue"; //单选
-	import baseCheckbox from "./base-checkbox.vue"; //多选
-	import baseAuto from "./base-auto.vue"; //搜素过滤
-	export default {
-		components: {
-			basePassword,
-			baseTextarea,
-			baseInput,
-			baseSelect,
-			baseTimeSelect,
-			// baseDateTimePicker,
-			baseDatePicker,
-			baseSwitch,
-			baseRadio,
-			baseCheckbox,
-			baseAuto,
-			baseTreeselect,
-			baseInputrange,
-		},
-		props: {
-			data: {
-				type: Object,
-				default: () => {},
-			},
-			dis:{
-				default:false
-			}
-		},
-		data() {
-			return {
-				againShow: true,
-			}
-		},
-		watch: {
-			//!!!!!这个 只是为了 增加了 list成员,动态给data加个字段(不监听的话 在给新增加的成员赋值之前 此字段不会出现在fomInfo.data上)
-			//!!!!!如果新成员是 check  会报错(check内部做了处理就不会) (check要求默认值是[],所以对于字段有要求的  需像check组件在内部做处理),
-			// "data.list": {
-			// 	handler: function(newVal) {
-			// 		this._updatedata(this.data); 
-			// 		   // console.log("1111111")
-			// 	},
-			// 	// immediate: true,
-			// 	deep: true, // 深度监听
-			// },
-			"data.list.length": {//data.list.splice(index,1,{})  也能触发此watch
-				handler: function(newVal) {
-					this._addDis(this.data) //增加disabled  可以直接写在data:{}
-					//this._addShow(this.data) //增加show 因为只会写在watch(写在data:{}也有效果)  所以不watch 暂时不用
-					this._updatedata(this.data); 
-				},
-				// immediate: true,
-				// deep: true, // 深度监听
-			},
-		
-		},
-		created(){
-			this._updatedata(this.data);
-		},
-		mounted() {
-			//this._addShow(this.data) //增加show 因为只会写在watch(写在data:{}也有效果)  所以不watch 暂时不用
-			this._addDis(this.data) //增加disabled    可以直接写在data:{}
-			this.back(); // 将form实例返回到父级
-		},
-		computed: {
-			
-			disabled(){
-				return this.dis;
-			},
-			for_List() {
-				return this.data.list;
-			},
-			formData() {
-				return this.data.data;
-			},
-			labelWidth() {
-				 if (this.data.inline && !this.data.titleWidth) {
-				        return "";
-				      }
-				return this.data.titleWidth ? this.data.titleWidth : "100px";
-			},
-			span(){
-				return this.data.span;
-			},
-			isRow() {
-				if (this.data.isRow) {
-					let obj = {
-						xs:24 ,  //<768px
-						sm: 12,  //≥768px
-						md: 8,  //≥992px
-						lg: 8 ,   //≥1200px
-						xl:8 ,   //≥1920px
-					}
-					this.data.list.forEach((item) => {
-						item = Object.assign(item,obj,this.$fn.deepClone(item))
-					})
-				}
-				return this.data.isRow;
-			},
-			inline() {
-				if (this.data.isRow || this.data.span) {
-					return false
-				} else {
-					return this.data.inline;
-				}
+import baseInput from "./base-input.vue";
+import baseInputrange from "./base-inputrange.vue";
+import baseTreeselect from "./base-treeselect.vue";
+import basePassword from "./base-password.vue";
+import baseTextarea from "./base-textarea.vue";
+import baseSelect from "./base-select.vue";
+import baseTimeSelect from "./base-time-select.vue"; //时间选择器
+import baseDatePicker from "./base-date-picker.vue"; //日期选择器
+import baseSwitch from "./base-switch.vue"; //开关
+import baseRadio from "./base-radio.vue"; //单选
+import baseCheckbox from "./base-checkbox.vue"; //多选
+import baseAuto from "./base-auto.vue"; //搜素过滤
+export default {
+  components: {
+    basePassword,
+    baseTextarea,
+    baseInput,
+    baseSelect,
+    baseTimeSelect,
+    // baseDateTimePicker,
+    baseDatePicker,
+    baseSwitch,
+    baseRadio,
+    baseCheckbox,
+    baseAuto,
+    baseTreeselect,
+    baseInputrange,
+  },
+  props: {
+    data: {
+      type: Object,
+      default: () => {},
+    },
+    dis: {
+      default: false,
+    },
+  },
+  data() {
+    return {
+      againShow: true,
+    };
+  },
+  watch: {
+    //!!!!!这个 只是为了 增加了 list成员,动态给data加个字段(不监听的话 在给新增加的成员赋值之前 此字段不会出现在fomInfo.data上)
+    //!!!!!如果新成员是 check  会报错(check内部做了处理就不会) (check要求默认值是[],所以对于字段有要求的  需像check组件在内部做处理),
+    // "data.list": {
+    // 	handler: function(newVal) {
+    // 		this._updatedata(this.data);
+    // 		   // console.log("1111111")
+    // 	},
+    // 	// immediate: true,
+    // 	deep: true, // 深度监听
+    // },
+    "data.list.length": {
+      //data.list.splice(index,1,{})  也能触发此watch
+      handler: function (newVal) {
+        this._addDis(this.data); //增加disabled  可以直接写在data:{}
+        //this._addShow(this.data) //增加show 因为只会写在watch(写在data:{}也有效果)  所以不watch 暂时不用
+        this._updatedata(this.data);
+      },
+      // immediate: true,
+      // deep: true, // 深度监听
+    },
+  },
+  created() {
+    this._updatedata(this.data);
+  },
+  mounted() {
+    //this._addShow(this.data) //增加show 因为只会写在watch(写在data:{}也有效果)  所以不watch 暂时不用
+    this._addDis(this.data); //增加disabled    可以直接写在data:{}
+    this.back(); // 将form实例返回到父级
+  },
+  computed: {
+    disabled() {
+      return this.dis;
+    },
+    for_List() {
+      return this.data.list;
+    },
+    formData() {
+      return this.data.data;
+    },
+    labelWidth() {
+      if (this.data.inline && !this.data.titleWidth) {
+        return "";
+      }
+      return this.data.titleWidth ? this.data.titleWidth : "100px";
+    },
+    span() {
+      return this.data.span;
+    },
+    isRow() {
+      if (this.data.isRow) {
+        let obj = {
+          xs: 24, //<768px
+          sm: 12, //≥768px
+          md: 8, //≥992px
+          lg: 8, //≥1200px
+          xl: 8, //≥1920px
+        };
+        this.data.list.forEach((item) => {
+          item = Object.assign(item, obj, this.$fn.deepClone(item));
+        });
+      }
+      return this.data.isRow;
+    },
+    inline() {
+      if (this.data.isRow || this.data.span) {
+        return false;
+      } else {
+        return this.data.inline;
+      }
+    },
+    size() {
+      if (this.data.size) {
+        return this.data.size;
+      } else {
+        return "small";
+      }
+    },
+  },
+  methods: {
+    sync() {
+      this.againShow = false;
+      this.$nextTick(() => {
+        this.againShow = true;
+      });
+    },
+    reset() {
+      //不要在外部的reset方法里面
 
-			},
-			size() {
-				if (this.data.size) {
-					return this.data.size
-				} else {
-					return "small"
-				}
-			},
-		},
-		methods: {
-			sync(){
-				this.againShow  = false
-				this.$nextTick(()=>{
-					this.againShow  = true
-				})
-			},
-			reset(){//不要在外部的reset方法里面 
-				
-					
-				//1 如果在 create里面操作(不包括延迟函数)  this.formData.data.__input = 'create'/this.formData.data = {__input:"setTime mounted"}   
-					//reset返回create的初始值
-					
-				//2 如果没有在 create里面操作 this.formData.data.__input = '初始值'/this.formData.data = {__input:"setTime mounted"},
-					//reset返回data的初始值
-					
-					
-				//3  如果直接给this.data.data  赋值 ,在重置的时候 字段和字段的值不会变
-					
-				this.$refs.form.resetFields();
-				for (let key of Object.keys(this.data.data)) {
-				        this.data.data[key] = "";
-				}
-				
-				// for (let key of Object.keys(this.data.data)) {//解决问题 3
-				//        let res = Object.keys(this._dataxxx).some((key2)=>{
-				// 			return key == key2
-				// 		})
-						
-				// 		if(!res){
-				// 			this.data.data[key] = ""
-				// 		}
-				// }
-	
-				
-			},
-			check(){
-				let res = undefined
-				this.$refs.form.validate((valid)=>{
-					if (valid) {
-						res = true
-					  } else {
-						res = false
-					  }
-				})
-				return res
-			},
-			show(show) {
-				return show === false ? false : true;
-			},
-			back() {
-				this.data.dom = this.$refs.form; // 将form实例返回到父级
-			},
-			currentComponent(componentType) {
-				if (componentType == "auto") {
-					return "baseAuto";
-				}else if (componentType == "treeselect") {
-					return "baseTreeselect";
-				}  else if (componentType == "checkbox") {
-					return "baseCheckbox";
-				} else if (componentType == "radio") {
-					return "baseRadio";
-				} else if (componentType == "switch") {
-					return "baseSwitch";
-				} else if (componentType == "input") {
-					return "baseInput";
-				}else if (componentType == "password" ) {
-					return "basePassword";
-				}else if (componentType == "textarea" ) {
-					return "baseTextarea";
-				} 
-				else if (componentType == "select" ) {
-					return "baseSelect";
-				} else if (componentType == "time") {
-					return "baseTimeSelect";
-				} else if (componentType == "date" || componentType == "datetime" || componentType == "daterange") {
-					return "baseDatePicker";
-				}else if (componentType == "inputrange" ) {
-					return "baseInputrange";
-				} 
-			},
-			event(e, item) {
-				Object.assign(e, {
-					item: item
-				})
-				this.$emit("event", e);
-			},
-		},
-	};
+      //1 如果在 create里面操作(不包括延迟函数)  this.formData.data.__input = 'create'/this.formData.data = {__input:"setTime mounted"}
+      //reset返回create的初始值
+
+      //2 如果没有在 create里面操作 this.formData.data.__input = '初始值'/this.formData.data = {__input:"setTime mounted"},
+      //reset返回data的初始值
+
+      //3  如果直接给this.data.data  赋值 ,在重置的时候 字段和字段的值不会变
+
+      this.$refs.form.resetFields();
+      for (let key of Object.keys(this.data.data)) {
+        this.data.data[key] = "";
+      }
+
+      // for (let key of Object.keys(this.data.data)) {//解决问题 3
+      //        let res = Object.keys(this._dataxxx).some((key2)=>{
+      // 			return key == key2
+      // 		})
+
+      // 		if(!res){
+      // 			this.data.data[key] = ""
+      // 		}
+      // }
+    },
+    check() {
+      let res = undefined;
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          res = true;
+        } else {
+          res = false;
+        }
+      });
+      return res;
+    },
+    show(show) {
+      return show === false ? false : true;
+    },
+    back() {
+      this.data.dom = this.$refs.form; // 将form实例返回到父级
+    },
+    currentComponent(componentType) {
+      if (componentType == "auto") {
+        return "baseAuto";
+      } else if (componentType == "treeselect") {
+        return "baseTreeselect";
+      } else if (componentType == "checkbox") {
+        return "baseCheckbox";
+      } else if (componentType == "radio") {
+        return "baseRadio";
+      } else if (componentType == "switch") {
+        return "baseSwitch";
+      } else if (componentType == "input") {
+        return "baseInput";
+      } else if (componentType == "password") {
+        return "basePassword";
+      } else if (componentType == "textarea") {
+        return "baseTextarea";
+      } else if (componentType == "select") {
+        return "baseSelect";
+      } else if (componentType == "time") {
+        return "baseTimeSelect";
+      } else if (
+        // componentType == "date" ||
+        // componentType == "datetime" ||
+        // componentType == "daterange"
+
+        componentType == "year" ||
+        componentType == "month" ||
+        componentType == "date" ||
+        componentType == "dates" ||
+        componentType == "week" ||
+        componentType == "datetime" ||
+        componentType == "datetimerange" ||
+        componentType == "daterange" ||
+        componentType == "monthrange"
+      ) {
+        return "baseDatePicker";
+      } else if (componentType == "inputrange") {
+        return "baseInputrange";
+      }
+    },
+    event(e, item) {
+      Object.assign(e, {
+        item: item,
+      });
+      this.$emit("event", e);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
 <!-- 
 
