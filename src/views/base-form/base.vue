@@ -1,6 +1,6 @@
 <template>
   <page>
-    <base-form :data="formData" ref="form"></base-form>
+    <base-form :data="formData" ref="form" @event="event"></base-form>
   </page>
 </template>
 
@@ -13,7 +13,7 @@ export default {
         list: [
           {
             type: "input",
-            field: "__input",
+            field: "_input",
             title: "普通输入框",
             rules: [
               { required: true, message: "请输入", trigger: "blur" },
@@ -22,42 +22,42 @@ export default {
           },
           {
             type: "input",
-            field: "__input_prepend",
+            field: "_input_prepend",
             title: "前缀输入框",
             prepend: "前缀文字",
           },
           {
             type: "input",
-            field: "__input_append",
+            field: "_input_append",
             title: "后缀输入框",
             append: "后缀文字",
           },
           {
             type: "input",
-            field: "__input_btn",
+            field: "_input_btn",
             title: "按钮输入框",
             btn: "搜索",
           },
           {
             type: "password",
-            field: "__password",
+            field: "_password",
             title: "密码输入框",
           },
           {
             type: "textarea",
-            field: "__textarea",
+            field: "_textarea",
             title: "文本输入框",
             row: 5,
           },
           {
             type: "inputrange",
-            field: "__inputrange",
+            field: "_inputrange",
             title: "范围输入框",
           },
           ////////////////////////////////////////////////////////////////////////
           {
             type: "select",
-            field: "__select",
+            field: "_select",
             title: "普通下拉框",
             opt: [
               {
@@ -72,7 +72,7 @@ export default {
           },
           //   {
           //     type: "select",
-          //     field: "__select_filterFn",
+          //     field: "_select_filterFn",
           //     title: "过滤函数下拉框",
           //     filterFn: self.select_filterFn,
           //     opt: [
@@ -88,7 +88,7 @@ export default {
           //   },
           {
             type: "select",
-            field: "__select_remote",
+            field: "_select_remote",
             title: "远程过滤下拉框",
             opt: [
               { text: "选项一", value: 1 },
@@ -98,7 +98,7 @@ export default {
           },
           {
             type: "select",
-            field: "__select_mult",
+            field: "_select_mult",
             title: "多标签下拉框",
             opt: [
               { text: "选项一", value: 1 },
@@ -108,7 +108,7 @@ export default {
           },
           {
             type: "select",
-            field: "__select_create",
+            field: "_select_create",
             title: "创造标签下拉框",
             opt: [
               { text: "选项一", value: 1 },
@@ -134,7 +134,7 @@ export default {
           ////////////////////////////////////////////////////////////////////////
           {
             type: "switch",
-            field: "__switch",
+            field: "_switch",
             title: "开关",
             av: 1,
             iav: 0,
@@ -144,7 +144,7 @@ export default {
           ////////////////////////////////////////////////////////////////////////
           {
             type: "radio",
-            field: "__radio",
+            field: "_radio",
             title: "单选框",
             opt: [
               { text1: "单选一", value1: 1 },
@@ -156,7 +156,7 @@ export default {
           ////////////////////////////////////////////////////////////////////////
           {
             type: "checkbox",
-            field: "__checkbox",
+            field: "_checkbox",
             title: "多选框",
             opt: [
               { text1: "多选一", value1: 1 },
@@ -168,7 +168,7 @@ export default {
           ////////////////////////////////////////////////////////////////////////
           {
             type: "auto",
-            field: "__auto",
+            field: "_auto",
             title: "自动补全",
             filter: self.auto_filter,
             key: "value1",
@@ -187,7 +187,7 @@ export default {
         { text: "选项一", value: 1 },
         { text: "选项二", value: 2 },
       ];
-      this._set(this.formData, "__select_filterFn", { opt: arr });
+      this._set(this.formData, "_select_filterFn", { opt: arr });
     },
     //下拉框的远程过滤函数
     select_remote(query) {
@@ -196,7 +196,7 @@ export default {
         { text: query + "选项一", value: 1 },
         { text: query + "选项二", value: 2 },
       ];
-      this._set(this.formData, "__select_remote", { opt: arr });
+      this._set(this.formData, "_select_remote", { opt: arr });
     },
     //auto的自动补全
     auto_filter(queryStr, cd) {
@@ -212,6 +212,13 @@ export default {
         },
       ];
       cd(res);
+    },
+    event(e) {
+      if (e.item.field == "_input_btn") {
+        if ((e.event = "btn")) {
+          console.log(this.formData.data);
+        }
+      }
     },
   },
 };

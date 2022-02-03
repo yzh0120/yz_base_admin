@@ -6,24 +6,12 @@
 		  {type:  "" ,     field:"xxx" , title:"文字描述" ,tip:"悬浮显示内容" , xs:24,sm: 12, md: 8, lg: 8 , xl:8 , }//控件系列
 		  {slot: '插槽名', field:"xxx" , title:"文字描述" ,tip:"悬浮显示内容" , xs:24,sm: 12, md: 8, lg: 8 , xl:8 ,}//插槽
 	  ],
-	  data:{}                     保存表单结果的对象
+	  data:{}                     保存表单结果的对象  
 								  !!!! data.xxx  不改变内存地址
-								  1 可以直接在data里面写字段,在created  mounted  触发函数都可以通过data.xxx修改
-								  
-								  
-								  /*1可以直接在data里面写字段的值(赋值的时候,做了非空判断) 
-								  2可以在js里面 通过this.forminfo.data.xxx 必须在mounted及之后再设置
-								  注意点:{
-									  1 如果直接在data里面写字段的值,则可以在created里面修改,可以在mountd及以后,可以通过定时器/函数修改 data值
-									  2 如果没有直接在data里面写字段的值,不可以在created里面修改,不然在mountd及以后,定时器/函数都无法修改 data值
-										(现在在create 直接赋值或者定时器赋值,在mountd及以后,可以通过定时器/函数修改 data值)
-										
-									  
-									    
-								  }*/
+								  1 可以直接在data里面写字段,在 mounted  触发函数都可以通过data.xxx修改
+                      在created钩子函数中不要通过data..xxx修改值会导致问题
 								  !!!!!!!!!!改变内存地址
 								  data =  {}   不会报错(在任何钩子阶段都可以)  
-								  //this._setdata(this.formData,this.item)  在任何钩子阶段都可以(已作废)
 								  
 								  
 		dom:null 
@@ -347,7 +335,7 @@ export default {
         let obj = {
           xs: 24, //<768px
           sm: 12, //≥768px
-          md: 8, //≥992px
+          md: 12, //≥992px
           lg: 8, //≥1200px
           xl: 8, //≥1920px
         };

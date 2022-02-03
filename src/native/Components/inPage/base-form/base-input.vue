@@ -7,6 +7,7 @@
  btn:str                                    是否显示右部的按钮
  prepend:str                                是否显示前缀文字
  append:str                                 是否显示后缀文字
+ tip:true                                   内容溢出悬浮显示
  disabled:true                              禁用
  -->
  <!--  -->
