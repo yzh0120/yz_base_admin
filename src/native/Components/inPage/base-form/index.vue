@@ -3,22 +3,19 @@
   data:{
 	  必写
 	  list:[修改list的值只允许通过 setList  ,可以动态 push(item) splice() 等数组方法
-		  {type:  "" ,     field:"xxx" , title:"文字描述" ,tip:"悬浮显示内容" , xs:24,sm: 12, md: 8, lg: 8 , xl:8 , }//控件系列
-		  {slot: '插槽名', field:"xxx" , title:"文字描述" ,tip:"悬浮显示内容" , xs:24,sm: 12, md: 8, lg: 8 , xl:8 ,}//插槽
 	  ],
-	  data:{}                     保存表单结果的对象  
-								  !!!! data.xxx  不改变内存地址
-								  1 可以直接在data里面写字段,在 mounted  触发函数都可以通过data.xxx修改
+	  data:{}   保存表单结果的对象  
+								  !!!!!!!!!!data.xxx  不改变内存地址
+								     可以直接在data里面写字段,在 mounted  触发函数都可以通过data.xxx修改
                       在created钩子函数中不要通过data..xxx修改值会导致问题
 								  !!!!!!!!!!改变内存地址
-								  data =  {}   不会报错(在任何钩子阶段都可以)  
-								  
-								  
+								     data =  {}   不会报错(在任何钩子阶段都可以)  
 		dom:null 
 		可选:
 		titleWidth:"200px"                        表单的labelWidth   
 		isRow:flase                               是否响应式
 		inline：flase                             行内表单
+    span:true
   } 
  -->
 

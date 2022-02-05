@@ -143,7 +143,7 @@ export default {
 		    name: 'baseTable-shu-vxe',//修改
 		    component: () => import(/* webpackChunkName: "baseTable-shu" */ "@/views/base-table/shu-vxe.vue"),//修改
 		    meta: {
-		        title: '竖向table-vxe',//修改
+		        title: 'vxe竖向table',//修改
 		        icon: 'e63f;',
 		    }
 		},
