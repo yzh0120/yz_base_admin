@@ -11,7 +11,7 @@ import css from "./css.js"
 // import tagsView from "./tagsView.js"
 // import bigNumber from "./bigNumber.js"
 // // import axios from "./axios.js"
-// import print from "./print.js"
+import print from "./print.js"
 
 export default { 
 	path:"/other",
@@ -23,15 +23,15 @@ export default {
 		icon: 'e64f;',
 	},
 	children:[
-		business,
-		original,
+		// business,
+		// original,
 		css,
-		element,
-		scope,
-		socket,
-		flow,
-		tagsView,
-		bigNumber,
+		// element,
+		// scope,
+		// socket,
+		// flow,
+		// tagsView,
+		// bigNumber,
 		// axios,
 		print
 	],

@@ -10,11 +10,11 @@ import baseTable from "./modules/base-table.js"
 import baseForm from "./modules/base-form.js"
 import element from "./modules/element.js"
 import alert from "./modules/alert.js"
-import svgIcon from "./modules/svgIcon.js"
+// import svgIcon from "./modules/svgIcon.js"
 import panel from "./modules/panel.js"
 import VCharts from "./modules/VCharts.js"
 import pageLayout from "./modules/pageLayout.js"
-import file from "./modules/file.js"
+import print from "./modules/print.js"
 import base from "./modules/base.js"
 import axios from "./modules/axios.js"
 import tabsView from "./modules/tabsView.js"
@@ -81,7 +81,7 @@ const routes = [
 	tabsView,//tabsView
 	element,//element
 	icon,
-	
+	print,
 	base,//基础
 	
 
