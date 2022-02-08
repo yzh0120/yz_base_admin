@@ -239,6 +239,7 @@ function realAxios(method, url, data = {}, other = {}) {
 let other ={
 	tip:'提示//删除提示
 	load =: {加载动画   存在obj,必定是区域加载
+		  no:true  不加载动画
 		  obj : this.tableData,
 		  // loading : 'loading',
 		  text
