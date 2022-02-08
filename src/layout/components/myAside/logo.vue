@@ -2,11 +2,13 @@
   <div class="sidebar-logo-container" :class="{'collapse':isCollapse}">
     <!-- <transition name="sidebarLogoFade"> -->
       <router-link v-if="isCollapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" src="@/assets/imgs/ccc.png" class="sidebar-logo">
+        <!-- <img v-if="logo" src="@/assets/imgs/ccc.png" class="sidebar-logo"> -->
+		<img v-if="logo" src="https://s4.ax1x.com/2022/02/08/H1mmfH.png" class="sidebar-logo">
         <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" src="@/assets/imgs/ccc.png" class="sidebar-logo">
+        <!-- <img v-if="logo" src="@/assets/imgs/ccc.png" class="sidebar-logo"> -->
+		<img v-if="logo" src="https://s4.ax1x.com/2022/02/08/H1mmfH.png" class="sidebar-logo">
         <h1 class="sidebar-title">{{ title }} </h1>
       </router-link>
     <!-- </transition> -->
@@ -29,7 +31,7 @@ export default {
   data() {
     return {
       title: 'Vueasx',//民 信 惠
-      logo: "@/assets/imgs/mxh.png"
+      logo: "https://s4.ax1x.com/2022/02/08/H1mmfH.png"
     }
   }
 }

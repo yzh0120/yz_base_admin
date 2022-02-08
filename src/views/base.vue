@@ -137,7 +137,8 @@ export default{
         return {
 			demo:1231231231231231,
 			activeNames: ['1'],
-			img404:require("@/assets/imgs/404.png"),
+			// img404:require("@/assets/imgs/404.png"),
+			img404:"https://s4.ax1x.com/2022/02/08/H1mupd.png",
 			activeName:"1",
             chartData: {
               columns: ["日期", "访问用户", "下单用户"],

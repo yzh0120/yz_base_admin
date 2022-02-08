@@ -158,7 +158,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: url("../../assets/imgs/bg-login.png") no-repeat;
+		// background: url("../../assets/imgs/bg-login.png") no-repeat;
+		background: url("https://s4.ax1x.com/2022/02/08/H1mQXt.md.png") no-repeat;
 		background-size: 100% 100%;
 		// background-position: center;
 		
