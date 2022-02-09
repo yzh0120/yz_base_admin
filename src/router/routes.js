@@ -10,7 +10,6 @@ import baseTable from "./modules/base-table.js"
 import baseForm from "./modules/base-form.js"
 import element from "./modules/element.js"
 import alert from "./modules/alert.js"
-// import svgIcon from "./modules/svgIcon.js"
 import panel from "./modules/panel.js"
 import VCharts from "./modules/VCharts.js"
 import pageLayout from "./modules/pageLayout.js"
@@ -20,6 +19,7 @@ import axios from "./modules/axios.js"
 import tabsView from "./modules/tabsView.js"
 import scoped from "./modules/scoped.js"
 import icon from "./modules/icon.js"
+import menu from "./modules/menu.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -83,6 +83,7 @@ const routes = [
 	icon,
 	print,
 	base,//基础
+	menu//多级菜单
 	
 
 ]
