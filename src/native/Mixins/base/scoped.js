@@ -99,3 +99,25 @@ export default {
         }
   }
 }
+
+/* 
+#### 注意事项
++ 菜单页获取列表的方法要用getData()
++ 按钮权限控制，使用的是src/mixins/btn.js文件的方法：
+  + 新增：v-btn:add="btnArr"
+  + 编辑：v-btn:edit="btnArr"
+  + 删除：v-btn:del="btnArr"
+  + 导出：v-btn:export="btnArr"
+  + 查看：v-btn:detail="btnArr"
+  + 审核：v-btn:audit="btnArr"
+  + 复制：v-btn:copy="btnArr"
+  + 特批：v-btn:special="btnArr"
+  + 发起流程：v-btn:submitFlow="btnArr"
+  + 特批：v-btn:special="btnArr"
+  + 申请当期上会：v-btn:will="btnArr"
+  + 发起流程：v-btn:submitFlow="btnArr"
+
+
+> 页面需要使用按钮权限控制时，需要在data里面增加一个字段 btnPower:true 
+ 
+ */
