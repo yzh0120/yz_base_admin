@@ -22,6 +22,16 @@
 	   autoWidth:true
    }
 -->
+<!-- 
+    *
+	   head:[
+	   ]
+	   data:[{},{}],   
+     ！*
+
+-->
+
+
 
 <template>
   <el-table

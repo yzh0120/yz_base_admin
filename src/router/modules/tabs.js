@@ -1,20 +1,20 @@
 let layout = () => import("@/layout/index.vue")
 export default { 
-    path: '/panel',//修改
-    name: 'panel',//修改
-    redirect: {name:"panel-base"},//修改
+    path: '/tabs',//修改
+    name: 'tabs',//修改
+    redirect: {name:"tabs-one"},//修改
     component:  layout,
     meta: {
-        title: '封装伸缩框',//修改
+        title: '封装切换框',//修改
         icon: 'e62a;',
     },
     children: [
         {
             path: 'base',//修改
-            name: 'panel-base',//修改
-            component: () => import(/* webpackChunkName: "panel-base" */ "@/views/panel/base.vue"),//修改
+            name: 'tabs-one',//修改
+            component: () => import(/* webpackChunkName: "tabs-one" */ "@/views/tabs/one.vue"),//修改
             meta: {
-                title: '基础伸缩框',//修改
+                title: '平分宽度的切换框',//修改
                 icon: 'e627;',
             }
         },

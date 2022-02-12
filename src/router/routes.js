@@ -20,6 +20,8 @@ import tabsView from "./modules/tabsView.js"
 import scoped from "./modules/scoped.js"
 import icon from "./modules/icon.js"
 import menu from "./modules/menu.js"
+import otherTable from "./modules/otherTable.js"
+import tabs from "./modules/tabs.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -67,11 +69,14 @@ const routes = [
 	
 
 	scoped,//用户权限
-	baseTable,//封装表格
+	
 	baseForm,//封装表单
+	baseTable,//封装表格
+	otherTable,//其他表格
 	alert,//弹窗
 	// svgIcon,//svgIcon
 	panel,//折叠框
+	tabs,//切换框
 	VCharts,//图表
 	// file, //文件
 	axios,//axios
