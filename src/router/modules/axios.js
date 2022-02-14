@@ -9,7 +9,7 @@ export default {
     component:  layout,
 	meta:{
 		title: '-----',
-		icon: 'e623;',
+		icon: 'dashboard',
 	},
     children: [
         {
@@ -18,7 +18,7 @@ export default {
             component: () => import(/* webpackChunkName: "axios-base" */ "@/views/axios/base.vue"),//修改
             meta: {
                 title: 'axios封装',//修改
-                icon: 'e64f;',
+                icon: 'dashboard',
             }
         }
     ]

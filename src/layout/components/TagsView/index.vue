@@ -7,9 +7,14 @@
 	  ref="tag" :key="route.path" :class="isActive(route) ? 'active' : ''" 
 	  tag="span" class="tags-view-item" :to="{ path: route.path, query: route.query }"
 	  @contextmenu.prevent.native="openMenu(route, $event)">
-        <span class="titleText"> {{ route.meta.title }} </span>
-        <!-- 关闭 的 X -->
-        <span v-if="!_isFixed(route)" class="el-icon-close" @click.prevent.stop="_closeSelectedTag(route)" />
+	    
+		<div class="content">
+			<svgIcon :icon="route.meta.icon" className="titleIcon" v-if="route.meta.icon"></svgIcon>
+			<span class="titleText"> {{ route.meta.title }} </span>
+			<!-- 关闭 的 X -->
+			<span v-if="!_isFixed(route)" class="el-icon-close" @click.prevent.stop="_closeSelectedTag(route)" />
+		</div>
+		
       </router-link>
     </scroll-pane>
     <!-- 右键菜单 -->
