@@ -274,6 +274,10 @@
 			    color: white;
 			  }
 			}
+			// 单个tag的图标
+			.titleIcon{
+				display: none;
+			}
 			// 单个tag的文字
 			.titleText {
 			  transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;//.active 增加过渡

@@ -154,71 +154,11 @@ export default {
   overflow: hidden;
   .tags-view-wrapper {
     .tags-view-item {
-      // display: inline-block;
-      // position: relative;
-      // cursor: pointer;
-      // height: $tags-view-item; //改item高度 就修改这个 3
-      // line-height: $tags-view-item; //改item高度 就修改这个 4
-      // border: 1px solid #d8dce5;
-      // color: #495060;
-      // background: #fff;
-      // padding: 0 8px;
-      // font-size: 12px;
-      // margin-left: 5px;
-      // margin-top: 4px;
-      // border-radius: 2.5px;
-      // &:first-of-type {
-      //   margin-left: 15px;
-      // }
-      // &:last-of-type {
-      //   margin-right: 15px;
-      // }
-      //    &.active{
-      //      &::before {
-      //        content: "";
-      //        background: #1890ff;
-      //        display: inline-block;
-      //        width: 8px;
-      //        height: 8px;
-      //        border-radius: 50%;
-      //        position: relative;
-      //        margin-right: 2px;
-      //      }
-      //    }
-      // &:hover{
-      //  .titleText{
-      //  	padding-left:10px;
-      //  }
-      // }
-      // &.active,
-      // &:hover{
-      //  background-color: #e8f4ff;
-      //  color: #1890ff;
-      //  border-color: #1890ff;
-      //  .titleText{
-      //  	padding-right:10px;
-      //  }
-      // }
-
-      // &.active {
-      //   background-color: #e8f4ff;
-      //   color: #1890ff;
-      //   border-color: #1890ff;
-      //   &::before {
-      //     content: "";
-      //     background: #1890ff;
-      //     display: inline-block;
-      //     width: 8px;
-      //     height: 8px;
-      //     border-radius: 50%;
-      //     position: relative;
-      //     margin-right: 2px;
-      //   }
-      //   .titleText {
-      //     padding-right: 10px;
-      //     padding-left: 10px;
-      //   }
-      // }
+      .content{
+      			   display: flex;
+      			   justify-content: space-between;
+      			   align-items: center;
+      }
     }
   }
   .contextmenu {
