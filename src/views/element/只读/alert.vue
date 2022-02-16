@@ -43,6 +43,26 @@ const copymsg = this.$message({
  copymsg.close();
 -->
 
+
+<!-- 
+ 
+ this.$prompt("确定要作废该文件吗？请输入作废说明", "提示", {
+           confirmButtonText: "确定",
+           cancelButtonText: "取消",
+           inputType: "textarea",
+           // inputErrorMessage: "请输入作废说明",
+           // inputValidator: (value) => {
+           //   if (!value) {
+           //     return false
+           //   }
+           // }
+         })
+           .then(({ value }) => {
+             this.del(item, value);
+           })
+           .catch(() => {});
+ -->
+
 <!-- 
  $msgbox(options)                                                                   自定义
  $alert(message, title, options) 或 $alert(message, options)                          没有取消按钮
