@@ -28,6 +28,24 @@
 </template>
 
 <script>
+	/* 
+	 /*
+	  arr:[
+	     {
+	       name: "中标通知书",
+	       taskName: "中标通知书",
+	       detail: [],
+	       require: 0,
+	     },
+	     {
+	       name: "其他辅助资料",
+	       taskName: "其他辅助资料",
+	       detail: [],
+	       require: 0,
+	     }
+	   ],
+	  */
+	 
 import * as fileApi from "@/axios/api/file";
 import * as Cookie from "@/tools/cookjs.js";
 export default {
