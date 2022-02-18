@@ -20,6 +20,7 @@
     :disabled="item.disabled"
     :placeholder="_getPlaceholder(item)"
     @change="change"
+	@input="$forceUpdate()"
     start-placeholder="开始日期"
     range-separator="至"
     end-placeholder="结束日期"
