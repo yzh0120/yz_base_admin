@@ -30,6 +30,7 @@ Vue.prototype.h = `calc(100vh - 114px - ${common.normal_spacingt}  - ${layout.ta
 // import VCharts from 'v-charts'
 // Vue.use(VCharts)
 
+import 'echarts/lib/component/dataZoom'
 import VeLine from 'v-charts/lib/line'
 Vue.component(VeLine.name,VeLine)
 import histogram from 'v-charts/lib/histogram'

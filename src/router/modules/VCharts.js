@@ -208,6 +208,15 @@ export default {
 							},
 							component: () => import(/* webpackChunkName: "VCharts-histogram-other-seven" */"@/views/VCharts/histogram/other/seven.vue"),
 						},
+						{
+							path: 'dataZoom',
+							name: "VCharts-histogram-other-dataZoom",
+							meta: {
+								title: "缩放",
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-seven" */"@/views/VCharts/histogram/other/dataZoom.vue"),
+						},
 					]
 				}
 			],
