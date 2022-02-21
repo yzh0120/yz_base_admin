@@ -49,7 +49,7 @@
 
  		<el-progress :percentage="percentage" :text-inside="true" :stroke-width="15" v-if="percentage"></el-progress>
  		
- 		<el-upload :limit="limit" :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" 
+ 		<el-upload  :disabled="btnDisabled" class="i-upload" :action="uploaduUrl" 
 		:show-file-list="false" multiple :on-success="upLoadSuccess" :on-error="error"
  		:before-upload="(file)=>{return beforeUpload(file,uploadObj)}" 
 		:on-change="handleChange" :headers="uploadHeaders" :on-progress="progress">
@@ -73,6 +73,7 @@
           require: 0,
         },
  */
+let currentNum = 0;
  export default {
    props: {
 	   limit: {
@@ -132,7 +133,7 @@
      beforeUpload(file, item) {
        let activeFileType = file.name.split(".").pop();
        // return new Promise((resolve, reject) => {
-       if (item.num && (item.detail.length >= item.num)) {
+       if (item.num && (item.detail.length + currentNum >= item.num)) {
          this.btnDisabled = !this.btnDisabled;
          this.$message.error(`只能上传${item.num}个`);
          // reject();
@@ -146,6 +147,7 @@
          return false;
        } else {
          // resolve();
+		 currentNum++;
          return true;
        }
        // });
@@ -168,6 +170,7 @@
      //3 文件上传成功
      upLoadSuccess(res, file, fileList) {
        if (res.code == 200) {
+		   currentNum = 0;
          this.$message.success(res.data.fileName + "上传成功！");
 
              fileApi
