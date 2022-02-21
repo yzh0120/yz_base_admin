@@ -6,9 +6,14 @@
 <script>
   export default {
     data () {
-		this.extend = {
-		        'xAxis.0.axisLabel.rotate': 45,
-				color:['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
+		this.extend = {//会合并默认配置
+		  //       'xAxis.0.axisLabel.rotate': 45,
+				// color:['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
+				xAxis:{
+					axisLabel:{
+						rotate:45
+					}
+				}
 		      }
       return {
         chartData: {
