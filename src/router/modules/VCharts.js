@@ -217,6 +217,15 @@ export default {
 							},
 							component: () => import(/* webpackChunkName: "VCharts-histogram-other-seven" */"@/views/VCharts/histogram/other/dataZoom.vue"),
 						},
+						{
+							path: 'tooltip',
+							name: "VCharts-histogram-other-tooltip",
+							meta: {
+								title: "tooltip",
+								icon: 'e67a',
+							},
+							component: () => import(/* webpackChunkName: "VCharts-histogram-other-seven" */"@/views/VCharts/histogram/other/tooltip.vue"),
+						},
 					]
 				}
 			],
