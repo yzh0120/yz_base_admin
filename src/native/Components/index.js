@@ -13,7 +13,13 @@ import detailLinkComponent from './inPage/detail/detail-link.vue' //detail
 import fileListComponent from './inPage/fileList.vue' //detail
 import fileTableComponent from './inPage/fileTable.vue'//upload
 import upComponent from './inPage/up.vue'//upload
+import moneyInputComponent from './inPage/moneyInput.vue'//upload
 
+export const moneyInput = {
+    install: function (Vue) {
+        Vue.component('moneyInput', moneyInputComponent)
+    }
+}
 
 export const up = {
     install: function (Vue) {
