@@ -1,4 +1,8 @@
 <template>
+	<!-- 
+	 Echarts中dataZoom添加滚动条
+	 https://blog.csdn.net/qq_43753724/article/details/115804059
+	 -->
   <page>
 	  <ve-line :data="chartData" :after-config="afterConfig" ref="vchart" :events="events" :data-zoom="dataZoom"></ve-line>
   </page>
