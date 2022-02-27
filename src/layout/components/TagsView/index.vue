@@ -1,34 +1,62 @@
 <template>
   <div id="tags-view-container" class="tags-view-container">
-    <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
+    <scroll-pane
+      ref="scrollPane"
+      class="tags-view-wrapper"
+      @scroll="handleScroll"
+    >
       <!--@click.middle.native="!_isFixed(route) ? _closeSelectedTag(route) : ''"   -->
       <!-- -->
-	  <router-link v-for="route in _pageStack" 
-	  ref="tag" :key="route.path" :class="isActive(route) ? 'active' : ''" 
-	  tag="span" class="tags-view-item" :to="{ path: route.path, query: route.query }"
-	  @contextmenu.prevent.native="openMenu(route, $event)">
-	    
-		<div class="content">
-			<svgIcon :icon="route.meta.icon" className="titleIcon" v-if="route.meta.icon"></svgIcon>
-			<span class="titleText"> {{ route.meta.title }} </span>
-			<!-- 关闭 的 X -->
-			<span v-if="!_isFixed(route)" class="el-icon-close" @click.prevent.stop="_closeSelectedTag(route)" />
-		</div>
-		
+      <router-link
+        v-for="route in _pageStack"
+        ref="tag"
+        :key="route.path"
+        :class="isActive(route) ? 'active' : ''"
+        tag="span"
+        class="tags-view-item"
+        :to="{ path: route.path, query: route.query }"
+        @contextmenu.prevent.native="openMenu(route, $event)"
+      >
+        <div class="content">
+          <svgIcon
+            :icon="route.meta.icon"
+            className="titleIcon"
+            v-if="route.meta.icon"
+          ></svgIcon>
+          <span class="titleText"> {{ route.meta.title }} </span>
+          <!-- 关闭 的 X -->
+          <!-- <span v-if="!_isFixed(route)" class="el-icon-close" @click.prevent.stop="_closeSelectedTag(route)" /> -->
+          <i
+            class="el-icon-refresh-right layout-navbars-tagsview-ul-li-icon"
+            style="margin-left: 5px"
+            v-if="route.path === $route.path"
+            @click.stop="_reload"
+          ></i>
+          <i
+            class="el-icon-close layout-navbars-tagsview-ul-li-icon"
+            style="margin-left: 5px"
+            v-if="!_isFixed(route)"
+            @click.prevent.stop="_closeSelectedTag(route)"
+          ></i>
+        </div>
       </router-link>
     </scroll-pane>
     <!-- 右键菜单 -->
-	<div>
-		<transition name="el-zoom-in-center">
-			<ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-			  <li @click="_reload" > 刷新</li>
-			  <li @click="_closeOtherLeft">关闭左边页面</li>
-			  <li @click="_closeOtherRight">关闭右边页面</li>
-			  <li @click="_closeOthersTags">关闭其他</li>
-			</ul>
-		</transition>
-	</div>
-	
+    <div>
+      <transition name="el-zoom-in-center">
+        <ul
+          v-show="visible"
+          :style="{ left: left + 'px', top: top + 'px' }"
+          class="contextmenu"
+        >
+          <li @click="_reload">刷新</li>
+          <li @click="_closeOtherLeft">关闭左边页面</li>
+          <li @click="_closeOtherRight">关闭右边页面</li>
+          <li @click="_closeOthersTags">关闭其他</li>
+        </ul>
+      </transition>
+    </div>
+
     <!-- <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
       <li @click="_reload" > 刷新</li>
       <li @click="_closeOtherLeft">关闭左边页面</li>
@@ -52,19 +80,21 @@ export default {
       affixTags: [],
     };
   },
-  mixins:[keepAlive],
+  mixins: [keepAlive],
   watch: {
-    $route: {//监听路由
+    $route: {
+      //监听路由
       handler(newVal, oldVal) {
-		if (newVal.name == "blank") {//如果当前路由对象 是 blank 中断
-		  return;
-		}
-		// console.log(this._pageStack,'新的页面')
-		this._selectedTagPath  = newVal.path//当前路由
-		this.addTags(); //每次路由改变 增加页面栈
-		this.moveToCurrentTag(); //将active 移动到当前路由
+        if (newVal.name == "blank") {
+          //如果当前路由对象 是 blank 中断
+          return;
+        }
+        // console.log(this._pageStack,'新的页面')
+        this._selectedTagPath = newVal.path; //当前路由
+        this.addTags(); //每次路由改变 增加页面栈
+        this.moveToCurrentTag(); //将active 移动到当前路由
       },
-      immediate: true
+      immediate: true,
     },
     visible(value) {
       if (value) {
@@ -80,7 +110,7 @@ export default {
   methods: {
     //tags中 哪一个是当前路由
     isActive(route) {
-        return route.path === this.$route.path;
+      return route.path === this.$route.path;
     },
     // 增加页面栈
     addTags() {
@@ -122,7 +152,7 @@ export default {
     //右键菜单 显示
     openMenu(tag, e) {
       this.left = e.screenX; //鼠标X坐标
-      this.top = e.screenY - 90;//- 50; //鼠标y坐标
+      this.top = e.screenY - 90; //- 50; //鼠标y坐标
       this.visible = true; //菜单dom显示
       this._selectedTagPath = tag.path; //右键所指向的菜单路由
     },
@@ -145,7 +175,7 @@ export default {
 .tags-view-container {
   //改item高度 就修改这个
   //height: auto;//改item高度 就修改这个 1
-  
+
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
@@ -154,10 +184,10 @@ export default {
   overflow: hidden;
   .tags-view-wrapper {
     .tags-view-item {
-      .content{
-      			   display: flex;
-      			   justify-content: space-between;
-      			   align-items: center;
+      .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
     }
   }
@@ -173,14 +203,14 @@ export default {
     font-weight: 400;
     color: #333;
     // box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px 0 ;
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px; 
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
       &:hover {
-            // background-color: #ecf5ff;
-            color: #66b1ff;
+        // background-color: #ecf5ff;
+        color: #66b1ff;
       }
     }
   }
