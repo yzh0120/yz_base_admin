@@ -53,34 +53,27 @@ router.beforeEach(async (to, from, next) => {
 					  // spinner: "el-icon-loading",
 					  background: "rgba(255, 255, 255, 0.7)",
 					});
-					let arr = await Promise.all([
-						api.user.get_user({token:Cookie.get("token")},other),//token 在头部
+					// let arr =await Promise.all([
+					Promise.all([
+						api.user.sysUserInfo({},other),//token 在头部
 						new Promise((resolve )=>{
 							setTimeout(function(){
 								resolve('随便什么数据');
 							}, 1);
 						}),
 					])
-					// .then((arr)=>{
-					// 	// this.$nextTick(() => {
-					// 	  // 以服务的方式调用的 Loading 需要异步关闭
-					// 	  loadingInstance.close();
-					// 	// });
-					// 	store.commit("user/info_fn", arr[0].data)//保存用户信息
-					// 		store.dispatch('router/asyncRoutes',arr[1].data).then((accessRoutes)=>{//路由
-					// 		router.addRoutes(accessRoutes)
-					// 		next({...to,replace: true})//如果参数to不能找到对应的路由的话，就再执行一次beforeEach((to, from, next)直到其中的next({ ...to})能找到对应的路由为止。
-					// 	})
-					// })
-					
-
-					loadingInstance.close();
-	
-					store.commit("user/info_fn", arr[0].data)//保存用户信息
-					store.dispatch('router/asyncRoutes',arr[1].data).then((accessRoutes)=>{//保存路由
-					router.addRoutes(accessRoutes)
-					next({...to,replace: true})//如果参数to不能找到对应的路由的话，就再执行一次beforeEach((to, from, next)直到其中的next({ ...to})能找到对应的路由为止。
+					.then((arr)=>{
+						// this.$nextTick(() => {
+						  // 以服务的方式调用的 Loading 需要异步关闭
+						  loadingInstance.close();
+						// });
+						store.commit("user/info_fn", arr[0].data)//保存用户信息
+						store.dispatch('router/asyncRoutes',arr[1].data).then((accessRoutes)=>{//保存路由
+							router.addRoutes(accessRoutes)
+							next({...to,replace: true})//如果参数to不能找到对应的路由的话，就再执行一次beforeEach((to, from, next)直到其中的next({ ...to})能找到对应的路由为止。
+						})
 					})
+					
 				} else {
 					next()//放行
 				}

@@ -190,7 +190,7 @@ function realAxios(method, url, data = {}, other = {}) {
     toggleLoading(load, true)
 
     let headers = {
-        "Authorization": "Bearer " + Cookie.get("token"),
+        "Authorization": Cookie.get("token") ? Cookie.get("token"):undefined,
         'Content-Type': "application/json; charset=utf-8"
     }
     let baseURL = process.env.VUE_APP_BASE_API
@@ -218,13 +218,18 @@ function realAxios(method, url, data = {}, other = {}) {
                 toggleLoading(load, false,"over")
                 if (needSuccessCode &&  successCode != res.data.code) {//判断自定义code是否相同
                     Message({
-                        message: res.data.info,
+                        message: res.data.msg,
                         type: 'error',
                         duration: 3 * 1000
                     })
                     reject(res.data)
-                }else{
-					resolve(res.data)//之所以不返回 res.data.data  是防止在页面中使用了res.data.!data
+                } else {
+                    if (other.headers) {
+                        resolve(res)//之所以不返回 res.data.data  是防止在页面中使用了res.data.!data
+                    } else {
+                        resolve(res.data)//之所以不返回 res.data.data  是防止在页面中使用了res.data.!data
+                    }
+					
 				}
             }
         ).catch(
