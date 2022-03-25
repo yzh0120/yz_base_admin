@@ -1,4 +1,13 @@
 export default {
+	data() {
+		return {
+			pagerData: {
+				pageNo: 1, //第一页
+				pageSize: 20, //每页显示20张
+				total: 0, //总数
+			},
+		}
+	},
 	methods: {
 		// 得到placeholder的显示
 		_getPlaceholder(row) {

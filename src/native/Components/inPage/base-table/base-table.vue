@@ -58,12 +58,23 @@
     @expand-change="expandEvent"
   >
     <!-- 多选框 -->
+    <!-- <el-table-column
+      v-if="selection"
+      type="selection"
+      width="55"
+      :align="align"
+    ></el-table-column> -->
+
+    <!-- <template slot-scope="scope"> -->
     <el-table-column
       v-if="selection"
       type="selection"
       width="55"
       :align="align"
-    ></el-table-column>
+      :selectable="selectInit"
+    >
+    </el-table-column>
+    <!-- </template> -->
 
     <!-- 是否显示索引 -->
     <el-table-column
@@ -94,8 +105,9 @@
         <template v-slot:[item.slot]="{ scope }">
           <slot :name="item.slot" :scope="scope"></slot>
         </template>
-      </base-item>
-    </template>
+      </base-item> </template
+  ></el-table>
+</template>
   </el-table>
 </template>
 
@@ -127,6 +139,13 @@ export default {
     });
   },
   methods: {
+    selectInit(row, index) {
+      if (this.$fn.type(this.selection) == "fn") {
+        return this.selection(row, index);
+      } else {
+        return true;
+      }
+    },
     headerCellStyle() {
       // return 'background:red'
       return {

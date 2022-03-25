@@ -82,6 +82,15 @@ export default {
                 title: '清空多选',//修改
                 icon: 'e627;',
             }
+        },
+        {
+            path: 'chooseTable',//修改
+            name: 'layout-chooseTable',//修改
+            component: () => import(/* webpackChunkName: "layout-chooseTable" */ "@/views/layout/chooseTable.vue"),//修改
+            meta: {
+                title: '选择性多选',//修改
+                icon: 'e627;',
+            }
         }
     ]
 }
