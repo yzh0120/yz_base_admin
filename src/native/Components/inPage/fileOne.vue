@@ -100,7 +100,7 @@ let currentNum = 0;
    data() {
      return {
 		 percentage: 0,
-       uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+       uploaduUrl: "",//process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
        btnDisabled: false,
        uploadHeaders: {
          //上传头

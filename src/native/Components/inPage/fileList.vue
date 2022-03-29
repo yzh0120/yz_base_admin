@@ -88,6 +88,29 @@ export default {
       taskName: "",
     };
   },
+  methods:{
+	  check(){
+		  let checkOK = true;
+		  try {
+			this.$refs.uploadscanned.uploadList.forEach((item) => {
+			  if (item.require) {
+				if (!item.detail[0]) {
+				  this.$message.error(`请上传${item.name}`);
+				  checkOK = false;
+				  throw new Error("EndIterative");
+				}
+			  }
+			});
+		  } catch (e) {
+			if (e.message != "EndIterative") throw e;
+		  }
+		  if (!checkOK){
+			   return  false;
+		  }else{
+			  return  true
+		  }
+	  }
+  }
 };
 </script>
 
@@ -218,21 +241,7 @@ export default {
 
 <!-- 
  必填校验
- 	 let checkOK = true;
- 	         try {
- 	           this.$refs.uploadscanned.uploadList.forEach((item) => {
- 	             if (item.require) {
- 	               if (!item.detail[0]) {
- 	                 this.$message.error(`请上传${item.name}`);
- 	                 checkOK = false;
- 	                 throw new Error("EndIterative");
- 	               }
- 	             }
- 	           });
- 	         } catch (e) {
- 	           if (e.message != "EndIterative") throw e;
- 	         }
- 	         if (!checkOK) return;
+ 	 
  -->
 
 
