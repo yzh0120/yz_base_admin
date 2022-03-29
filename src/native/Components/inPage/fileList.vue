@@ -1,64 +1,238 @@
 <template>
   <div>
-    <el-tooltip class="fuJian" placement="top" v-for="(file, index) in arr" :key="index">
-      <span slot="content">
-        上传用户：{{ file.createUserName }}<br />
-        上传时间：{{ file.createTime }}<br />
-        文件大小：{{ file.fileSize }}<br />
-        下载次数：{{file.downloadCount }}
-      </span>
+    <panel >
+      <div slot="head" >
+        <h4>资料文件信息</h4>
+      </div>
+      <table class="table row">
+        <tbody>
+          <tr>
+            <td width="30%">资料名称</td>
+            <td>详情</td>
+            <td width="13%" v-if="showUploadBtn">操作</td>
+          </tr>
+          <tr v-for="(item,index) in uploadList" :key="index">
+            <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
+            <td>
+			  <file-list-show :arr="item.detail" :del="candelete"/>
+            </td>
+            <td class="text-center">
+				<up :projectId="projectId" :uploadObj="item" ></up>
+            </td>
+          </tr>
 
-      <span class="btn-flex">
-        <el-button type="text" @click="downloadFile(file)">{{ file.fileName }}</el-button>
-        <i class="el-icon-error" style="color:red;" @click="fileRemove(file.id,index)" v-if="del"></i>
-      </span>
-    </el-tooltip>
+        </tbody>
+      </table>
+    </panel>
   </div>
 </template>
 
 <script>
 	/* 
-	 arr:[
-        {
-          name: "中标通知书",
-          taskName: "中标通知书",
-          detail: [],
-          require: 0,
-        },
-        {
-          name: "其他辅助资料",
-          taskName: "其他辅助资料",
-          detail: [],
-          require: 0,
-        }
-      ],
-	 */
+	 /*
+	  arr:[
+	     {
+	       name: "中标通知书",
+	       taskName: "中标通知书",
+	       detail: [],
+	       require: 0,
+	     },
+	     {
+	       name: "其他辅助资料",
+	       taskName: "其他辅助资料",
+	       detail: [
+			   
+		   ],
+	       require: 0,
+	     }
+	   ],
+	  */
+	 
 import * as fileApi from "@/axios/api/file";
+import * as Cookie from "@/tools/cookjs.js";
 export default {
-  props: ["arr", "del"],
-  methods: {
-    // 当前审批时删除文件
-    fileRemove(id, eleindex) {
-      this.$confirm(`确定移除 ？`)
-        .then(() => {
-          fileApi.del([id]).then((res) => {
-            if (res.code == 200) {
-              this.$message.success("删除成功");
-              this.arr.splice(eleindex, 1);
-            } else {
-              this.$message.error(res.info);
-            }
-          });
-        })
-        .catch(() => {});
+  props: {
+	/**
+	* 是否显示上传按钮
+	*/
+	showUploadBtn: {
+		type: Boolean,
+		default: true,
+	},
+	/**
+	* 是否显示删除按钮
+	*/
+	candelete: {
+		type: Boolean,
+		default: true,
+	},
+    projectId: {
+      type: String,
+      default: "",
     },
-    downloadFile(item) {
-		console.log(item.fileUrl , item.filePath)
-      fileApi.download({ fileUrl: item.fileUrl + item.filePath });
+    uploadList: {
+      type: Array,
+      default: () => {
+        return [];
+      },
     },
+  },
+  data() {
+    return {
+      uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+      uploadHeaders: {
+        //上传头
+        // Authorization: Cookie.get("token")
+		"Authorization": process.env.VUE_APP_down_token_API
+      },
+      taskName: "",
+    };
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style style="scss" scoped>
+.downloadFile {
+  cursor: pointer;
+}
 </style>
+
+
+
+<!-- <template>
+  <div>
+    <panel >
+      <div slot="head" >
+        <h4>资料文件信息</h4>
+      </div>
+      <table class="table row">
+        <tbody>
+          <tr>
+            <td width="30%">资料名称</td>
+            <td>详情</td>
+            <td width="13%">操作</td>
+          </tr>
+          <tr v-for="(item,index) in uploadList" :key="index">
+            <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
+            <td>
+			  <file-List :arr="item.detail" :del="true"/>
+            </td>
+            <td class="text-center">
+				<up :projectId="projectId" :uploadObj="item" @success="(e)=>upLoadSuccess(e.res,e.taskName)" ></up>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </panel>
+  </div>
+</template>
+
+<script>
+import * as fileApi from "@/axios/api/file";
+import * as Cookie from "@/tools/cookjs.js";
+export default {
+  props: {
+    projectId: {
+      type: String,
+      default: "",
+    },
+    uploadList: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+  data() {
+    return {
+      uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+      uploadHeaders: {
+        //上传头
+        // Authorization: Cookie.get("token")
+		"Authorization": process.env.VUE_APP_down_token_API
+      },
+      taskName: "",
+    };
+  },
+  created() {
+    this.getFiles(); //获取历史文件
+  },
+  methods: {
+	 //获取文件
+    getFiles() {
+      this.uploadList.forEach((item) => {
+        fileApi
+          .getFileListByFolderId({
+            folderId: this.projectId,
+            taskName: item.taskName,
+          })
+          .then((result) => {
+            if (result.code == 200) {
+              item.detail = result.data;
+            } else {
+              this.$message.error(res.info);
+            }
+          });
+        // }
+      });
+    },
+
+    //3 文件上传成功
+    upLoadSuccess(res,taskName) {
+      if (res.code == 200) {
+        this.$message.success(res.data.fileName + "上传成功！");
+        this.uploadList.forEach((item) => {
+          if (item.taskName == taskName) {
+            fileApi
+              .getFileListByFolderId({
+                folderId: this.projectId,
+                taskName: taskName,
+              })
+              .then((result) => {
+                if (result.code == 200) {
+                  item.detail = result.data;
+                } else {
+                  this.$message.error(res.info);
+                }
+              });
+          }
+        });
+      } else {
+        this.$message.error(res.info);
+      }
+    },
+
+  },
+};
+</script>
+
+<style style="scss" scoped>
+.downloadFile {
+  cursor: pointer;
+}
+</style> -->
+
+
+
+
+<!-- 
+ 必填校验
+ 	 let checkOK = true;
+ 	         try {
+ 	           this.$refs.uploadscanned.uploadList.forEach((item) => {
+ 	             if (item.require) {
+ 	               if (!item.detail[0]) {
+ 	                 this.$message.error(`请上传${item.name}`);
+ 	                 checkOK = false;
+ 	                 throw new Error("EndIterative");
+ 	               }
+ 	             }
+ 	           });
+ 	         } catch (e) {
+ 	           if (e.message != "EndIterative") throw e;
+ 	         }
+ 	         if (!checkOK) return;
+ -->
+
+

@@ -11,8 +11,8 @@ import svgIconComponent from './inPage/svgIcon.vue' //svg
 import detailComponent from './inPage/detail/detail.vue' //detail
 import detailLinkComponent from './inPage/detail/detail-link.vue' //detail
 import fileListComponent from './inPage/fileList.vue' //detail
-import fileTableComponent from './inPage/fileTable.vue'//upload
-import upComponent from './inPage/up.vue'//upload
+import fileListShowComponent from './inPage/fileListShow.vue'//upload
+import fileOneComponent from './inPage/fileOne.vue'//upload
 import moneyInputComponent from './inPage/moneyInput.vue'//upload
 
 export const moneyInput = {
@@ -21,15 +21,15 @@ export const moneyInput = {
     }
 }
 
-export const up = {
+export const fileOne = {
     install: function (Vue) {
-        Vue.component('up', upComponent)
+        Vue.component('fileOne', fileOneComponent)
     }
 }
 
-export const fileTable = {
+export const fileListShow = {
     install: function (Vue) {
-        Vue.component('fileTable', fileTableComponent)
+        Vue.component('fileListShow', fileListShowComponent)
     }
 }
 

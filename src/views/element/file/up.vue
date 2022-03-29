@@ -1,7 +1,24 @@
+
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		
+	}
+</script>
+
+<style scoped>
+
+</style>
+<!-- 
 <template>
 	<div>
 		<up :uploadObj="uploadObj" :projectId="projectId"  ></up>
-		<file-List :arr="uploadObj.detail" :del="true"/>
+		<file-list-show :arr="uploadObj.detail" :del="true"/>
 	</div>
 </template>
 
@@ -24,9 +41,8 @@
 </script>
 
 <style>
-</style>
-
-
+</style> 
+ -->
 
 <!-- 
 <template>
