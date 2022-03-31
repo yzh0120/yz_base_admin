@@ -1,48 +1,31 @@
 
-<template>
-	<div>
 
-	</div>
+<template>
+  <div>
+    <file-list-show :arr="uploadObj.detail" :del="true" />
+    <oneFile :uploadObj="uploadObj" :projectId="projectId"></oneFile>
+  </div>
 </template>
 
 <script>
-	export default {
-		
-	}
-</script>
-
-<style scoped>
-
-</style>
-<!-- 
-<template>
-	<div>
-		<up :uploadObj="uploadObj" :projectId="projectId"  ></up>
-		<file-list-show :arr="uploadObj.detail" :del="true"/>
-	</div>
-</template>
-
-<script>
-	import * as fileApi from "@/axios/api/file";
-	export default{
-		data(){
-			return {
-				projectId:"23424232344645",
-				uploadObj: 
-				  {
-				    name: "xxx",
-				    taskName: "xxx",
-				    detail: [],
-				  }
-				
-			}
-		},
-	}
+import * as fileApi from "@/axios/api/file";
+export default {
+  data() {
+    return {
+      projectId: "23424232344645",
+      uploadObj: {
+        name: "xxx",
+        taskName: "xxx",
+        detail: [],
+      },
+    };
+  },
+};
 </script>
 
 <style>
 </style> 
- -->
+ 
 
 <!-- 
 <template>

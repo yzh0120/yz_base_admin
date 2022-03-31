@@ -13,7 +13,7 @@
         下载次数：{{ file.downloadCount }}
       </span>
 
-      <span class="btn-flex">
+      <div class="btn-flex">
         <el-button type="text" @click="downloadFile(file)">{{
           file.fileName
         }}</el-button>
@@ -23,7 +23,7 @@
           @click="fileRemove(file.id, index)"
           v-if="del"
         ></i>
-      </span>
+      </div>
     </el-tooltip>
   </div>
 </template>

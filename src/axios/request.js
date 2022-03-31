@@ -5,6 +5,8 @@ import { Message, MessageBox} from 'element-ui'; //ui提示
 import * as Cookie from "@/tools/cookjs.js"
 import forDelTemp from "@/tools/fn/forDelTemp.js";
 
+
+
 /*
 let headers = {
     'Content-Type' : "application/x-www-form-urlencoded"
@@ -12,6 +14,8 @@ let headers = {
 */
 
 axios.defaults.timeout = 120000; //超时时间
+
+
 
 // axios.interceptors.request.use(
 //     config => {
@@ -144,6 +148,8 @@ axios.interceptors.response.use(
         return Promise.reject(err.response);
     }
 )
+
+
 
 
 //具体的封装

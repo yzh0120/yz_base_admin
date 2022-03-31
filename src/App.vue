@@ -1,19 +1,27 @@
 <template>
   <!-- <div id="app"  v-loading="$store.state.axios.axiosLoading.loading" :element-loading-text="$store.state.axios.axiosLoading.text"> -->
-  <div id="app"  element-loading-text="路由加载中" v-loading="$store.state.router.elMainLoading">
-		<router-view />
-		
-		<el-drawer title="项目配置" :visible.sync="$store.state.setup.drawer" direction="rtl" :before-close="handleClose">
-			<div style="padding-left: 20px;">
-				<el-divider>选择主题</el-divider>
-				<el-radio-group v-model="$store.state.setup.navStyle">
-					<el-radio label="element-nav">element</el-radio>
-					<el-radio label="black-nav">black</el-radio>
-					<el-radio label="purple-nav">purple</el-radio>
-				</el-radio-group>
-			</div>
-		</el-drawer>
-		
+  <div
+    id="app"
+    element-loading-text="路由加载中"
+    v-loading="$store.state.router.elMainLoading"
+  >
+    <router-view />
+
+    <el-drawer
+      title="项目配置"
+      :visible.sync="$store.state.setup.drawer"
+      direction="rtl"
+      :before-close="handleClose"
+    >
+      <div style="padding-left: 20px">
+        <el-divider>选择主题</el-divider>
+        <el-radio-group v-model="$store.state.setup.navStyle">
+          <el-radio label="element-nav">element</el-radio>
+          <el-radio label="black-nav">black</el-radio>
+          <el-radio label="purple-nav">purple</el-radio>
+        </el-radio-group>
+      </div>
+    </el-drawer>
   </div>
 </template>
 
@@ -29,39 +37,40 @@ export default {
       },
       immediate: true,
     },
-	"$store.state.setup.navStyle":{
-		handler(newVal, oldVal) {
-		  window.document.documentElement.setAttribute('class', newVal)
-		},
-		immediate: true,
-	},
-	'$store.state.user.info.username': {
-		handler(newVal, oldVal) {
-			if(newVal.length>0){//存在
-				console.log("1111111111111")
-				this.$socket.io.opts.query = {
-				  token : 123 //localStorage.getItem("token") || '没有token'
-				 }
-				this.$socket.open()
-			}else{
-				this.$socket.disconnect(); //中断socket连接
-			}
-		},
-		immediate: true,
-	}
-
+    "$store.state.setup.navStyle": {
+      handler(newVal, oldVal) {
+        window.document.documentElement.setAttribute("class", newVal);
+      },
+      immediate: true,
+    },
+    // socket
+    // "$store.state.user.info.username": {
+    //   handler(newVal, oldVal) {
+    //     if (newVal.length > 0) {
+    //       //存在
+    //       // console.log("1111111111111")
+    //       this.$socket.io.opts.query = {
+    //         token: 123, //localStorage.getItem("token") || '没有token'
+    //       };
+    //       this.$socket.open();
+    //     } else {
+    //       this.$socket.disconnect(); //中断socket连接
+    //     }
+    //   },
+    //   immediate: true,
+    // },
   },
   methods: {
     clientXY() {
       this.$store.commit("setup/windowResize");
     },
-	handleClose(){
-		this.$store.commit("setup/drawer_fn",false)
-	},
+    handleClose() {
+      this.$store.commit("setup/drawer_fn", false);
+    },
   },
   sockets: {
     //内置事件
-	//1 连接成功
+    //1 连接成功
     connect() {
       console.log("连接成功", this.$socket);
     },
@@ -82,7 +91,7 @@ export default {
     /* 有新消息*/
     newInfo(data) {
       // console.log(data, "newInfo");
-	  this.$message.success(data)
+      this.$message.success(data);
     },
     /* 非法链接断开*/
     illegal(data) {
@@ -102,13 +111,13 @@ export default {
 
 
 <style>
-	html,
-	body,
-	#app,
-	.el-container,
-	.el-main{
-	  height: 100% !important;
-	  padding:0 !important;
-	  margin:0 !important;
-	}
+html,
+body,
+#app,
+.el-container,
+.el-main {
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 </style>

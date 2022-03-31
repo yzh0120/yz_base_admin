@@ -1,7 +1,7 @@
 <template>
   <div>
-    <panel >
-      <div slot="head" >
+    <panel>
+      <div slot="head">
         <h4>资料文件信息</h4>
       </div>
       <table class="table row">
@@ -11,16 +11,18 @@
             <td>详情</td>
             <td width="13%" v-if="showUploadBtn">操作</td>
           </tr>
-          <tr v-for="(item,index) in uploadList" :key="index">
-            <td>{{item.name}} <span style="color:red" v-if="item.require">*</span> </td>
+          <tr v-for="(item, index) in uploadList" :key="index">
             <td>
-			  <file-list-show :arr="item.detail" :del="candelete"/>
+              {{ item.name }}
+              <span style="color: red" v-if="item.require">*</span>
+            </td>
+            <td>
+              <file-list-show :arr="item.detail" :del="candelete" />
             </td>
             <td class="text-center">
-				<up :projectId="projectId" :uploadObj="item" ></up>
+              <oneFile :projectId="projectId" :uploadObj="item"></oneFile>
             </td>
           </tr>
-
         </tbody>
       </table>
     </panel>
@@ -28,7 +30,7 @@
 </template>
 
 <script>
-	/* 
+/* 
 	 /*
 	  arr:[
 	     {
@@ -47,25 +49,25 @@
 	     }
 	   ],
 	  */
-	 
+
 import * as fileApi from "@/axios/api/file";
 import * as Cookie from "@/tools/cookjs.js";
 export default {
   props: {
-	/**
-	* 是否显示上传按钮
-	*/
-	showUploadBtn: {
-		type: Boolean,
-		default: true,
-	},
-	/**
-	* 是否显示删除按钮
-	*/
-	candelete: {
-		type: Boolean,
-		default: true,
-	},
+    /**
+     * 是否显示上传按钮
+     */
+    showUploadBtn: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * 是否显示删除按钮
+     */
+    candelete: {
+      type: Boolean,
+      default: true,
+    },
     projectId: {
       type: String,
       default: "",
@@ -79,38 +81,37 @@ export default {
   },
   data() {
     return {
-      uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+      //uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
       uploadHeaders: {
         //上传头
-        // Authorization: Cookie.get("token")
-		"Authorization": process.env.VUE_APP_down_token_API
+        Authorization: Cookie.get("token"),
       },
       taskName: "",
     };
   },
-  methods:{
-	  check(){
-		  let checkOK = true;
-		  try {
-			this.$refs.uploadscanned.uploadList.forEach((item) => {
-			  if (item.require) {
-				if (!item.detail[0]) {
-				  this.$message.error(`请上传${item.name}`);
-				  checkOK = false;
-				  throw new Error("EndIterative");
-				}
-			  }
-			});
-		  } catch (e) {
-			if (e.message != "EndIterative") throw e;
-		  }
-		  if (!checkOK){
-			   return  false;
-		  }else{
-			  return  true
-		  }
-	  }
-  }
+  methods: {
+    check() {
+      let checkOK = true;
+      try {
+        this.$refs.uploadscanned.uploadList.forEach((item) => {
+          if (item.require) {
+            if (!item.detail[0]) {
+              this.$message.error(`请上传${item.name}`);
+              checkOK = false;
+              throw new Error("EndIterative");
+            }
+          }
+        });
+      } catch (e) {
+        if (e.message != "EndIterative") throw e;
+      }
+      if (!checkOK) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
 };
 </script>
 

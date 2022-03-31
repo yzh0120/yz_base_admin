@@ -1,4 +1,4 @@
-import oarequest from "@/axios/downRequest";
+import { get,post } from "@/axios/request";
 import axios from 'axios';
 import * as Cookie from "@/tools/cookjs.js";
 import {
@@ -14,10 +14,9 @@ import {
  */
 
 export function download(params = {},path ) {
-  let baseURL = process.env.VUE_APP_down_API;
+  let baseURL = process.env.VUE_APP_BASE_API;
   let headers = {
-    // 'Authorization': "Bearer " + Cookie.get("token")
-	"Authorization": process.env.VUE_APP_down_token_API
+    'Authorization': "Bearer " + Cookie.get("token")
   }
 
  //  let url = ""
@@ -110,24 +109,30 @@ let msg = Message({
  * @param {*} data 
  * @returns 
  */
-export function del(data) {
-  return oarequest({
-    url: "/v1/base/file/delete",
-    method: "post",
-    data: data
-  })
+// export function del(data) {
+//   return downService({
+//     url: "/v1/base/file/delete",
+//     method: "post",
+//     data: data
+//   })
+// }
+export function del(data, other) {
+  return post('file/delete', data, other)
 }
-
 
 /**
  * folderId获取文件列表
  * @param {*} data 
  * @returns 
  */
-export function getFileListByFolderId(data = {}) {
-  return oarequest({
-    url: "/v1/base/file/getFileListByFolderId",
-    method: "get",
-    params: data
-  })
+// export function getFileListByFolderId(data = {}) {
+//   return downService({
+//     url: "file/getFileListByFolderId",
+//     method: "get",
+//     params: data
+//   })
+// }
+
+export function getFileListByFolderId(data, other) {
+  return get('file/getFileListByFolderId', data, other)
 }

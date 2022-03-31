@@ -12,7 +12,7 @@ import detailComponent from './inPage/detail/detail.vue' //detail
 import detailLinkComponent from './inPage/detail/detail-link.vue' //detail
 import fileListComponent from './inPage/fileList.vue' //detail
 import fileListShowComponent from './inPage/fileListShow.vue'//upload
-import fileOneComponent from './inPage/fileOne.vue'//upload
+import oneFileComponent from './inPage/oneFile.vue'//upload
 import moneyInputComponent from './inPage/moneyInput.vue'//upload
 
 export const moneyInput = {
@@ -21,9 +21,9 @@ export const moneyInput = {
     }
 }
 
-export const fileOne = {
+export const oneFile = {
     install: function (Vue) {
-        Vue.component('fileOne', fileOneComponent)
+        Vue.component('oneFile', oneFileComponent)
     }
 }
 
