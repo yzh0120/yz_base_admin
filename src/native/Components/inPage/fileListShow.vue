@@ -1,23 +1,35 @@
 <template>
   <div>
-    <el-tooltip class="fuJian" placement="top" v-for="(file, index) in arr" :key="index">
+    <el-tooltip
+      class="fuJian"
+      placement="top"
+      v-for="(file, index) in arr"
+      :key="index"
+    >
       <span slot="content">
         上传用户：{{ file.createUserName }}<br />
         上传时间：{{ file.createTime }}<br />
         文件大小：{{ file.fileSize }}<br />
-        下载次数：{{file.downloadCount }}
+        下载次数：{{ file.downloadCount }}
       </span>
 
       <span class="btn-flex">
-        <el-button type="text" @click="downloadFile(file)">{{ file.fileName }}</el-button>
-        <i class="el-icon-error" style="color:red;" @click="fileRemove(file.id,index)" v-if="del"></i>
+        <el-button type="text" @click="downloadFile(file)">{{
+          file.fileName
+        }}</el-button>
+        <i
+          class="el-icon-error"
+          style="color: red"
+          @click="fileRemove(file.id, index)"
+          v-if="del"
+        ></i>
       </span>
     </el-tooltip>
   </div>
 </template>
 
 <script>
-	/* 
+/* 
 	 arr:[
         {
           name: "中标通知书",
@@ -36,19 +48,19 @@
 import * as fileApi from "@/axios/api/file";
 export default {
   // props: ["arr", "del"],
-  props:{
-	  // 顯示删除按钮
-	  del: {
-	  	type: Boolean,
-	  	default: true,
-	  },
-	  arr:{
-		  type: Array,
-		  default: () => {
-		    return [];
-		  },
-	  }
-  }
+  props: {
+    // 顯示删除按钮
+    del: {
+      type: Boolean,
+      default: true,
+    },
+    arr: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
   methods: {
     // 当前审批时删除文件
     fileRemove(id, eleindex) {
@@ -66,7 +78,7 @@ export default {
         .catch(() => {});
     },
     downloadFile(item) {
-		console.log(item.fileUrl , item.filePath)
+      console.log(item.fileUrl, item.filePath);
       fileApi.download({ fileUrl: item.fileUrl + item.filePath });
     },
   },

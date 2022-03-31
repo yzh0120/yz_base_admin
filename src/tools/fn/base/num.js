@@ -63,7 +63,7 @@ function qian(val, digits = 2){
 	//   }
 	//   return ""
 	return val
-},
+}
 
 export default{
 	add,
