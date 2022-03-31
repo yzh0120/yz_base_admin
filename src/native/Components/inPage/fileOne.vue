@@ -69,17 +69,23 @@
  up:{
           name: "中标通知书",
           taskName: "中标通知书",
-          detail: [],
+          detail: [
+			  
+			  {
+				num:3,  
+				type:["doc", "docx"]
+			  }
+		  ],
           require: 0,
         },
  */
 let currentNum = 0;
  export default {
    props: {
-	   limit: {
-	         type: Number,
-	         default: null,
-	       },
+	   // limit: {
+	   //       type: Number,
+	   //       default: null,
+	   //     },
      projectId: {
        type: [String,Number],
        default: "",
@@ -94,7 +100,7 @@ let currentNum = 0;
    data() {
      return {
 		 percentage: 0,
-       uploaduUrl: process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
+       uploaduUrl: "",//process.env.VUE_APP_down_API + "/v1/base/file/upload", //上传地址
        btnDisabled: false,
        uploadHeaders: {
          //上传头

@@ -26,7 +26,7 @@ function mod(val1,val2){
 }
 
 //金额千分位， 小数点后保留小数位
-function qian(s, n = 2){
+function format(s, n = 2){
 	s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + ""; //n为小数点后保留小数位
 		var l = s.split(".")[0].split("").reverse(),
 			r = s.split(".")[1],
@@ -36,6 +36,7 @@ function qian(s, n = 2){
 	}
 	return t.split("").reverse().join("") + "." + r;
 }
+
 
 //金额转化   小数点后保留小数位
 function change(num ,n = 2,unit = "万"){
@@ -47,6 +48,23 @@ function change(num ,n = 2,unit = "万"){
 	return chu(num,dividend).toFixed(n)
 }
 
+
+/**
+ * 格式化金额
+ * @param {string | number} val 需要格式化的值
+ * @param {number} digits 保留几位小数，默认2位
+ * @returns XEUtils.commafy(1000000.5678, { digits: 2 }) // '1,000,000.57'
+ */
+function qian(val, digits = 2){
+	// if (val !== "" && val !== undefined && val !== null) {
+	//     return XEUtils.commafy(toNumber(val), {
+	//       digits: digits
+	//     })
+	//   }
+	//   return ""
+	return val
+},
+
 export default{
 	add,
 	diff,
@@ -54,7 +72,8 @@ export default{
 	chu,
 	mod,
 	qian,
-	change
+	change,
+	format
 }
 
 // export default{
