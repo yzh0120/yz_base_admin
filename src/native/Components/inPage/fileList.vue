@@ -31,24 +31,24 @@
 
 <script>
 /* 
-	 /*
-	  arr:[
-	     {
-	       name: "中标通知书",
-	       taskName: "中标通知书",
-	       detail: [],
-	       require: 0,
-	     },
-	     {
-	       name: "其他辅助资料",
-	       taskName: "其他辅助资料",
-	       detail: [
-			   
-		   ],
-	       require: 0,
-	     }
-	   ],
-	  */
+   /*
+    arr:[
+       {
+         name: "中标通知书",
+         taskName: "中标通知书",
+         detail: [],
+         require: 0,
+       },
+       {
+         name: "其他辅助资料",
+         taskName: "其他辅助资料",
+         detail: [
+         
+       ],
+         require: 0,
+       }
+     ],
+    */
 
 import * as fileApi from "@/axios/api/file";
 import * as Cookie from "@/tools/cookjs.js";
@@ -94,7 +94,7 @@ export default {
       let checkOK = true;
       try {
         this.$refs.uploadscanned.uploadList.forEach((item) => {
-          if (item.require) {
+          if (item.required) {
             if (!item.detail[0]) {
               this.$message.error(`请上传${item.name}`);
               checkOK = false;
