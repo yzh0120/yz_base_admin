@@ -78,8 +78,8 @@ export default {
         .catch(() => {});
     },
     downloadFile(item) {
-      console.log(item.fileUrl, item.filePath);
-      fileApi.download({ fileUrl: item.fileUrl + item.filePath });
+      // fileApi.download({ fileUrl: item.fileUrl + item.filePath });
+      fileApi.download({ fileId: item.id }, "/file/download");
     },
   },
 };

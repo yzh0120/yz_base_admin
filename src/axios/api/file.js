@@ -16,10 +16,11 @@ import {
 export function download(params = {},path ) {
   let baseURL = process.env.VUE_APP_BASE_API;
   let headers = {
-    'Authorization': "Bearer " + Cookie.get("token")
+    // 'Authorization': "Bearer " + Cookie.get("token")
+    "Authorization": Cookie.get("token") ? Cookie.get("token"):undefined,
   }
 
- //  let url = ""
+  let url = ""
  //  if (!path) {
  //    // return window.open(params.fileUrl)//后端抛出的下载链接
 	// if (/.xls|.xlsx|.doc|.docx|.ppt|.pptx/g.test(params.fileUrl)) {
@@ -92,7 +93,7 @@ let msg = Message({
         let link = document.createElement("a");
         link.style.display = "none";
         link.href = objectUrl;
-        //console.log(, "xxxx") //["Content-Disposition"]
+        // console.log(response.headers, 'response.headers["content-disposition"]') //["Content-Disposition"]
         link.setAttribute("download", decodeURIComponent(response.headers["content-disposition"].split("filename=")[1]));
         document.body.appendChild(link);
         link.click();
